@@ -1,0 +1,19 @@
+.profilePicture {
+    height: 12rem;
+    width: 12rem;
+    border-radius: 100px;
+}
+
+.profilePictureContainer {
+    padding-left: 6rem;
+    padding-right: 6rem;
+    gap: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+}
+
+.name {
+    font-size: 24px;
+}
