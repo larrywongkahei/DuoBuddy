@@ -14,12 +14,12 @@ const APIService =
     return fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)
       .then(response => response.json())
   },
-  async fetchUserOrCreateUser() {
-    const fetchdata = await fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)
+  async fetchUserOrCreateUser(email) {
+    const fetchdata = await fetch(`http://localhost:8080/user/dataFetching?email=${email}`)
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
       sessionStorage.setItem("userId", data.id)
-      console.log(sessionStorage.userId)
+      window.location.href = "http://localhost:3000"
       return true
     }
     return false
@@ -33,6 +33,7 @@ const APIService =
         }
       })
       .then(() => APIService.fetchUserOrCreateUser())
+      .then(() => window.location.href = "http://localhost:3000")
   },
 
   createProject(payload) {
@@ -56,7 +57,7 @@ const APIService =
       .then(response => response.json())
   },
   getProjectsBySearch(searchData){
-    return fetch(`http://localhost:8080/project/getData?searchData=${searchData}`)
+    return fetch(`http://localhost:8080/project/getSearchResult?searchData=${searchData}`)
     .then(response => response.json())
   },
   getUserById(id) {
@@ -69,7 +70,37 @@ const APIService =
       body:content,
       headers:{'Content-Type':'application/json'}
     })
+  },
+  async FetchDataFromGoogle(token){
+    const response = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", 
+    {
+      method:"GET",
+      headers:{"Authorization":"Bearer" + token}
+    })
+    const data = await response.json();
+    sessionStorage.setItem("name", data.name);
+    sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
+    sessionStorage.setItem("email", data.email);
+    const userExist = await APIService.fetchUserOrCreateUser()
+    if(userExist === false){
+      await this.createUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email);
+    }
+    window.location.href = "http://localhost:3000"
+},
+async FetchDataFromGithub(code){
+  const response = await fetch(`http://localhost:8080/login/github/code?code=${code}`)
+  const data = await response.json()
+  sessionStorage.setItem("name", data.login);
+  sessionStorage.setItem("bio", data.bio)
+  sessionStorage.setItem("location", data.location)
+  sessionStorage.setItem("avatar_url", data.avatar_url);
+  sessionStorage.setItem("email", data.email);
+  const userExist = await this.fetchUserOrCreateUser(data.email)
+  if(userExist === false){
+    await this.createUser(data.login, data.bio, data.location, data.avatar_url, data.email)
   }
+}
+
 
 }
 

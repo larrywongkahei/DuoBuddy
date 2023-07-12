@@ -4,6 +4,8 @@ import { ImLinkedin } from 'react-icons/im';
 import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import { useState } from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
+import APIService from '../APIService';
 
 
 export default function Login() {
@@ -25,13 +27,21 @@ export default function Login() {
         setPassword('');
     };
 
-    function loginWithGmail(){
-        window.location.assign("http://localhost:8080/login/google")
-    }
+    // function loginWithGmail(){
+    //     window.location.assign("http://localhost:8080/login/google")
+    // }
 
     function loginWithGithub(){
         window.location.assign("http://localhost:8080/login/github")
     }
+
+    const loginWithGmail = useGoogleLogin({
+        onSuccess: response => {
+            APIService.FetchDataFromGoogle(response.access_token)
+        }
+    })
+
+
     return (
         <div className="loginContainer">
             <h1 className="welcomeText">
@@ -40,7 +50,7 @@ export default function Login() {
             <div className="icons">
                 <ImLinkedin className="linkedin" />
                 <BsGithub className="github" onClick={loginWithGithub}/>
-                <SiGmail className="email" onClick={loginWithGmail}/>
+                <SiGmail className="email" onClick={() => loginWithGmail()}/>
             </div>
             <h2 className="wordBetweenLine">
                 OR
