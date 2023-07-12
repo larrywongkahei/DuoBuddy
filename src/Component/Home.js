@@ -45,9 +45,9 @@ export default function Home() {
                 <p className="contactMeLabel">
                     Contact me
                 </p>
-                <BsGithub className="githubHome" onClick={ToGithub}/>
-                <AiFillInstagram className="instagramHome" onClick={ToInstagram}/>
-                <ImLinkedin className="linkedinHome" onClick={ToLinkedin}/>
+                <BsGithub className="githubHome" onClick={ToGithub} style={{cursor:"pointer"}}/>
+                <AiFillInstagram className="instagramHome" onClick={ToInstagram} style={{cursor:"pointer"}}/>
+                <ImLinkedin className="linkedinHome" onClick={ToLinkedin} style={{cursor:"pointer"}}/>
                 <a href='mailto:makemak123@gmail.com' className='emailLink'>
                 <SiGmail className="emailHome"/>
                 </a>
