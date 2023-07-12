@@ -27,9 +27,6 @@ export default function Login() {
         setPassword('');
     };
 
-    // function loginWithGmail(){
-    //     window.location.assign("http://localhost:8080/login/google")
-    // }
 
     function loginWithGithub(){
         window.location.assign("http://localhost:8080/login/github")
