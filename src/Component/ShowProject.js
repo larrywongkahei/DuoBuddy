@@ -7,12 +7,13 @@ export default function ShowProject() {
     const [projectData, setProjectData] = useState({});
     const [commentBox, setCommentBox] = useState("")
     const param = useParams();
+    const [reload, setReload] = useState(false)
     const id = param.id;
     useEffect(() => {
         if(id){
             APIService.getProjectById(id).then(data => setProjectData(data))
         }
-    }, [])
+    }, [reload])
 
     function commentBoxTextHandler(e) {
         setCommentBox(e.target.value);
@@ -21,7 +22,6 @@ export default function ShowProject() {
     function handleAddComment() {
         APIService.commentProject(id, commentBox);
         setCommentBox("")
-        window.location.reload();
     }
 
     const contentToPrint = projectData?.content?.split("\n").map((each, index) => {
@@ -77,6 +77,9 @@ export default function ShowProject() {
                 <h1 className='ProjectPageTitle'>
                     {projectData.title}
                 </h1>
+                <button onClick={()=>setReload(!reload)}>
+                    Reload
+                </button>
                 <div className='ProjectPageHeaderDetail'>
                     <p>
                         Posted: {projectData.createdDate}
