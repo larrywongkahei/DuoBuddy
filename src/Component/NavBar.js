@@ -15,7 +15,7 @@ export default function NavBar(){
             <div className="Title">
                 <Link className='navLink' to="/">MentorShip</Link>
             </div>
-            {sessionStorage.getItem("avatar_url") === null ?
+            {sessionStorage.length === 0 ?
             <div className='topRightLinks'>
                 <Link className='navLink' to="/login" ><HiOutlineLogin className="loginIcon"/></Link>
                 <Link className="navLink" to="/explore">Explore</Link>

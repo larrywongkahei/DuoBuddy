@@ -13,6 +13,8 @@ export default function SearchResult() {
         APIService.getProjectsBySearch(dataToSearch).then(data => setProjectToShow(data));
     }, [])
 
+    console.log(projectsToShow)
+
     const projects = projectsToShow.map((each, index) => {
         return (
             <div key={index} className='searchResultProjects'>

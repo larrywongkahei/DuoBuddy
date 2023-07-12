@@ -13,6 +13,7 @@ export default function ShowProject() {
             APIService.getProjectById(id).then(data => setProjectData(data))
         }
     }, [])
+
     function commentBoxTextHandler(e) {
         setCommentBox(e.target.value);
     }

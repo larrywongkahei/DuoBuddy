@@ -7,9 +7,10 @@ const APIService =
         body: JSON.stringify({ "name": name, "bio": bio, "location": location, "avatarUrl": avatar, "email": email }), headers: {
           'Content-Type': 'application/json'
         }
-      })
+      }).then(response => response.json())
+      .then(data => sessionStorage.setItem("userId", data.id))
+      .then(() => window.location.href = "http://localhost:3000")
   },
-
   fetchUser() {
     return fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)
       .then(response => response.json())
@@ -24,18 +25,6 @@ const APIService =
     }
     return false
   },
-  createUser(name, bio, location, avatar, email) {
-    fetch("http://localhost:8080/user",
-      {
-        method: "POST",
-        body: JSON.stringify({ "name": name, "bio": bio, "location": location, "avatarUrl": avatar, "email": email }), headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(() => APIService.fetchUserOrCreateUser())
-      .then(() => window.location.href = "http://localhost:3000")
-  },
-
   createProject(payload) {
     return fetch("http://localhost:8080/project",
       {
@@ -83,7 +72,7 @@ const APIService =
     sessionStorage.setItem("email", data.email);
     const userExist = await APIService.fetchUserOrCreateUser()
     if (userExist === false) {
-      await this.createUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email);
+      await this.createUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
     }
     window.location.href = "http://localhost:3000"
   },
