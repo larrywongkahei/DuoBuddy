@@ -92,6 +92,10 @@
     border-bottom-width: 1px;
 }
 
+.eachProject h1{
+    color: black;
+}
+
 .rightDetail {
     display: flex;
     flex-direction: row;
@@ -120,9 +124,7 @@
     margin: 0px;
 }
 
-.titleLinkProject{
-    color: black;
-}
+
 
 .titleLink {
     text-decoration: none;

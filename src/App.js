@@ -31,6 +31,8 @@ async function loginWithGithub(code){
   create(accessToken);
 }
 
+console.log(sessionStorage)
+
 
 async function loginWithGoogle(token){
   const response = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", 

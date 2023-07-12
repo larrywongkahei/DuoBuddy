@@ -5,7 +5,7 @@ import APIService from '../APIService';
 
 export default function Explore() {
 
-    const [selected, setSelected] = useState("");
+    const [filter, setFilter] = useState("");
     const [Projects, setProjects] = useState([]);
     const navigate = useNavigate()
 
@@ -13,8 +13,9 @@ export default function Explore() {
         APIService.getAllProject().then(data => setProjects(data));
     }, [])
 
-    function selectionHandler(e) {
-        setSelected(e.target.value);
+    
+    function filterHandler(e) {
+        setFilter(e.target.value);
     }
 
     function postHandler(e) {
@@ -29,7 +30,7 @@ export default function Explore() {
     const allProjects = Projects.map((each, index) => (
         <div key={index} className='eachProject'>
             <Link to={`/post/${each.id}`} className='titleLink'>
-            <h1 className='titleLinkProject'>
+            <h1>
                 {each.title}
             </h1>
             </Link>
@@ -82,7 +83,7 @@ export default function Explore() {
                     <p>
                         Filter by:
                     </p>
-                    <select onChange={selectionHandler}>
+                    <select onChange={filterHandler}>
                         <option>fasef</option>
                         <option>asefasef</option>
                     </select>

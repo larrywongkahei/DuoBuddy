@@ -9,7 +9,9 @@ export default function ShowProject() {
     const param = useParams();
     const id = param.id;
     useEffect(() => {
-        APIService.getProjectById(id).then(data => setProjectData(data))
+        if(id){
+            APIService.getProjectById(id).then(data => setProjectData(data))
+        }
     }, [])
     function commentBoxTextHandler(e) {
         setCommentBox(e.target.value);

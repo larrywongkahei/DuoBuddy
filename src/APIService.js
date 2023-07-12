@@ -19,6 +19,7 @@ const APIService =
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
       sessionStorage.setItem("userId", data.id)
+      console.log(sessionStorage.userId)
       return true
     }
     return false
