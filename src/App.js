@@ -14,8 +14,11 @@ function App() {
   useEffect(() => {
     const queryString = window.location.search;
     const urlParam = new URLSearchParams(queryString);
-    if(urlParam.has("code")){
+    if(urlParam.has("code") & window.location.pathname === "/github"){
       APIService.FetchDataFromGithub(urlParam.get("code"));
+    }
+    else if(urlParam.has("code") & window.location.pathname === "/linkedin"){
+      
     }
     if(sessionStorage.length > 0){
       APIService.fetchUserOrCreateUser()
