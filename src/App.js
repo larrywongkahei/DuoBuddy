@@ -18,12 +18,14 @@ function App() {
       APIService.FetchDataFromGithub(urlParam.get("code"));
     }
     else if(urlParam.has("code") & window.location.pathname === "/linkedin"){
-      
+      APIService.FetchDataFromLinkedin(urlParam.get("code"));
     }
     if(sessionStorage.length > 0){
       APIService.fetchUserOrCreateUser()
     }
 }, [])
+
+console.log(sessionStorage)
 
 
   return (

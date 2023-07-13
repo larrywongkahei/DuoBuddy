@@ -32,6 +32,11 @@ export default function Login() {
         window.location.assign("http://localhost:8080/login/github")
     }
 
+    function loginWithLinkedin(){
+        window.location.assign("http://localhost:8080/login/linkedin")
+    }
+
+
     const loginWithGmail = useGoogleLogin({
         onSuccess: response => {
             APIService.FetchDataFromGoogle(response.access_token)
@@ -45,7 +50,7 @@ export default function Login() {
                 Welcome
             </h1>
             <div className="icons">
-                <ImLinkedin className="linkedin" />
+                <ImLinkedin className="linkedin" onClick={loginWithLinkedin} style={{cursor:"pointer"}}/>
                 <BsGithub className="github" onClick={loginWithGithub} style={{cursor:"pointer"}}/>
                 <SiGmail className="email" onClick={() => loginWithGmail()} style={{cursor:"pointer"}}/>
             </div>
