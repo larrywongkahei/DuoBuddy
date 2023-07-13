@@ -46,8 +46,8 @@ export default function Login() {
             </h1>
             <div className="icons">
                 <ImLinkedin className="linkedin" />
-                <BsGithub className="github" onClick={loginWithGithub}/>
-                <SiGmail className="email" onClick={() => loginWithGmail()}/>
+                <BsGithub className="github" onClick={loginWithGithub} style={{cursor:"pointer"}}/>
+                <SiGmail className="email" onClick={() => loginWithGmail()} style={{cursor:"pointer"}}/>
             </div>
             <h2 className="wordBetweenLine">
                 OR

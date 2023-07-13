@@ -2,6 +2,7 @@ import './ShowProjectCss.css';
 import APIService from '../APIService';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { TbReload } from 'react-icons/tb'
 
 export default function ShowProject() {
     const [projectData, setProjectData] = useState({});
@@ -10,7 +11,7 @@ export default function ShowProject() {
     const [reload, setReload] = useState(false)
     const id = param.id;
     useEffect(() => {
-        if(id){
+        if (id) {
             APIService.getProjectById(id).then(data => setProjectData(data))
         }
     }, [reload])
@@ -57,13 +58,13 @@ export default function ShowProject() {
                 </p>
                 <div className='CommentRightDetail'>
                     <div>
-                    <img src={each.createdBy?.avatarUrl} />
-                    <p>
-                        {each.createdBy?.name}
-                    </p>
-                    <p>
-                        {each.createdDate}
-                    </p>
+                        <img src={each.createdBy?.avatarUrl} />
+                        <p>
+                            {each.createdBy?.name}
+                        </p>
+                        <p>
+                            {each.createdDate}
+                        </p>
                     </div>
 
                 </div>
@@ -77,9 +78,6 @@ export default function ShowProject() {
                 <h1 className='ProjectPageTitle'>
                     {projectData.title}
                 </h1>
-                <button onClick={()=>setReload(!reload)}>
-                    Reload
-                </button>
                 <div className='ProjectPageHeaderDetail'>
                     <p>
                         Posted: {projectData.createdDate}
@@ -106,9 +104,15 @@ export default function ShowProject() {
                     </p>
                 </div>
             </div>
-            <h1>
-                {projectData?.comments?.length} Comments
-            </h1>
+            <div className='CommentSessionContainer'>
+                <h1>
+                    {projectData?.comments?.length} Comments
+                </h1>
+                <p>
+                    <TbReload onClick={() => setReload(!reload)} />
+                </p>
+            </div>
+
             <div className='CommentContainer'>
                 {comments}
                 <div className='CommentBoxContainer'>

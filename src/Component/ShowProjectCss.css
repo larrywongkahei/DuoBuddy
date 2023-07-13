@@ -130,3 +130,19 @@
     padding-left: 5rem;
     padding-right: 5rem;
 }
+
+.CommentSessionContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.CommentSessionContainer p {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.CommentSessionContainer p :active{
+    cursor:progress;
+    transform: translateY(3px);
+}
