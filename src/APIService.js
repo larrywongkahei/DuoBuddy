@@ -88,6 +88,20 @@ const APIService =
     if (userExist === false) {
       await this.createUser(data.login, data.bio, data.location, data.avatar_url, data.email)
     }
+  },
+  async FetchDataFromLinkedin(code) {
+    const response = await fetch(`http://localhost:8080/login/github/code?code=${code}`)
+    const data = await response.json()
+    console.log(data)
+    // sessionStorage.setItem("name", data.login);
+    // sessionStorage.setItem("bio", data.bio)
+    // sessionStorage.setItem("location", data.location)
+    // sessionStorage.setItem("avatar_url", data.avatar_url);
+    // sessionStorage.setItem("email", data.email);
+    // const userExist = await this.fetchUserOrCreateUser(data.email)
+    // if (userExist === false) {
+    //   await this.createUser(data.login, data.bio, data.location, data.avatar_url, data.email)
+    // }
   }
 
 
