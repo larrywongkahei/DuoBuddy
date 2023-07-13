@@ -13,7 +13,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function usernameHandler(e) {
+    function emailHandler(e) {
         setEmail(e.target.value);
     };
 
@@ -53,7 +53,7 @@ export default function Login() {
                 OR
             </h2>
             <form className="form">
-                <input type="text" placeholder="Email" value={email} onChange={usernameHandler} />
+                <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
                 <input type="text" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
                     <button type="submit" onClick={submitButtonHandler}>Sign in</button>

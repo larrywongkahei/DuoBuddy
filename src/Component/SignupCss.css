@@ -5,4 +5,11 @@
     flex-direction: column;
     margin: auto;
     text-align: center;
+    height: 60vh;
+}
+
+.signUpContainer input{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 27px;
 }
