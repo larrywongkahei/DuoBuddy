@@ -1,15 +1,15 @@
 .signUpContainer {
-    width: 28rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+    border-style: solid;
+    border-width: 1px;
+    width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    min-height: 32rem;
     text-align: center;
-    height: 60vh;
-}
-
-.signUpContainer input{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    height: 27px;
+    padding-top:30px;
+    padding-left:30px;
+    padding-right:30px;
+    border-radius: 20px;
+    background-color: white;
 }

@@ -40,9 +40,9 @@ export default function Signup() {
 
 
     return (
-        <div className="loginContainer">
+        <div className="signUpContainer">
             <h1 className="welcomeText">
-                Welcome
+                Sign up with
             </h1>
             <div className="icons">
                 <ImLinkedin className="linkedin" />
@@ -53,10 +53,11 @@ export default function Signup() {
                 OR
             </h2>
             <form className="form">
+                <input type="text" placeholder="Display name" value={displayName} onChange={displayNameHandler} />
                 <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
                 <input type="text" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
-                    <button type="submit" onClick={submitButtonHandler}>Sign in</button>
+                    <button type="submit" onClick={submitButtonHandler}>Sign up</button>
                 </div>
             </form>
         </div>
