@@ -25,9 +25,6 @@ function App() {
     }
 }, [])
 
-console.log(sessionStorage)
-
-
   return (
     <BrowserRouter>
     <NavBar />
