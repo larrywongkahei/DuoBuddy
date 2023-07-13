@@ -10,11 +10,11 @@ import APIService from '../APIService';
 
 export default function Login() {
 
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     function usernameHandler(e) {
-        setUsername(e.target.value);
+        setEmail(e.target.value);
     };
 
     function passwordHandler(e) {
@@ -23,7 +23,7 @@ export default function Login() {
 
     function submitButtonHandler(e) {
         e.preventDefault();
-        setUsername('');
+        setEmail('');
         setPassword('');
     };
 
@@ -53,7 +53,7 @@ export default function Login() {
                 OR
             </h2>
             <form className="form">
-                <input type="text" placeholder="Username" value={username} onChange={usernameHandler} />
+                <input type="text" placeholder="Email" value={email} onChange={usernameHandler} />
                 <input type="text" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
                     <button type="submit" onClick={submitButtonHandler}>Sign in</button>

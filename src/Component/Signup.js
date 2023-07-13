@@ -2,8 +2,10 @@ import './SignupCss.css';
 
 export default function Signup(){
     return (
-        <h1>
-            This is signup page
-        </h1>
+        <div className='signUpContainer'>
+<h1>
+    hi
+</h1>
+        </div>
     )
 }

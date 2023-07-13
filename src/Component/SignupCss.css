@@ -1,0 +1,8 @@
+.signUpContainer {
+    width: 28rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+}
