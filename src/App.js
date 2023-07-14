@@ -20,9 +20,6 @@ function App() {
     else if(urlParam.has("code") & window.location.pathname === "/linkedin"){
       APIService.FetchDataFromLinkedin(urlParam.get("code"));
     }
-    if(sessionStorage.length > 0){
-      APIService.fetchUserOrCreateUser()
-    }
 }, [])
 
   return (
