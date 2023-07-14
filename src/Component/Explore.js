@@ -23,6 +23,13 @@ export default function Explore() {
                     }
                 }
                 return maxNumber
+            case "Views":
+                for(var i = 0; i < projects.length; i++){
+                    if(projects[i].views.length > maxNumber){
+                        maxNumber = projects[i].views.length
+                    }
+                }
+                return maxNumber
         }
     }
 
@@ -37,6 +44,15 @@ export default function Explore() {
                     projectClone.filter(e => e.comments.length >= maxNumber).forEach(e => newArray.push(e))
                     // Filter out the array
                     projectClone = projectClone.filter(e => e.comments.length < maxNumber)
+                }
+                return newArray;
+            case "Views":
+                while(newArray.length != projects.length){
+                    let maxNumber = findMaxNumberFromType(projectClone, type)
+                    // push project that views length is same as the largest number
+                    projectClone.filter(e => e.views.length >= maxNumber).forEach(e => newArray.push(e))
+                    // Filter out the array
+                    projectClone = projectClone.filter(e => e.views.length < maxNumber)
                 }
                 return newArray;
         }
