@@ -5,14 +5,20 @@ import APIService from '../APIService';
 
 export default function Explore() {
 
+    // Filter selection
     const [filter, setFilter] = useState("");
+
+    // To Store all projects data fetched from backend
     const [Projects, setProjects] = useState([]);
     const navigate = useNavigate()
 
     useEffect(() => {
+        // Fetch all project from backend
         APIService.getAllProject().then(data => setProjects(data));
     }, [])
 
+    // Function returning the largest number of the type in input project
+    // Coded it in a function for better readibility
     function findMaxNumberFromType(projects, type){
         let maxNumber = 0;
         switch (type){
@@ -33,6 +39,8 @@ export default function Explore() {
         }
     }
 
+    // Function returning a sorted array by input type
+    // Coded it in a function to prevent hard code them for each type
     function returnArraySortedByType(projects, type){
         const newArray = []
         let projectClone = [...projects];
@@ -58,7 +66,7 @@ export default function Explore() {
         }
     }
 
-    
+    // Selection filter handler
     function filterHandler(e) {
         setFilter(e.target.value);
         switch (e.target.value){
@@ -71,7 +79,8 @@ export default function Explore() {
         }
     }
 
-    function postHandler(e) {
+    // Post project button handler
+    function postHandler() {
         if (sessionStorage.getItem("email")) {
             navigate("/idea/post")
         } else {
@@ -80,6 +89,7 @@ export default function Explore() {
 
     }
 
+    // All projects node
     const allProjects = Projects.map((each, index) => (
         <div key={index} className='eachProject'>
             <Link to={`/post/${each.id}`} className='titleLink'>
