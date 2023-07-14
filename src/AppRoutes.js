@@ -1,5 +1,4 @@
 import AddTag from "./Component/AddTag";
-import Callback from "./Component/Callback";
 import Explore from "./Component/Explore";
 import Home from "./Component/Home";
 import Login from "./Component/Login";
@@ -46,10 +45,6 @@ const AppRoutes = [
         path:"/post/:id",
         element:<ShowProject />
     },
-    {
-        path:"/*/callback",
-        element:<Callback />
-    }
 
 ];
 
