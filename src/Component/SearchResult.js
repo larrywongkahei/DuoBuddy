@@ -5,27 +5,38 @@ import APIService from '../APIService';
 
 export default function SearchResult() {
 
+    // To get all param
     const param = useParams();
-    const dataToSearch = param.searchdata
-    const [searchField, setSearchField] = useState("")
-    const [projectsToShow, setProjectToShow] = useState([])
-    const navigate = useNavigate();
 
+    // To get dataToSearch param from all param
+    const dataToSearch = param.searchdata
+
+    // To store all projects fetched from backend
+    const [projectsToShow, setProjectToShow] = useState([])
+
+    // Fetch projects data from backend
+    useEffect(() => {
+        APIService.getProjectsBySearch(dataToSearch).then(data => setProjectToShow(data));
+    }, [])
+
+    // Search field input
+    const [searchField, setSearchField] = useState("")
+
+    // Search field input handler
     function searchFieldHandler(e){
         setSearchField(e.target.value)
     }
 
+    // Search field submit button handler
     function searchFieldSubmit(e){
         e.preventDefault();
         window.location.pathname = `/searchResult/${searchField}`;
         setSearchField("")
     }
 
-    useEffect(() => {
-        APIService.getProjectsBySearch(dataToSearch).then(data => setProjectToShow(data));
-    }, [])
 
 
+    // Project node
     const projects = projectsToShow.map((each, index) => {
         return (
             <div key={index} className='searchResultProjects'>
