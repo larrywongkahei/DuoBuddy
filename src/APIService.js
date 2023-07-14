@@ -97,7 +97,7 @@ const APIService =
     sessionStorage.setItem("email", data.email);
     const userExist = await this.fetchUserOrCreateUser(data.email)
     if (userExist === false) {
-      await this.createUser(data.localizedFirstName + data.localizedLastName, null, null, null, data.email)
+      await this.createUser(data.localizedFirstName + " " + data.localizedLastName, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
     }
   }
 
