@@ -18,7 +18,7 @@ export default function Explore() {
         setFilter(e.target.value);
         switch (e.target.value){
             case "Newest":
-                console.log("newest")
+                Projects.reverse();
                 break;
         }
     }
