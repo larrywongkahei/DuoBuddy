@@ -5,26 +5,45 @@ import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 
 export default function ShowProject() {
+
+    // To store all projects fetched from backend
     const [projectData, setProjectData] = useState({});
+
+    // To store commentBox input data
     const [commentBox, setCommentBox] = useState("")
+
+    // Commentbox input data handler
+    function commentBoxTextHandler(e) {
+        setCommentBox(e.target.value);
+    }
+
+    // Commentbox submit button handler
+    function handleAddComment(e) {
+        e.preventDefault();
+        APIService.commentProject(id, commentBox);
+        setCommentBox("")
+    }
+
+
+    // Get all param
     const param = useParams();
-    const [reload, setReload] = useState(false)
+
+    // Get id from all param
     const id = param.id;
+
+    // Create a useState to keep track of user press the reload button
+    const [reload, setReload] = useState(false)
+
+
+    // Keep track of the reload state, fetch data again if user press the reload button(Line 125)
     useEffect(() => {
         if (id) {
             APIService.getProjectById(id).then(data => setProjectData(data))
         }
     }, [reload])
 
-    function commentBoxTextHandler(e) {
-        setCommentBox(e.target.value);
-    }
 
-    function handleAddComment() {
-        APIService.commentProject(id, commentBox);
-        setCommentBox("")
-    }
-
+    // Print content
     const contentToPrint = projectData?.content?.split("\n").map((each, index) => {
         return (
             <p key={index}>
@@ -33,6 +52,7 @@ export default function ShowProject() {
         )
     })
 
+    // Tags node
     const tags = projectData?.tags?.map((each, index) => {
         return (
             <div className='ContentTags' key={index}>
@@ -44,6 +64,7 @@ export default function ShowProject() {
         )
     })
 
+    // Comments node
     const comments = projectData?.comments?.map((each, index) => {
         return (
             <div className='eachComment' key={index}>
