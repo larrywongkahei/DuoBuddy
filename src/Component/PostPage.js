@@ -6,17 +6,78 @@ import APIService from '../APIService';
 export default function PostPage() {
 
     const navigate = useNavigate();
+
+    // To track which part user in, to light up the border
     const [Sequence, setSequence] = useState(1);
+
+// Title
+
+    // Title input data
     const [title, setTitle] = useState("")
+
+    // Title input handler
+    function titleHandler(e) {
+        setTitle(e.target.value)
+    }
+
+// Introduction 
+
+    // Introduction input data
     const [introduction, setIntroduction] = useState("")
+
+    // Introduction input handler
+    function introductionHandler(e) {
+        setIntroduction(e.target.value)
+    }
+
+// Detail
+
+    // Detail input data
     const [detailOfIdea, setDetailOfIdea] = useState("")
+
+    // Detail input handler
+    function detailOfIdeaHandler(e) {
+        setDetailOfIdea(e.target.value)
+    }
+
+// Inspiration
+
+    // Inspiration input data
     const [inspiration, setInspiration] = useState("")
+
+    // Inspiration input handler
+    function inspirationHandler(e) {
+        setInspiration(e.target.value)
+    }
+
+
+// Ending
+
+    // Ending input data
     const [ending, setEnding] = useState("")
+
+
+    // Ending input handler
+    function endingHandler(e) {
+        setEnding(e.target.value)
+    }
+
+// Tags
+
+    // Tags input data
     const [showTags, setShowTags] = useState("")
+
+    // Tag input handler
+    function tagshandler(e) {
+        setShowTags(e.target.value)
+    }
+
+    // Tags added array
     const [tags, setTags] = useState([])
 
+    // Add tag button handler
     function addTagButton() {
-        if(showTags !== ""){
+        if (showTags !== "") {
             let newList = [...tags]
             newList.push(showTags)
             setShowTags("")
@@ -24,52 +85,34 @@ export default function PostPage() {
         }
     }
 
-    function tagshandler(e) {
-        setShowTags(e.target.value)
-    }
 
-    function titleHandler(e) {
-        setTitle(e.target.value)
-    }
 
-    function introductionHandler(e) {
-        setIntroduction(e.target.value)
-    }
 
-    function detailOfIdeaHandler(e) {
-        setDetailOfIdea(e.target.value)
-    }
-
-    function inspirationHandler(e) {
-        setInspiration(e.target.value)
-    }
-
-    function endingHandler(e) {
-        setEnding(e.target.value)
-    }
-
+    // All tags node
     const allTags = tags.map((each, index) => (
         <div className="tag" key={index}>
             <p className="tagContent">
-            {each}
+                {each}
             </p>
         </div>
     ))
 
-    async function nextPageButtonHandler() {
+
+    // Post data button handler
+    async function submitButtonHandler() {
         if (title !== "" && detailOfIdea !== "") {
             const payload = {
-                "title" : title,
-                "userId" : sessionStorage.getItem("userId"),
-                "content" : `${introduction} \n ${detailOfIdea} \n ${inspiration} \n ${ending}`,
-                "tags" : tags
+                "title": title,
+                "userId": sessionStorage.getItem("userId"),
+                "content": `${introduction} \n ${detailOfIdea} \n ${inspiration} \n ${ending}`,
+                "tags": tags
             }
             await APIService.createProject(payload).then(response => response.json()).then(data => {
                 APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id).then(response => response.json())
                 navigate(`/post/${data.id}`)
             })
-            
-            
+
+
         }
         else {
             alert("title or detail of idea could not be null")
@@ -252,7 +295,7 @@ export default function PostPage() {
                     <div className="instructionOfTags">
                         <h1>6</h1>
                     </div>
-                    <div className={Sequence >= 6 ? "tagsContainer" : "nonClickableTagsContainer" }>
+                    <div className={Sequence >= 6 ? "tagsContainer" : "nonClickableTagsContainer"}>
                         <h1>
                             Add tags
                         </h1>
@@ -260,7 +303,7 @@ export default function PostPage() {
                             Add tags like programming language or tools to increase searchability
                         </p>
                         <div className="tagsBox">
-                                {allTags}
+                            {allTags}
                         </div>
                         <div className="addTagsContainer">
                             <input type="text" className="tagsInput" placeholder="Input tags" value={showTags} onChange={tagshandler} />
@@ -269,7 +312,7 @@ export default function PostPage() {
                     </div>
                 </div>
             </div>
-            <button className="nextPage" onClick={nextPageButtonHandler}>
+            <button className="nextPage" onClick={submitButtonHandler}>
                 <p className={Sequence === 5 ? "nextLink" : "nonCLickableNextLink"}>
                     Next page
                 </p>
