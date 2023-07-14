@@ -6,6 +6,8 @@ import './NavBarCss.css';
 
 export default function NavBar(){
 
+    // Log out button, clear all session storage
+    // I use session storage to prevent data lost when reload the page
     function logout(){
         sessionStorage.clear();
         window.location.href="http://localhost:3000/";
@@ -15,6 +17,7 @@ export default function NavBar(){
             <div className="Title">
                 <Link className='navLink' to="/">MentorShip</Link>
             </div>
+            {/* User Session Storage to check if the user has logged in */}
             {sessionStorage.length === 0 ?
             <div className='topRightLinks'>
                 <Link className='navLink' to="/login" ><HiOutlineLogin className="loginIcon"/></Link>
