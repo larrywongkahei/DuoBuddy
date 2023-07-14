@@ -16,6 +16,11 @@ export default function Explore() {
     
     function filterHandler(e) {
         setFilter(e.target.value);
+        switch (e.target.value){
+            case "Newest":
+                console.log("newest")
+                break;
+        }
     }
 
     function postHandler(e) {
@@ -84,7 +89,8 @@ export default function Explore() {
                         Filter by:
                     </p>
                     <select onChange={filterHandler}>
-                        <option>fasef</option>
+                        <option>Select</option>
+                        <option>Newest</option>
                         <option>asefasef</option>
                     </select>
                 </div>

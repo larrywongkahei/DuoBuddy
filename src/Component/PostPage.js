@@ -65,7 +65,6 @@ export default function PostPage() {
                 "tags" : tags
             }
             await APIService.createProject(payload).then(response => response.json()).then(data => {
-                console.log(data)
                 APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id).then(response => response.json())
                 navigate(`/post/${data.id}`)
             })

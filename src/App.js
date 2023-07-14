@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import NavBar from './Component/NavBar';
-import React, { Component, useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import APIService from './APIService';
 
 
