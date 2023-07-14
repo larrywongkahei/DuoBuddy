@@ -1,4 +1,4 @@
-﻿import { useParams, Link } from 'react-router-dom';
+﻿import { useParams, Link, useNavigate } from 'react-router-dom';
 import './SearchResultCss.css';
 import { useEffect, useState } from 'react';
 import APIService from '../APIService';
@@ -7,13 +7,24 @@ export default function SearchResult() {
 
     const param = useParams();
     const dataToSearch = param.searchdata
+    const [searchField, setSearchField] = useState("")
     const [projectsToShow, setProjectToShow] = useState([])
+    const navigate = useNavigate();
+
+    function searchFieldHandler(e){
+        setSearchField(e.target.value)
+    }
+
+    function searchFieldSubmit(e){
+        e.preventDefault();
+        window.location.pathname = `/searchResult/${searchField}`;
+        setSearchField("")
+    }
 
     useEffect(() => {
         APIService.getProjectsBySearch(dataToSearch).then(data => setProjectToShow(data));
     }, [])
 
-    console.log(projectsToShow)
 
     const projects = projectsToShow.map((each, index) => {
         return (
@@ -52,7 +63,10 @@ export default function SearchResult() {
             <h1 className="title">
                 Search Results
             </h1>
-            <input type="text" className="searchPageInput" />
+            <form>
+                <input type="text" className="searchPageInput" value={searchField} onChange={searchFieldHandler}/>
+                <input type='submit' style={{display:"none"}} onClick={searchFieldSubmit}/>
+            </form>
             <h1 className='SearchResultTitle'>
                 {projectsToShow.length} Search Results
             </h1>
