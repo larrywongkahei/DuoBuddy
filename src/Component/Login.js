@@ -10,17 +10,23 @@ import APIService from '../APIService';
 
 export default function Login() {
 
+    // Email input useState
     const [email, setEmail] = useState("");
+
+    // Pass input useState
     const [password, setPassword] = useState("");
 
+    // Email input handler
     function emailHandler(e) {
         setEmail(e.target.value);
     };
 
+    // Pass input handler
     function passwordHandler(e) {
         setPassword(e.target.value);
     };
 
+    // Submit button handler
     function submitButtonHandler(e) {
         e.preventDefault();
         setEmail('');
@@ -37,6 +43,7 @@ export default function Login() {
     }
 
 
+    // function from react-oauth google for OAuth google
     const loginWithGmail = useGoogleLogin({
         onSuccess: response => {
             APIService.FetchDataFromGoogle(response.access_token)
