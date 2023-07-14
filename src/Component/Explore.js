@@ -13,12 +13,44 @@ export default function Explore() {
         APIService.getAllProject().then(data => setProjects(data));
     }, [])
 
+    function findMaxNumberFromType(projects, type){
+        let maxNumber = 0;
+        switch (type){
+            case "Comments":
+                for(var i = 0; i < projects.length; i++){
+                    if(projects[i].comments.length > maxNumber){
+                        maxNumber = projects[i].comments.length
+                    }
+                }
+                return maxNumber
+        }
+    }
+
+    function returnArraySortedByType(projects, type){
+        const newArray = []
+        let projectClone = [...projects];
+        switch (type){
+            case "Comments":
+                while(newArray.length != projects.length){
+                    let maxNumber = findMaxNumberFromType(projectClone, type)
+                    // push project that comment length is same as the largest number
+                    projectClone.filter(e => e.comments.length >= maxNumber).forEach(e => newArray.push(e))
+                    // Filter out the array
+                    projectClone = projectClone.filter(e => e.comments.length < maxNumber)
+                }
+                return newArray;
+        }
+    }
+
     
     function filterHandler(e) {
         setFilter(e.target.value);
         switch (e.target.value){
             case "Newest":
-                Projects.reverse();
+                APIService.getAllProject().then(data => setProjects(data.reverse()));
+                break;
+            case "Comment":
+                setProjects(returnArraySortedByType(Projects, "Comments"));
                 break;
         }
     }
@@ -91,7 +123,7 @@ export default function Explore() {
                     <select onChange={filterHandler}>
                         <option>Select</option>
                         <option>Newest</option>
-                        <option>asefasef</option>
+                        <option>Comment</option>
                     </select>
                 </div>
             </div>
