@@ -8,13 +8,16 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
 
+    // Searchfield input
     const [input, setInput] = useState("");
     const navigate = useNavigate();
 
+    // Searchfield input handler
     function inputHandler(e) {
         setInput(e.target.value);
     };
 
+    // Submit form button handler
     function handleSubmitForm(e) {
         e.preventDefault();
         navigate(`/searchresult/${input}`);
