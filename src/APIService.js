@@ -1,11 +1,11 @@
 const APIService =
 {
   // Add user to database
-  createUser(name, bio, location, avatar, email) {
+  createUser(name, bio, location, avatar, email, password) {
     return fetch("http://localhost:8080/user",
       {
         method: "POST",
-        body: JSON.stringify({ "name": name, "bio": bio, "location": location, "avatarUrl": avatar, "email": email }), headers: {
+        body: JSON.stringify({ "name": name, "bio": bio, "location": location, "avatarUrl": avatar, "email": email, "password": password}), headers: {
           'Content-Type': 'application/json'
         }
       }).then(response => response.json())
@@ -28,7 +28,7 @@ const APIService =
   },
 
   // Check if user in the database, if not, Create user
-  async fetchUserOrCreateUser(name, bio, location, avatar_url, email) {
+  async fetchUserOrCreateUser(name, bio, location, avatar_url, email, password) {
     const fetchdata = await fetch(`http://localhost:8080/user/dataFetching?email=${email}`)
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
@@ -36,7 +36,7 @@ const APIService =
       window.location.href = "http://localhost:3000"
     }
     else{
-      this.createUser(name, bio, location, avatar_url, email)
+      this.createUser(name, bio, location, avatar_url, email, password)
     }
   },
 
@@ -95,7 +95,7 @@ const APIService =
     sessionStorage.setItem("name", data.name);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
     sessionStorage.setItem("email", data.email);
-    this.fetchUserOrCreateUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
+    this.fetchUserOrCreateUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email, null)
   },
 
   // Fetch data from github oauth api
@@ -107,7 +107,7 @@ const APIService =
     sessionStorage.setItem("location", data.location)
     sessionStorage.setItem("avatar_url", data.avatar_url);
     sessionStorage.setItem("email", data.email);
-    this.fetchUserOrCreateUser(data.login, data.bio, data.location, data.avatar_url, data.email)
+    this.fetchUserOrCreateUser(data.login, data.bio, data.location, data.avatar_url, data.email, null)
   },
 
   // Fetch data from linkedin oauth api
@@ -118,7 +118,7 @@ const APIService =
     sessionStorage.setItem("name", data.localizedFirstName + " " + data.localizedLastName);
     sessionStorage.setItem("email", data.email);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
-    this.fetchUserOrCreateUser(data.localizedFirstName + " " + data.localizedLastName, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
+    this.fetchUserOrCreateUser(data.localizedFirstName + " " + data.localizedLastName, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", data.email, null)
   },
 }
 
