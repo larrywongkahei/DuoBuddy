@@ -24,10 +24,10 @@ const APIService =
   async signin(email, password){
     const fetchdata = await fetch("http://localhost:8080/login",{
       method:"POST",
-      body:{
+      body:JSON.stringify({
         "email" : email,
         "password" : password
-      }
+      }), headers:{'Content-Type': 'application/json'}
     })
     if (fetchdata.status !== 200){
       return alert("Wrong detail")
