@@ -27,10 +27,11 @@ export default function Login() {
     };
 
     // Submit button handler
-    function submitButtonHandler(e) {
+    function submitLoginHandler(e) {
         e.preventDefault();
         setEmail('');
         setPassword('');
+        APIService.signin(email, password);
     };
 
 
@@ -50,9 +51,6 @@ export default function Login() {
         }
     })
 
-    function loginWithEmail(){
-        
-    }
 
 
     return (
@@ -72,7 +70,7 @@ export default function Login() {
                 <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
                 <input type="text" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
-                    <button type="submit" onClick={submitButtonHandler}>Sign in</button>
+                    <button type="submit" onClick={submitLoginHandler}>Sign in</button>
                 </div>
             </form>
             <p className="newHereText">New here? <span><Link to="/signup" className='signupLink'>Sign up</Link></span></p>
