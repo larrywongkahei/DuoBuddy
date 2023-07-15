@@ -46,7 +46,8 @@ export default function Signup() {
 
     // Signup submit button handler
     function submitButtonHandler(e){
-
+        e.preventDefault()
+        APIService.signup(displayName, email);
     }
 
 

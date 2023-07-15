@@ -12,6 +12,15 @@ const APIService =
       .then(data => sessionStorage.setItem("userId", data.id))
       .then(() => window.location.href = "http://localhost:3000")
   },
+
+  // Handle signup
+  async signup(name, email){
+    sessionStorage.setItem("name", name)
+    sessionStorage.setItem("email", email)
+    sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png")
+    this.createUser(name, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", email)
+  },
+
   // Used when user has logged in and reload page
   fetchUser() {
     return fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)
@@ -110,7 +119,7 @@ const APIService =
     sessionStorage.setItem("email", data.email);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
     this.fetchUserOrCreateUser(data.localizedFirstName + " " + data.localizedLastName, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
-  }
+  },
 }
 
 module.exports = APIService;
