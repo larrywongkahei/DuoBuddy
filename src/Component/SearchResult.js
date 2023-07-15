@@ -34,18 +34,6 @@ export default function SearchResult() {
         setSearchField("")
     }
 
-    // const tags = projectsToShow?.tags?.map((each, index) => {
-    //     return (
-            // <div className='ContentTags' key={index}>
-            //     <p className=''>
-            //         {each}
-            //     </p>
-            // </div>
-
-    //     )
-    // })
-
-
     // Project node
     const projects = projectsToShow.map((each, index) => {
         return (
