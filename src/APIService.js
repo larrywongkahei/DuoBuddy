@@ -14,11 +14,11 @@ const APIService =
   },
 
   // Handle signup
-  async signup(name, email){
+  async signup(name, email, password){
     sessionStorage.setItem("name", name)
     sessionStorage.setItem("email", email)
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png")
-    this.createUser(name, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", email)
+    this.createUser(name, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", email, password)
   },
 
   // Used when user has logged in and reload page
