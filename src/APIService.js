@@ -21,6 +21,25 @@ const APIService =
     this.createUser(name, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", email, password)
   },
 
+  async signin(email, password){
+    const fetchdata = await fetch("http://localhost:8080/login",{
+      method:"POST",
+      body:{
+        "email" : email,
+        "password" : password
+      }
+    })
+    if (fetchdata.status !== 200){
+      return alert("Wrong detail")
+    }
+    const data = await fetchdata.json()
+    sessionStorage.setItem("name", data.name);
+    sessionStorage.setItem("email", email);
+    sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png")
+    sessionStorage.setItem("userId", data.id)
+    return window.location.href = "http://localhost:3000"
+  },
+
   // Used when user has logged in and reload page
   fetchUser() {
     return fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)

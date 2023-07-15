@@ -50,6 +50,10 @@ export default function Login() {
         }
     })
 
+    function loginWithEmail(){
+        
+    }
+
 
     return (
         <div className="loginContainer">
