@@ -34,6 +34,16 @@ export default function SearchResult() {
         setSearchField("")
     }
 
+    // const tags = projectsToShow?.tags?.map((each, index) => {
+    //     return (
+            // <div className='ContentTags' key={index}>
+            //     <p className=''>
+            //         {each}
+            //     </p>
+            // </div>
+
+    //     )
+    // })
 
 
     // Project node
@@ -46,13 +56,16 @@ export default function SearchResult() {
                     </h1>
                 </Link>
                 <div className='ResultDetails'>
-                    <div className='ResultDetailLeft'>
-                        <p>
-                            Supports: {each.support}
-                        </p>
-                        <p>
-                            Views: {each.views}
-                        </p>
+                    <div className='ResultDetailsTags'>
+                        {each.tags.map((tag, index) => {
+                            return (
+                                <div className='ContentTags' key={index}>
+                                <p className=''>
+                                    {tag}
+                                </p>
+                            </div>
+                            )
+                        })}
                     </div>
                     <div className='ResultDetailRight'>
                         <img src={each.createdBy?.avatarUrl} />
