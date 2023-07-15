@@ -8,18 +8,28 @@ import APIService from '../APIService';
 
 export default function Signup() {
 
+    // Display name input data
     const [displayName, setDisplayName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
 
+    // Display name input data handler
     function displayNameHandler(e) {
         setDisplayName(e.target.value)
     }
 
+
+    // Email input data
+    const [email, setEmail] = useState("")
+
+    // Email input data handler
     function emailHandler(e) {
         setEmail(e.target.value)
     }
 
+
+    // Password input data
+    const [password, setPassword] = useState("")
+
+    // Pass input data hanlder
     function passwordHandler(e) {
         setPassword(e.target.value)
     }
@@ -34,6 +44,7 @@ export default function Signup() {
         }
     })
 
+    // Signup submit button handler
     function submitButtonHandler(e){
 
     }

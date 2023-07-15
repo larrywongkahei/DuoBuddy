@@ -1,5 +1,6 @@
 const APIService =
 {
+  // Add user to database
   createUser(name, bio, location, avatar, email) {
     return fetch("http://localhost:8080/user",
       {
@@ -11,19 +12,23 @@ const APIService =
       .then(data => sessionStorage.setItem("userId", data.id))
       .then(() => window.location.href = "http://localhost:3000")
   },
+  // Used when user has logged in and reload page
   fetchUser() {
     return fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)
       .then(response => response.json())
   },
-  async fetchUserOrCreateUser(email) {
+
+  // Check if user in the database, if not, Create user
+  async fetchUserOrCreateUser(name, bio, location, avatar_url, email) {
     const fetchdata = await fetch(`http://localhost:8080/user/dataFetching?email=${email}`)
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
       sessionStorage.setItem("userId", data.id)
       window.location.href = "http://localhost:3000"
-      return true
     }
-    return false
+    else{
+      this.createUser(name, bio, location, avatar_url, email)
+    }
   },
   createProject(payload) {
     return fetch("http://localhost:8080/project",
@@ -70,11 +75,7 @@ const APIService =
     sessionStorage.setItem("name", data.name);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
     sessionStorage.setItem("email", data.email);
-    const userExist = await APIService.fetchUserOrCreateUser()
-    if (userExist === false) {
-      await this.createUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
-    }
-    window.location.href = "http://localhost:3000"
+    this.fetchUserOrCreateUser(data.name, null, data.locale, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
   },
   async FetchDataFromGithub(code) {
     const response = await fetch(`http://localhost:8080/login/github/code?code=${code}`)
@@ -84,10 +85,7 @@ const APIService =
     sessionStorage.setItem("location", data.location)
     sessionStorage.setItem("avatar_url", data.avatar_url);
     sessionStorage.setItem("email", data.email);
-    const userExist = await this.fetchUserOrCreateUser(data.email)
-    if (userExist === false) {
-      await this.createUser(data.login, data.bio, data.location, data.avatar_url, data.email)
-    }
+    this.fetchUserOrCreateUser(data.login, data.bio, data.location, data.avatar_url, data.email)
   },
   async FetchDataFromLinkedin(code) {
     const response = await fetch(`http://localhost:8080/login/linkedin/code?code=${code}`)
@@ -96,13 +94,8 @@ const APIService =
     sessionStorage.setItem("name", data.localizedFirstName + " " + data.localizedLastName);
     sessionStorage.setItem("email", data.email);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
-    const userExist = await this.fetchUserOrCreateUser(data.email)
-    if (userExist === false) {
-      await this.createUser(data.localizedFirstName + " " + data.localizedLastName, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
-    }
+    this.fetchUserOrCreateUser(data.localizedFirstName + " " + data.localizedLastName, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", data.email)
   }
-
-
 }
 
 module.exports = APIService;
