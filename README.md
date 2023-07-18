@@ -9,7 +9,7 @@ I got this idea when I was on my job hunt, I have applied over hundred of jobs a
 ## User could...
 
 * #### Post idea of theirs to get feedbacks or hopefully to get a mentor
-* #### Login using OAuth [Github(Done), Google(Done), Linkedin(Not done)]
+* #### Login using OAuth [Github, Google, Linkedin]
 * #### Comment on posts to give feedbacks
 * #### Search by posts name or tags
 
