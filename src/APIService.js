@@ -133,7 +133,6 @@ const APIService =
   async FetchDataFromLinkedin(code) {
     const response = await fetch(`http://localhost:8080/login/linkedin/code?code=${code}`)
     const data = await response.json()
-    console.log(data)
     sessionStorage.setItem("name", data.localizedFirstName + " " + data.localizedLastName);
     sessionStorage.setItem("email", data.email);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png");
