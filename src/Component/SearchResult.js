@@ -30,7 +30,14 @@ export default function SearchResult() {
     // Search field submit button handler
     function searchFieldSubmit(e){
         e.preventDefault();
-        window.location.pathname = `/searchResult/${searchField}`;
+        // /\s/g = all whitespace
+        const cleanedSearchField = searchField.replace(/\s/g, "")
+        if(cleanedSearchField.length === 0){
+            alert("Seach could not be empty")
+        }
+        else{
+            window.location.pathname = `/searchResult/${cleanedSearchField}`;
+        }
         setSearchField("")
     }
 

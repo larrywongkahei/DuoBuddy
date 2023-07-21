@@ -20,7 +20,14 @@ export default function Home() {
     // Submit form button handler
     function handleSubmitForm(e) {
         e.preventDefault();
-        navigate(`/searchresult/${input}`);
+        // /\s/g = all whitespace
+        const cleanedSearchField = input.replace(/\s/g, "")
+        if(cleanedSearchField.length === 0){
+            alert("Seach could not be empty")
+        }
+        else{
+            navigate(`/searchresult/${cleanedSearchField}`);
+        }
     };
 
     function ToGithub(){
