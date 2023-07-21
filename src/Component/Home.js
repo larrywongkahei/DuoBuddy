@@ -20,7 +20,8 @@ export default function Home() {
     // Submit form button handler
     function handleSubmitForm(e) {
         e.preventDefault();
-        if(input == ""){
+        // /\s/g = all whitespace
+        if(input.replace(/\s/g, "").length === 0){
             alert("Seach could not be empty")
         }
         else{
