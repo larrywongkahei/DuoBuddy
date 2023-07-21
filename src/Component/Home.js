@@ -20,7 +20,12 @@ export default function Home() {
     // Submit form button handler
     function handleSubmitForm(e) {
         e.preventDefault();
-        navigate(`/searchresult/${input}`);
+        if(input == ""){
+            alert("Seach could not be empty")
+        }
+        else{
+            navigate(`/searchresult/${input}`);
+        }
     };
 
     function ToGithub(){
