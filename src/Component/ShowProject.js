@@ -20,7 +20,7 @@ export default function ShowProject() {
     // Commentbox submit button handler
     function handleAddComment(e) {
         e.preventDefault();
-        APIService.commentProject(id, commentBox);
+        APIService.commentProject(id, sessionStorage.getItem("userId"), commentBox);
         setCommentBox("")
     }
 
@@ -38,18 +38,20 @@ export default function ShowProject() {
     // Keep track of the reload state, fetch data again if user press the reload button(Line 125)
     useEffect(() => {
         if (id) {
-            APIService.getProjectById(id).then(data => {
-                checkAndAddView(data);
-                setProjectData(data);
-            })
+            addViewOrSetData(id);
         }
     }, [reload])
 
     // Function to check if the viewer are the creater, add view if not.
-    async function checkAndAddView(data){
+    async function addViewOrSetData(id){
+        const data = await APIService.getProjectById(id);
         if (data.createdBy?.name !== sessionStorage.getItem("name")){
             // CommentProject would add a view if not passing in the content
-            await APIService.commentProject(id)
+            const responseToSet = await APIService.commentProject(id, null, null);
+            const dataToSet = await responseToSet.json();
+            setProjectData(dataToSet);
+        }else{
+            setProjectData(data)
         }
     }
 

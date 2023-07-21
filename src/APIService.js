@@ -95,8 +95,8 @@ const APIService =
   },
 
   // Add comment to project
-  commentProject(projectId, content) {
-    return fetch(`http://localhost:8080/project/${projectId}?userId=${sessionStorage.getItem('userId')}`, {
+  commentProject(projectId, userId, content) {
+    return fetch(`http://localhost:8080/project/${projectId}?userId=${userId}`, {
       method: "PUT",
       body: content,
       headers: { 'Content-Type': 'application/json' }
