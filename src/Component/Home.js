@@ -21,11 +21,12 @@ export default function Home() {
     function handleSubmitForm(e) {
         e.preventDefault();
         // /\s/g = all whitespace
-        if(input.replace(/\s/g, "").length === 0){
+        const cleanedSearchField = input.replace(/\s/g, "")
+        if(cleanedSearchField.length === 0){
             alert("Seach could not be empty")
         }
         else{
-            navigate(`/searchresult/${input}`);
+            navigate(`/searchresult/${cleanedSearchField}`);
         }
     };
 
