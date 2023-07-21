@@ -38,9 +38,20 @@ export default function ShowProject() {
     // Keep track of the reload state, fetch data again if user press the reload button(Line 125)
     useEffect(() => {
         if (id) {
-            APIService.getProjectById(id).then(data => setProjectData(data))
+            APIService.getProjectById(id).then(data => {
+                checkAndAddView(data);
+                setProjectData(data);
+            })
         }
     }, [reload])
+
+    // Function to check if the viewer are the creater, add view if not.
+    async function checkAndAddView(data){
+        if (data.name !== sessionStorage.getItem("name")){
+            // CommentProject would add a view if not passing in the content
+            await APIService.commentProject(id)
+        }
+    }
 
 
     // Print content
