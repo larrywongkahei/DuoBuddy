@@ -1,7 +1,17 @@
 ﻿import './ProfileCss.css';
 import { useState, useEffect } from 'react';
+import APIService from '../APIService';
 
 export default function Profile(){
+    
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+        APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
+    }, [])
+
+    console.log(userData)
+
     return (
         <div>
             <div className='profilePictureContainer'>
