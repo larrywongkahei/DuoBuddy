@@ -1,4 +1,5 @@
 ﻿import './ProfileCss.css';
+import { useState, useEffect } from 'react';
 
 export default function Profile(){
     return (
