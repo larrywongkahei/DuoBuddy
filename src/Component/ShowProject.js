@@ -47,7 +47,7 @@ export default function ShowProject() {
 
     // Function to check if the viewer are the creater, add view if not.
     async function checkAndAddView(data){
-        if (data.name !== sessionStorage.getItem("name")){
+        if (data.createdBy?.name !== sessionStorage.getItem("name")){
             // CommentProject would add a view if not passing in the content
             await APIService.commentProject(id)
         }
