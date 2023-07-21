@@ -43,11 +43,8 @@ export default function Home() {
                 <input type="text" value={input} className="searchInput" onChange={inputHandler} placeholder="Input project name or tag"></input>
                 <input type="submit" className="submitButton" onClick={handleSubmitForm} />
             </form>
-            <p className="exploreLabel"><Link to="/explore" className='exploreLink'>Explore</Link></p>
+            {/* <p className="exploreLabel"><Link to="/explore" className='exploreLink'>Explore</Link></p> */}
             <div className="contactMe">
-                <p className="contactMeLabel">
-                    Contact me
-                </p>
                 <BsGithub className="githubHome" onClick={ToGithub} style={{cursor:"pointer"}}/>
                 <AiFillInstagram className="instagramHome" onClick={ToInstagram} style={{cursor:"pointer"}}/>
                 <ImLinkedin className="linkedinHome" onClick={ToLinkedin} style={{cursor:"pointer"}}/>
