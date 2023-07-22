@@ -23,6 +23,11 @@ export default function Profile() {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
 
+    function updateContactButton(e){
+        e.preventDefault();
+        
+    }
+
     function chosenContactHandler(option){
         setChosenContact(option);
     }
