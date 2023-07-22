@@ -5,6 +5,16 @@
     margin: auto;
 }
 
+.clickableContact {
+    text-decoration: none;
+    color: grey;
+}
+
+.clickableContact :hover{
+    text-decoration: none;
+    filter: brightness(60%);
+}
+
 .profileContainer {
     display: flex;
     flex-direction: row;
@@ -90,7 +100,7 @@ td {
     margin-right: 10px;
 }
 
-.icons {
+.profileIcons {
     height: 18px;
     width: 18px;
     padding: 0px;
