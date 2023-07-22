@@ -11,7 +11,8 @@ export default function Profile() {
     const [userData, setUserData] = useState({});
     const [phoneNumber, setPhoneNumber] = useState("");
     const [location, setLocation] = useState("");
-    const [bio, setBio] = useState("")
+    const [bio, setBio] = useState("");
+    const [showBioContainer, setShowBioContainer] = useState(false);
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
@@ -19,6 +20,10 @@ export default function Profile() {
 
     function bioHandler(e){
         setBio(e.target.value)
+    }
+
+    function showBioContainerHandler(){
+        setShowBioContainer(!showBioContainer)
     }
 
     function updateData(param, data) {
@@ -32,6 +37,10 @@ export default function Profile() {
 
     function locationHandler(e) {
         setLocation(e.target.value);
+    }
+    function submitForm(e) {
+        e.preventDefault();
+        console.log("submited")
     }
 
     return (
@@ -60,7 +69,15 @@ export default function Profile() {
                     <p>
                         Bio
                     </p>
-                    {userData.bio ? <div className='bio'>{userData.bio}</div> : <textarea className='bioTextarea' onChange={bioHandler} value={bio}/>}
+                    {userData.bio ? <div className='bio'>{userData.bio}</div> : 
+                    <div>
+                    {showBioContainer?  
+                        <form>
+                            <textarea className='bioTextarea' onChange={bioHandler} value={bio}/>
+                            <input type='submit'onSubmit={submitForm}/>
+                        </form> : <button onClick={showBioContainerHandler}>Add Bio</button> }
+                        </div>
+                        }
                 </div>
             </div>
         </div>
