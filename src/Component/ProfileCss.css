@@ -2,18 +2,76 @@
     height: 12rem;
     width: 12rem;
     border-radius: 100px;
+    margin: auto;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 .profilePictureContainer {
-    padding-left: 6rem;
-    padding-right: 6rem;
-    gap: 10rem;
+    padding-left: 3rem;
+    margin-left: 3rem;
+    padding-right: 3rem;
+    margin-right: 3rem;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.profilePictureContainer p{
+    margin: 0px;
+    padding-left: 5px;
+}
+
+.userPhoneNumber{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 
+.userEmail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.profileDataContainer {
 }
 
 .name {
     font-size: 24px;
+}
+
+tr input {
+    border-radius: 10px;
+    border-width: 0px;
+    padding-left: 5px;
+    height: 30px;
+}
+
+tr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 7px;
+}
+
+td {
+    margin-right: 10px;
+}
+
+.icons {
+    height: 18px;
+    width: 18px;
+    padding: 0px;
 }
