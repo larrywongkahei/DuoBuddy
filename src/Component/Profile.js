@@ -5,6 +5,9 @@ import { BsFillTelephoneFill } from 'react-icons/bs'
 import { IoMdMail } from 'react-icons/io'
 import { MdLocationOn } from 'react-icons/md'
 import { GiConfirmed } from 'react-icons/gi'
+import { ImLinkedin } from 'react-icons/im';
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { BsGithub } from 'react-icons/bs';
 
 export default function Profile() {
 
@@ -20,7 +23,7 @@ export default function Profile() {
     }, [])
 
     function showAddContactHandler(){
-        console.log("pressed")
+        setShowAddContact(!showAddContact)
     }
 
     function bioHandler(e){
@@ -70,7 +73,18 @@ export default function Profile() {
                     </tr>
                 </table>
                 <div>
-                    {userData?.contact && Object.keys(userData.contact).length < 3 ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
+                    {userData?.contact && Object.keys(userData.contact).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
+                    {showAddContact ? 
+                    <div>
+                        <div>
+                            <BsGithub className='addContactIcons'/>
+                            <ImLinkedin className='addContactIcons'/>
+                            <AiOutlineTwitter className='addContactIcons'/>
+                        </div>   
+                        <input type='text' placeholder='Your URL' />
+                    </div> : null
+ 
+                }
                 </div>
             </div>
             <div className='profileDataContainer'>

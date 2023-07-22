@@ -120,3 +120,9 @@ td {
     resize: none;
     padding: 7px;
 }
+
+.addContactIcons{
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
