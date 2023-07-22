@@ -4,7 +4,7 @@ import APIService from '../APIService';
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { IoMdMail } from 'react-icons/io'
 import { MdLocationOn } from 'react-icons/md'
-import { GiConfirmed } from 'react-icons/'
+import { GiConfirmed } from 'react-icons/gi'
 
 export default function Profile() {
 
