@@ -16,6 +16,10 @@ export default function Profile() {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
 
+    function updateData(param, data){
+        APIService.updateUser(sessionStorage.getItem('userId'), param, data)
+    }
+
     function phoneNumberHandler(e){
         setPhoneNumber(e.target.value);
     }
@@ -38,11 +42,11 @@ export default function Profile() {
                     </tr>
                     <tr>
                         <td><BsFillTelephoneFill className='icons' /></td>
-                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"}/></div>}</td>
+                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"} onClick={() => updateData("phonenumber", phoneNumber)}/></div>}</td>
                     </tr>
                     <tr>
                         <td><MdLocationOn className='icons' /></td>
-                        <td>{userData?.location ? <p>{userData?.location}</p> : <div><input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler}/><GiConfirmed className={location ? "tick" : "untouchableTick"}/></div>}</td>
+                        <td>{userData?.location ? <p>{userData?.location}</p> : <div><input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler}/><GiConfirmed className={location ? "tick" : "untouchableTick"} onClick={() => updateData('location', location)}/></div>}</td>
                     </tr>
                 </table>
             </div>
