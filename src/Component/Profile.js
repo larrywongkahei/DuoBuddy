@@ -34,7 +34,7 @@ export default function Profile() {
             <div className='profilePictureContainer'>
                 <img src={sessionStorage.getItem("avatar_url")} className='profilePicture' />
                 <p className='name'>{sessionStorage.getItem("name")}</p>
-                <table className=''>
+                <table>
                     <tr>
                         <td><IoMdMail className='profileIcons' /></td>
                         <td><a href={`mailto:${sessionStorage.getItem("email")}`} className='clickableContact'><p>{userData?.email}</p></a></td>
