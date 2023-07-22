@@ -28,12 +28,9 @@ export default function Profile() {
 
     function updateContactButton(e){
         e.preventDefault();
-        const contactClone = {...userData.contact};
-        if (!Object.keys(contactClone).includes(chosenContact)){
-            contactClone[chosenContact] = contactURL;
-        }
-        console.log(contactClone)
-        APIService.updateUser(sessionStorage.getItem("userId"), 'contact', contactClone);
+        const dataToUpdate = {};
+        dataToUpdate[chosenContact] = contactURL;
+        APIService.updateUser(sessionStorage.getItem("userId"), 'contact', dataToUpdate);
         window.location.reload();
     }
 
