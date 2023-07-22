@@ -8,7 +8,6 @@ import { GiConfirmed } from 'react-icons/gi'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-import { type } from '@testing-library/user-event/dist/type';
 
 export default function Profile() {
 
@@ -23,8 +22,14 @@ export default function Profile() {
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
-        addOnClick()
+        addOnClick();
     }, [])
+
+    document.addEventListener("readystatechange", (event) => {
+        if (event.target.readyState ==="complete"){
+            addOnClick();
+        }
+    });
 
     function updateContactButton(e){
         e.preventDefault();
@@ -80,9 +85,9 @@ export default function Profile() {
     const contactObject = { "github" : github, "linkedin" : linkedin, "twitter" : twitter};
 
 
-    const contactNode = Object.keys(userData?.contact || {}).map(e => {
+    const contactNode = Object.keys(userData?.contact || {}).map((e, index) => {
         return(
-            <div>
+            <div key={index}>
                 {contactObject[e]}
             </div>
         )
@@ -92,6 +97,7 @@ export default function Profile() {
         Object.keys(userData?.contact || {}).map(e => {
             document.getElementById(e).addEventListener("click" , () => window.location.href = userData?.contact[e])
         })
+        console.log("pressed");
     }
 
     return (
