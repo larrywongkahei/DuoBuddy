@@ -1,13 +1,14 @@
 ﻿import './ProfileCss.css';
 import { useState, useEffect } from 'react';
 import APIService from '../APIService';
-import { BsFillTelephoneFill } from 'react-icons/bs'
+import { BsFillTelephoneFill, BsGit } from 'react-icons/bs'
 import { IoMdMail } from 'react-icons/io'
 import { MdLocationOn } from 'react-icons/md'
 import { GiConfirmed } from 'react-icons/gi'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
+import { type } from '@testing-library/user-event/dist/type';
 
 export default function Profile() {
 
@@ -22,9 +23,8 @@ export default function Profile() {
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
+        addOnClick()
     }, [])
-
-    console.log(userData.contact)
 
     function updateContactButton(e){
         e.preventDefault();
@@ -66,10 +66,32 @@ export default function Profile() {
     function locationHandler(e) {
         setLocation(e.target.value);
     }
+
     function submitForm(e) {
         e.preventDefault();
         APIService.updateUser(sessionStorage.getItem('userId'), 'bio', bio);
         window.location.reload();
+    }
+
+    const github = <BsGithub className='chosenAddContactIcons' id='github'/>
+    const linkedin = <ImLinkedin className='chosenAddContactIcons' id='linkedin'/>
+    const twitter = <AiOutlineTwitter className='chosenAddContactIcons' id='twitter'/>
+
+    const contactObject = { "github" : github, "linkedin" : linkedin, "twitter" : twitter};
+
+
+    const contactNode = Object.keys(userData?.contact || {}).map(e => {
+        return(
+            <div>
+                {contactObject[e]}
+            </div>
+        )
+    })
+
+    function addOnClick(){
+        Object.keys(userData?.contact || {}).map(e => {
+            document.getElementById(e).addEventListener("click" , () => window.location.href = userData?.contact[e])
+        })
     }
 
     return (
@@ -92,6 +114,9 @@ export default function Profile() {
                         <td>{userData?.phoneNumber ? <p>{userData?.phoneNumber?.replace(/["]/g, "")}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler} /><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"} onClick={() => updateData("phonenumber", phoneNumber)} /></div>}</td>
                     </tr>
                 </table>
+                <div className='contactIconsContainer'>
+                    {contactNode}
+                </div>
                 <div>
                     {userData?.contact && Object.keys(userData.contact).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
                     {showAddContact ? 
