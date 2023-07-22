@@ -35,6 +35,26 @@
     gap: 1rem;
 }
 
+.tick {
+    width: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.untouchableTick{
+    width: 16px;
+    right: 16px;
+    color: gray;
+    pointer-events: none;
+}
+
+.inputDetail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 .userEmail {
     display: flex;
     flex-direction: row;

@@ -38,11 +38,11 @@ export default function Profile() {
                     </tr>
                     <tr>
                         <td><BsFillTelephoneFill className='icons' /></td>
-                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/>}</td>
+                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"}/></div>}</td>
                     </tr>
                     <tr>
                         <td><MdLocationOn className='icons' /></td>
-                        <td>{userData?.location ? <p>{userData?.location}</p> : <input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler}/>}</td>
+                        <td>{userData?.location ? <p>{userData?.location}</p> : <div><input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler}/><GiConfirmed className={location ? "tick" : "untouchableTick"}/></div>}</td>
                     </tr>
                     {/* <p className='userPhoneNumber'><BsFillTelephoneFill className='phoneIcon'/>{userData?.Phonenumber ? <span>{userData?.Phonenumber}</span> : <input type='text' placeholder='Phone Number' />}</p> */}
                     {/* <p className='userEmail'><IoMdMail /><span>{userData?.email}</span></p> */}
