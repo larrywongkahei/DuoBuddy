@@ -23,6 +23,10 @@ export default function Profile() {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
 
+    function chosenContactHandler(option){
+        setChosenContact(option);
+    }
+
     function showAddContactHandler(){
         setShowAddContact(!showAddContact)
     }
@@ -78,9 +82,9 @@ export default function Profile() {
                     {showAddContact ? 
                     <div>
                         <div className='contactIconsContainer'>
-                            <BsGithub className='addContactIcons'/>
-                            <ImLinkedin className='addContactIcons'/>
-                            <AiOutlineTwitter className='addContactIcons'/>
+                            <BsGithub className={chosenContact === 'github' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('github')}/>
+                            <ImLinkedin className={chosenContact === 'linkedin' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('linkedin')}/>
+                            <AiOutlineTwitter className={chosenContact === 'twitter' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('twitter')}/>
                         </div>   
                         <input type='text' placeholder='Your URL' className='contactURL'/>
                     </div> : null
