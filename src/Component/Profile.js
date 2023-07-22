@@ -40,7 +40,8 @@ export default function Profile() {
     }
     function submitForm(e) {
         e.preventDefault();
-        console.log("submited")
+        APIService.updateUser(sessionStorage.getItem('userId'), 'bio', bio);
+        window.location.reload();
     }
 
     return (
@@ -69,7 +70,7 @@ export default function Profile() {
                     <p>
                         Bio
                     </p>
-                    {userData.bio ? <div className='bio'>{userData.bio}</div> : 
+                    {userData.bio ? <div className='bio'>{userData.bio.replace(/["]/g, "")}</div> : 
                     <div>
                     {showBioContainer?  
                         <form>
