@@ -16,8 +16,9 @@ export default function Profile() {
     const [location, setLocation] = useState("");
     const [bio, setBio] = useState("");
     const [showBioContainer, setShowBioContainer] = useState(false);
-    const [showAddContact, setShowAddContact] = useState(false)
-    const [chosenContact, setChosenContact] = useState("")
+    const [showAddContact, setShowAddContact] = useState(false);
+    const [chosenContact, setChosenContact] = useState("");
+    const [contactURL, setContactURL] = useState("");
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
@@ -25,7 +26,11 @@ export default function Profile() {
 
     function updateContactButton(e){
         e.preventDefault();
-        
+
+    }
+
+    function contactURLHandler(e){
+        setContactURL(e.target.value);
     }
 
     function chosenContactHandler(option){
@@ -92,8 +97,8 @@ export default function Profile() {
                             <AiOutlineTwitter className={chosenContact === 'twitter' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('twitter')}/>
                         </div>   
                         <form>
-                        <input type='text' placeholder='Your URL' className='contactURL'/>
-                        <input type='submit' style={{display:'none'}} />
+                        <input type='text' placeholder='Your URL' className='contactURL' value={contactURL}/>
+                        <input type='submit' style={{display:'none'}} onClick={updateContactButton}/>
                         </form>
                     </div> : null
  
