@@ -121,7 +121,29 @@ td {
     padding: 7px;
 }
 
+.contactIconsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    justify-content: center;
+}
+
+.contactURL {
+    margin-top: 16px;
+    height: 26px;
+    width: 12rem;
+    border-radius: 10px;
+    border-width: 0.2px;
+}
+
 .addContactIcons{
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    color: grey;
+}
+
+.chosenAddContactIcons {
     width: 26px;
     height: 26px;
     cursor: pointer;

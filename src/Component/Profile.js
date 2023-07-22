@@ -17,6 +17,7 @@ export default function Profile() {
     const [bio, setBio] = useState("");
     const [showBioContainer, setShowBioContainer] = useState(false);
     const [showAddContact, setShowAddContact] = useState(false)
+    const [chosenContact, setChosenContact] = useState("")
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
@@ -76,12 +77,12 @@ export default function Profile() {
                     {userData?.contact && Object.keys(userData.contact).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
                     {showAddContact ? 
                     <div>
-                        <div>
+                        <div className='contactIconsContainer'>
                             <BsGithub className='addContactIcons'/>
                             <ImLinkedin className='addContactIcons'/>
                             <AiOutlineTwitter className='addContactIcons'/>
                         </div>   
-                        <input type='text' placeholder='Your URL' />
+                        <input type='text' placeholder='Your URL' className='contactURL'/>
                     </div> : null
  
                 }
