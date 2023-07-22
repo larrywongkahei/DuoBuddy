@@ -44,8 +44,6 @@ export default function Profile() {
                         <td><MdLocationOn className='icons' /></td>
                         <td>{userData?.location ? <p>{userData?.location}</p> : <div><input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler}/><GiConfirmed className={location ? "tick" : "untouchableTick"}/></div>}</td>
                     </tr>
-                    {/* <p className='userPhoneNumber'><BsFillTelephoneFill className='phoneIcon'/>{userData?.Phonenumber ? <span>{userData?.Phonenumber}</span> : <input type='text' placeholder='Phone Number' />}</p> */}
-                    {/* <p className='userEmail'><IoMdMail /><span>{userData?.email}</span></p> */}
                 </table>
             </div>
             <div className='profileDataContainer'>
