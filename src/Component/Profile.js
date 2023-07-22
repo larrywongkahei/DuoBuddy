@@ -24,9 +24,17 @@ export default function Profile() {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
 
+    console.log(userData.contact)
+
     function updateContactButton(e){
         e.preventDefault();
-
+        const contactClone = {...userData.contact};
+        if (!Object.keys(contactClone).includes(chosenContact)){
+            contactClone[chosenContact] = contactURL;
+        }
+        console.log(contactClone)
+        APIService.updateUser(sessionStorage.getItem("userId"), 'contact', contactClone);
+        window.location.reload();
     }
 
     function contactURLHandler(e){
@@ -97,7 +105,7 @@ export default function Profile() {
                             <AiOutlineTwitter className={chosenContact === 'twitter' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('twitter')}/>
                         </div>   
                         <form>
-                        <input type='text' placeholder='Your URL' className='contactURL' value={contactURL}/>
+                        <input type='text' placeholder='Your URL' className={chosenContact === "" ? 'contactURL' : 'inputableContactURL'}value={contactURL} onChange={contactURLHandler}/>
                         <input type='submit' style={{display:'none'}} onClick={updateContactButton}/>
                         </form>
                     </div> : null

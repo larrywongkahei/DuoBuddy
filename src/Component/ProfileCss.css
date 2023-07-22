@@ -134,6 +134,15 @@ td {
     width: 12rem;
     border-radius: 10px;
     border-width: 0.2px;
+    pointer-events: none;
+}
+
+.inputableContactURL {
+    margin-top: 16px;
+    height: 26px;
+    width: 12rem;
+    border-radius: 10px;
+    border-width: 0.2px;
 }
 
 .addContactIcons{
