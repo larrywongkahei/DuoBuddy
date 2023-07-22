@@ -56,14 +56,17 @@ export default function Profile() {
                     </tr>
                     <tr>
                         <td><MdLocationOn className='profileIcons' /></td>
-                        <td>{userData?.location ? <a href={`https://www.google.com/maps/search/?api=1&query=${userData.location}`} className='clickableContact'><p>{userData?.location.replace(/["]/g, "")}</p></a> : <div><input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler} /><GiConfirmed className={location ? "tick" : "untouchableTick"} onClick={() => updateData('location', location)} /></div>}</td>
+                        <td>{userData?.location ? <a href={`https://www.google.com/maps/search/?api=1&query=${userData?.location}`} className='clickableContact'><p>{userData?.location.replace(/["]/g, "")}</p></a> : <div><input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler} /><GiConfirmed className={location ? "tick" : "untouchableTick"} onClick={() => updateData('location', location)} /></div>}</td>
                     </tr>
                     <tr>
                         <td><BsFillTelephoneFill className='profileIcons' /></td>
                         {/* remove all the double quote with  (/["]/g, "")*/}
-                        <td>{userData?.phoneNumber ? <p>{userData?.phoneNumber.replace(/["]/g, "")}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler} /><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"} onClick={() => updateData("phonenumber", phoneNumber)} /></div>}</td>
+                        <td>{userData?.phoneNumber ? <p>{userData?.phoneNumber?.replace(/["]/g, "")}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler} /><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"} onClick={() => updateData("phonenumber", phoneNumber)} /></div>}</td>
                     </tr>
                 </table>
+                <div>
+                    {Object.keys(userData.contact).length < 3 ? <button>Add Contact</button> : null}
+                </div>
             </div>
             <div className='profileDataContainer'>
                 <div>
