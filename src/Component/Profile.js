@@ -13,10 +13,15 @@ export default function Profile() {
     const [location, setLocation] = useState("");
     const [bio, setBio] = useState("");
     const [showBioContainer, setShowBioContainer] = useState(false);
+    const [showAddContact, setShowAddContact] = useState(false)
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
+
+    function showAddContactHandler(){
+        console.log("pressed")
+    }
 
     function bioHandler(e){
         setBio(e.target.value)
@@ -65,7 +70,7 @@ export default function Profile() {
                     </tr>
                 </table>
                 <div>
-                    {Object.keys(userData.contact).length < 3 ? <button>Add Contact</button> : null}
+                    {userData?.contact && Object.keys(userData.contact).length < 3 ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
                 </div>
             </div>
             <div className='profileDataContainer'>
