@@ -9,10 +9,15 @@ import { GiConfirmed } from 'react-icons/gi'
 export default function Profile() {
 
     const [userData, setUserData] = useState({});
+    const [phoneNumber, setPhoneNumber] = useState("");
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
+
+    function phoneNumberHandler(e){
+        setPhoneNumber(e.target.value);
+    }
 
     console.log(userData)
 
@@ -28,7 +33,7 @@ export default function Profile() {
                     </tr>
                     <tr>
                         <td><BsFillTelephoneFill className='icons' /></td>
-                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <input type='text' placeholder='Phone Number' className='detailValue' />}</td>
+                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/>}</td>
                     </tr>
                     <tr>
                         <td><MdLocationOn className='icons' /></td>
