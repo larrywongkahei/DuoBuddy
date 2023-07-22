@@ -11,10 +11,15 @@ export default function Profile() {
     const [userData, setUserData] = useState({});
     const [phoneNumber, setPhoneNumber] = useState("");
     const [location, setLocation] = useState("");
+    const [bio, setBio] = useState("")
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
+
+    function bioHandler(e){
+        setBio(e.target.value)
+    }
 
     function updateData(param, data) {
         APIService.updateUser(sessionStorage.getItem('userId'), param, data);
@@ -51,9 +56,12 @@ export default function Profile() {
                 </table>
             </div>
             <div className='profileDataContainer'>
-                <p>
-                    {userData.bio}
-                </p>
+                <div>
+                    <p>
+                        Bio
+                    </p>
+                    {userData.bio ? <div className='bio'>{userData.bio}</div> : <textarea className='bioTextarea' onChange={bioHandler} value={bio}/>}
+                </div>
             </div>
         </div>
     )
