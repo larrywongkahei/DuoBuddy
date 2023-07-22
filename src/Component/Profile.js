@@ -10,6 +10,7 @@ export default function Profile() {
 
     const [userData, setUserData] = useState({});
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [location, setLocation] = useState("");
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
@@ -17,6 +18,10 @@ export default function Profile() {
 
     function phoneNumberHandler(e){
         setPhoneNumber(e.target.value);
+    }
+
+    function locationHandler(e){
+        setLocation(e.target.value);
     }
 
     console.log(userData)
@@ -37,7 +42,7 @@ export default function Profile() {
                     </tr>
                     <tr>
                         <td><MdLocationOn className='icons' /></td>
-                        <td>{userData?.location ? <p>{userData?.location}</p> : <input type='text' placeholder='Location' className='detailValue' />}</td>
+                        <td>{userData?.location ? <p>{userData?.location}</p> : <input type='text' placeholder='Location' className='detailValue' value={location} onChange={locationHandler}/>}</td>
                     </tr>
                     {/* <p className='userPhoneNumber'><BsFillTelephoneFill className='phoneIcon'/>{userData?.Phonenumber ? <span>{userData?.Phonenumber}</span> : <input type='text' placeholder='Phone Number' />}</p> */}
                     {/* <p className='userEmail'><IoMdMail /><span>{userData?.email}</span></p> */}
