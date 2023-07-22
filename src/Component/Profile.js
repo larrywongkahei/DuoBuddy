@@ -17,7 +17,8 @@ export default function Profile() {
     }, [])
 
     function updateData(param, data){
-        APIService.updateUser(sessionStorage.getItem('userId'), param, data)
+        APIService.updateUser(sessionStorage.getItem('userId'), param, data);
+        window.location.reload();
     }
 
     function phoneNumberHandler(e){
@@ -27,8 +28,6 @@ export default function Profile() {
     function locationHandler(e){
         setLocation(e.target.value);
     }
-
-    console.log(userData)
 
     return (
         <div className='profileContainer'>
@@ -42,7 +41,8 @@ export default function Profile() {
                     </tr>
                     <tr>
                         <td><BsFillTelephoneFill className='icons' /></td>
-                        <td>{userData?.Phonenumber ? <p>{userData?.Phonenumber}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"} onClick={() => updateData("phonenumber", phoneNumber)}/></div>}</td>
+                        {/* remove all the double quote with  (/["]/g, "")*/}
+                        <td>{userData?.phoneNumber ? <p>{userData?.phoneNumber.replace(/["]/g, "")}</p> : <div className='inputDetail'><input type='text' placeholder='Phone Number' className='detailValue' value={phoneNumber} onChange={phoneNumberHandler}/><GiConfirmed className={phoneNumber ? "tick" : "untouchableTick"} onClick={() => updateData("phonenumber", phoneNumber)}/></div>}</td>
                     </tr>
                     <tr>
                         <td><MdLocationOn className='icons' /></td>
