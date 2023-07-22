@@ -22,14 +22,7 @@ export default function Profile() {
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
-        // addOnClick();
     }, [])
-
-    // document.addEventListener("readystatechange", (event) => {
-    //     if (event.target.readyState ==="complete"){
-    //         addOnClick();
-    //     }
-    // });
 
     function updateContactButton(e){
         e.preventDefault();
@@ -78,27 +71,6 @@ export default function Profile() {
         window.location.reload();
     }
 
-    // const github = <BsGithub className='chosenAddContactIcons' id='github'/>
-    // const linkedin = <ImLinkedin className='chosenAddContactIcons' id='linkedin'/>
-    // const twitter = <AiOutlineTwitter className='chosenAddContactIcons' id='twitter'/>
-
-    // const contactObject = { "github" : github, "linkedin" : linkedin, "twitter" : twitter};
-
-
-    // const contactNode = Object.keys(userData?.contact || {}).map((e, index) => {
-    //     return(
-    //         <div key={index}>
-    //             {contactObject[e]}
-    //         </div>
-    //     )
-    // })
-
-    // function addOnClick(){
-    //     Object.keys(userData?.contact || {}).map(e => {
-    //         document.getElementById(e).addEventListener("click" , () => window.location.href = userData?.contact[e])
-    //     })
-    //     console.log("pressed");
-    // }
 
     return (
         <div className='profileContainer'>
