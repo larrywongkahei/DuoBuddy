@@ -86,7 +86,10 @@ export default function Profile() {
                             <ImLinkedin className={chosenContact === 'linkedin' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('linkedin')}/>
                             <AiOutlineTwitter className={chosenContact === 'twitter' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('twitter')}/>
                         </div>   
+                        <form>
                         <input type='text' placeholder='Your URL' className='contactURL'/>
+                        <input type='submit' style={{display:'none'}} />
+                        </form>
                     </div> : null
  
                 }
