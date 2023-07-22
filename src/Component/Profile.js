@@ -74,7 +74,7 @@ export default function Profile() {
                     {showBioContainer?  
                         <form>
                             <textarea className='bioTextarea' onChange={bioHandler} value={bio}/>
-                            <input type='submit'onSubmit={submitForm}/>
+                            <input type='submit' onClick={submitForm}/>
                         </form> : <button onClick={showBioContainerHandler}>Add Bio</button> }
                         </div>
                         }
