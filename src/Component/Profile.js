@@ -22,14 +22,14 @@ export default function Profile() {
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
-        addOnClick();
+        // addOnClick();
     }, [])
 
-    document.addEventListener("readystatechange", (event) => {
-        if (event.target.readyState ==="complete"){
-            addOnClick();
-        }
-    });
+    // document.addEventListener("readystatechange", (event) => {
+    //     if (event.target.readyState ==="complete"){
+    //         addOnClick();
+    //     }
+    // });
 
     function updateContactButton(e){
         e.preventDefault();
@@ -78,27 +78,27 @@ export default function Profile() {
         window.location.reload();
     }
 
-    const github = <BsGithub className='chosenAddContactIcons' id='github'/>
-    const linkedin = <ImLinkedin className='chosenAddContactIcons' id='linkedin'/>
-    const twitter = <AiOutlineTwitter className='chosenAddContactIcons' id='twitter'/>
+    // const github = <BsGithub className='chosenAddContactIcons' id='github'/>
+    // const linkedin = <ImLinkedin className='chosenAddContactIcons' id='linkedin'/>
+    // const twitter = <AiOutlineTwitter className='chosenAddContactIcons' id='twitter'/>
 
-    const contactObject = { "github" : github, "linkedin" : linkedin, "twitter" : twitter};
+    // const contactObject = { "github" : github, "linkedin" : linkedin, "twitter" : twitter};
 
 
-    const contactNode = Object.keys(userData?.contact || {}).map((e, index) => {
-        return(
-            <div key={index}>
-                {contactObject[e]}
-            </div>
-        )
-    })
+    // const contactNode = Object.keys(userData?.contact || {}).map((e, index) => {
+    //     return(
+    //         <div key={index}>
+    //             {contactObject[e]}
+    //         </div>
+    //     )
+    // })
 
-    function addOnClick(){
-        Object.keys(userData?.contact || {}).map(e => {
-            document.getElementById(e).addEventListener("click" , () => window.location.href = userData?.contact[e])
-        })
-        console.log("pressed");
-    }
+    // function addOnClick(){
+    //     Object.keys(userData?.contact || {}).map(e => {
+    //         document.getElementById(e).addEventListener("click" , () => window.location.href = userData?.contact[e])
+    //     })
+    //     console.log("pressed");
+    // }
 
     return (
         <div className='profileContainer'>
@@ -121,10 +121,12 @@ export default function Profile() {
                     </tr>
                 </table>
                 <div className='contactIconsContainer'>
-                    {contactNode}
+                    {Object.keys(userData.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github']}/> : null}
+                    {Object.keys(userData.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin']}/> : null}
+                    {Object.keys(userData.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter']}/> : null}
                 </div>
                 <div>
-                    {userData?.contact && Object.keys(userData.contact).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
+                    {Object.keys(userData.contact || {}).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
                     {showAddContact ? 
                     <div>
                         <div className='contactIconsContainer'>
