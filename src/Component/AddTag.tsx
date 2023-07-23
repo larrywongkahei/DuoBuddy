@@ -1,4 +1,4 @@
-export default function AddTag(){
+const AddTag:React.FC = () => {
     return (
     <h1>
         This is addtag page.
