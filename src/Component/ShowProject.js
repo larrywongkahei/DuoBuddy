@@ -49,14 +49,14 @@ export default function ShowProject() {
     }, [])
 
     // Function to check if the viewer are the creater, add view if not.
-    async function addViewOrSetData(id){
+    async function addViewOrSetData(id) {
         const data = await APIService.getProjectById(id);
-        if (data.createdBy?.name !== sessionStorage.getItem("name")){
+        if (data.createdBy?.name !== sessionStorage.getItem("name")) {
             // CommentProject would add a view if not passing in the content
             const responseToSet = await APIService.commentProject(id, null, null);
             const dataToSet = await responseToSet.json();
             setProjectData(dataToSet);
-        }else{
+        } else {
             setProjectData(data)
         }
     }
@@ -98,9 +98,14 @@ export default function ShowProject() {
                 </p>
                 <div className='CommentRightDetail'>
                     <div>
-                        <img src={each.createdBy?.avatarUrl} />
+                        <Link to={`/profile/${each?.createdBy?.id}`}>
+                            <img src={each.createdBy?.avatarUrl} />
+                        </Link>
                         <p>
-                            {each.createdBy?.name}
+                            <Link to={`/profile/${each?.createdBy?.id}`}>
+
+                                {each.createdBy?.name}
+                            </Link>
                         </p>
                         <p>
                             {each.createdDate}
