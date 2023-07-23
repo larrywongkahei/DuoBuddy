@@ -63,10 +63,14 @@ export default function SearchResult() {
                         })}
                     </div>
                     <div className='ResultDetailRight'>
+                        <Link to={`/profile/${each?.createdBy.id}`} >
                         <img src={each.createdBy?.avatarUrl} />
+                        </Link>
+                        <Link to={`/profile/${each?.createdBy.id}`} style={{textDecoration:"none", color:"black"}}>
                         <p>
                             {each.createdBy?.name}
                         </p>
+                        </Link>
                         <p>
                             {each.createdDate}
                         </p>
