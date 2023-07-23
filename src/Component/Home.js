@@ -4,7 +4,7 @@ import { AiFillInstagram } from 'react-icons/ai';
 import { ImLinkedin } from 'react-icons/im';
 import { SiGmail } from 'react-icons/si';
 import { BsGithub } from 'react-icons/bs';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
 

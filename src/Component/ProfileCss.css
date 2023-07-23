@@ -2,18 +2,160 @@
     height: 12rem;
     width: 12rem;
     border-radius: 100px;
+    margin: auto;
+}
+
+.clickableContact {
+    text-decoration: none;
+    color: grey;
+}
+
+.clickableContact :hover{
+    text-decoration: none;
+    filter: brightness(60%);
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 .profilePictureContainer {
-    padding-left: 6rem;
-    padding-right: 6rem;
-    gap: 10rem;
+    padding-left: 3rem;
+    margin-left: 3rem;
+    padding-right: 3rem;
+    margin-right: 3rem;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.profilePictureContainer p{
+    margin: 0px;
+    padding-left: 5px;
+}
+
+.userPhoneNumber{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 
+.tick {
+    width: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.untouchableTick{
+    width: 16px;
+    right: 16px;
+    color: gray;
+    pointer-events: none;
+}
+
+.inputDetail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.userEmail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 .name {
     font-size: 24px;
+}
+
+tr input {
+    border-radius: 10px;
+    border-width: 0px;
+    padding-left: 5px;
+    height: 30px;
+}
+
+tr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 7px;
+}
+
+td {
+    margin-right: 10px;
+}
+
+.profileIcons {
+    height: 18px;
+    width: 18px;
+    padding: 0px;
+}
+
+.bio{
+    border-width: 1px;
+    border-style: solid;
+    height: 6rem;
+    width: 40rem;
+    padding: 12px;
+    border-radius: 10px;
+    border-color: grey;
+}
+
+.bioTextarea {
+    background-color: #F0EFEF;
+    height: 6rem;
+    width: 40rem;
+    border-radius: 10px;
+    resize: none;
+    padding: 7px;
+}
+
+.contactIconsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    justify-content: center;
+}
+
+.contactURL {
+    margin-top: 16px;
+    height: 26px;
+    width: 12rem;
+    border-radius: 10px;
+    border-width: 0.2px;
+    padding-left: 10px;
+    pointer-events: none;
+}
+
+.inputableContactURL {
+    margin-top: 16px;
+    height: 26px;
+    width: 12rem;
+    border-radius: 10px;
+    border-width: 0.2px;
+    padding-left: 10px;
+}
+
+.addContactIcons{
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    color: grey;
+}
+
+.chosenAddContactIcons {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
 }
