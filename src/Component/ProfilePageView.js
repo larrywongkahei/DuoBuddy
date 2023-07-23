@@ -9,6 +9,8 @@ export default function ProfilePageView(){
     useEffect(() => {
         APIService.getUserById(id).then(data => setUserData(data))
     }, [])
+
+    console.log(userData)
     return (
         <h1>
             this is profile viewing page + { id }
