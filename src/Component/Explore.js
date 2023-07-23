@@ -19,19 +19,19 @@ export default function Explore() {
 
     // Function returning the largest number of the type in input project
     // Coded it in a function for better readibility
-    function findMaxNumberFromType(projects, type){
+    function findMaxNumberFromType(projects, type) {
         let maxNumber = 0;
-        switch (type){
+        switch (type) {
             case "Comments":
-                for(var i = 0; i < projects.length; i++){
-                    if(projects[i].comments.length > maxNumber){
+                for (var i = 0; i < projects.length; i++) {
+                    if (projects[i].comments.length > maxNumber) {
                         maxNumber = projects[i].comments.length
                     }
                 }
                 return maxNumber
             case "Views":
-                for(var i = 0; i < projects.length; i++){
-                    if(projects[i].views.length > maxNumber){
+                for (var i = 0; i < projects.length; i++) {
+                    if (projects[i].views.length > maxNumber) {
                         maxNumber = projects[i].views.length
                     }
                 }
@@ -41,12 +41,12 @@ export default function Explore() {
 
     // Function returning a sorted array by input type
     // Coded it in a function to prevent hard code them for each type
-    function returnArraySortedByType(projects, type){
+    function returnArraySortedByType(projects, type) {
         const newArray = []
         let projectClone = [...projects];
-        switch (type){
+        switch (type) {
             case "Comments":
-                while(newArray.length != projects.length){
+                while (newArray.length != projects.length) {
                     let maxNumber = findMaxNumberFromType(projectClone, type)
                     // push project that comment length is same as the largest number
                     projectClone.filter(e => e.comments.length >= maxNumber).forEach(e => newArray.push(e))
@@ -55,7 +55,7 @@ export default function Explore() {
                 }
                 return newArray;
             case "Views":
-                while(newArray.length != projects.length){
+                while (newArray.length != projects.length) {
                     let maxNumber = findMaxNumberFromType(projectClone, type)
                     // push project that views length is same as the largest number
                     projectClone.filter(e => e.views.length >= maxNumber).forEach(e => newArray.push(e))
@@ -69,7 +69,7 @@ export default function Explore() {
     // Selection filter handler
     function filterHandler(e) {
         setFilter(e.target.value);
-        switch (e.target.value){
+        switch (e.target.value) {
             case "Newest":
                 APIService.getAllProject().then(data => setProjects(data.reverse()));
                 break;
@@ -93,9 +93,9 @@ export default function Explore() {
     const allProjects = Projects.map((each, index) => (
         <div key={index} className='eachProject'>
             <Link to={`/post/${each.id}`} className='titleLink'>
-            <h1>
-                {each.title}
-            </h1>
+                <h1>
+                    {each.title}
+                </h1>
             </Link>
             <div className='detailForEachProject'>
                 <div className='alltags'>
@@ -108,10 +108,16 @@ export default function Explore() {
                     ))}
                 </div>
                 <div className='rightDetail'>
-                    <img src={each.createdBy?.avatarUrl}/>
+                    <Link to={`/profile/${each.createdBy.id}`} >
+                        <img src={each.createdBy?.avatarUrl} />
+                    </Link>
+
                     <div className='createdUser'>
-                        {each.createdBy?.name}
+                        <Link to={`/profile/${each.createdBy.id}`} style={{ textDecoration: "none", color: "black" }}>
+                            {each.createdBy?.name}
+                        </Link>
                     </div>
+
                     <div className="votesOfProjects">
                         <p className='eachSmallDetail'>
                             Views {each.views}
@@ -128,7 +134,7 @@ export default function Explore() {
 
 
 
-        </div>
+        </div >
     ))
 
     return (

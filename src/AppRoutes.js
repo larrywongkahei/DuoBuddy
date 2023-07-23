@@ -7,6 +7,7 @@ import Profile from "./Component/Profile";
 import SearchResult from "./Component/SearchResult";
 import ShowProject from "./Component/ShowProject";
 import Signup from "./Component/Signup";
+import ProfilePageView from "./Component/ProfilePageView"
 
 const AppRoutes = [
     {
@@ -44,6 +45,10 @@ const AppRoutes = [
     {
         path:"/post/:id",
         element:<ShowProject />
+    },
+    {
+        path:"/profile/:id",
+        element:<ProfilePageView />
     },
 
 ];
