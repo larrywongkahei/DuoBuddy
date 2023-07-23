@@ -24,11 +24,11 @@ export default function Profile() {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
 
-    function updateContactButton(e){
+    async function updateContactButton(e){
         e.preventDefault();
         const dataToUpdate = {};
         dataToUpdate[chosenContact] = contactURL;
-        APIService.updateUser(sessionStorage.getItem("userId"), 'contact', dataToUpdate);
+        await APIService.updateUser(sessionStorage.getItem("userId"), 'contact', dataToUpdate);
         window.location.reload();
     }
 
