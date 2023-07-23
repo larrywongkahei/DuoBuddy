@@ -11,20 +11,30 @@ import { BsGithub } from 'react-icons/bs';
 
 export default function Profile() {
 
+    // Store userData fetched from backend
     const [userData, setUserData] = useState({});
+
+    // Store input value if user doesn't already have one
     const [phoneNumber, setPhoneNumber] = useState("");
     const [location, setLocation] = useState("");
     const [bio, setBio] = useState("");
+
+    // Buttons to keep track of users action
     const [showBioContainer, setShowBioContainer] = useState(false);
     const [showAddContact, setShowAddContact] = useState(false);
+
+    // keep track of user's choice of adding contact
     const [chosenContact, setChosenContact] = useState("");
+
+    // User input contact url
     const [contactURL, setContactURL] = useState("");
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
     }, [])
 
-    async function updateContactButton(e){
+    // Button handler for input contact update button
+    async function updateContactButton(e) {
         e.preventDefault();
         const dataToUpdate = {};
         dataToUpdate[chosenContact] = contactURL;
@@ -32,38 +42,43 @@ export default function Profile() {
         window.location.reload();
     }
 
-    function contactURLHandler(e){
-        setContactURL(e.target.value);
-    }
 
-    function chosenContactHandler(option){
+
+    // Set user's choice for contant
+    function chosenContactHandler(option) {
         setChosenContact(option);
     }
 
-    function showAddContactHandler(){
+    // keep track of user action Add Contact
+    function showAddContactHandler() {
         setShowAddContact(!showAddContact)
     }
 
-    function bioHandler(e){
+    // set input data
+    function bioHandler(e) {
         setBio(e.target.value)
     }
+    function phoneNumberHandler(e) {
+        setPhoneNumber(e.target.value);
+    }
+    function locationHandler(e) {
+        setLocation(e.target.value);
+    }
+    function contactURLHandler(e) {
+        setContactURL(e.target.value);
+    }
 
-    function showBioContainerHandler(){
+    // keep track of user action Add Bio
+    function showBioContainerHandler() {
         setShowBioContainer(!showBioContainer)
     }
 
+    // Update data function
     function updateData(param, data) {
         APIService.updateUser(sessionStorage.getItem('userId'), param, data);
         window.location.reload();
     }
 
-    function phoneNumberHandler(e) {
-        setPhoneNumber(e.target.value);
-    }
-
-    function locationHandler(e) {
-        setLocation(e.target.value);
-    }
 
     function submitForm(e) {
         e.preventDefault();
@@ -93,26 +108,26 @@ export default function Profile() {
                     </tr>
                 </table>
                 <div className='contactIconsContainer'>
-                    {Object.keys(userData.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github']}/> : null}
-                    {Object.keys(userData.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin']}/> : null}
-                    {Object.keys(userData.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter']}/> : null}
+                    {Object.keys(userData.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github']} /> : null}
+                    {Object.keys(userData.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin']} /> : null}
+                    {Object.keys(userData.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter']} /> : null}
                 </div>
                 <div>
                     {Object.keys(userData.contact || {}).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
-                    {showAddContact ? 
-                    <div>
-                        <div className='contactIconsContainer'>
-                            <BsGithub className={chosenContact === 'github' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('github')}/>
-                            <ImLinkedin className={chosenContact === 'linkedin' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('linkedin')}/>
-                            <AiOutlineTwitter className={chosenContact === 'twitter' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('twitter')}/>
-                        </div>   
-                        <form>
-                        <input type='text' placeholder='Your URL' className={chosenContact === "" ? 'contactURL' : 'inputableContactURL'}value={contactURL} onChange={contactURLHandler}/>
-                        <input type='submit' style={{display:'none'}} onClick={updateContactButton}/>
-                        </form>
-                    </div> : null
- 
-                }
+                    {showAddContact ?
+                        <div>
+                            <div className='contactIconsContainer'>
+                                <BsGithub className={chosenContact === 'github' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('github')} />
+                                <ImLinkedin className={chosenContact === 'linkedin' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('linkedin')} />
+                                <AiOutlineTwitter className={chosenContact === 'twitter' ? "chosenAddContactIcons" : "addContactIcons"} onClick={() => chosenContactHandler('twitter')} />
+                            </div>
+                            <form>
+                                <input type='text' placeholder='Your URL' className={chosenContact === "" ? 'contactURL' : 'inputableContactURL'} value={contactURL} onChange={contactURLHandler} />
+                                <input type='submit' style={{ display: 'none' }} onClick={updateContactButton} />
+                            </form>
+                        </div> : null
+
+                    }
                 </div>
             </div>
             <div className='profileDataContainer'>
@@ -120,15 +135,15 @@ export default function Profile() {
                     <p>
                         Bio
                     </p>
-                    {userData.bio ? <div className='bio'>{userData.bio.replace(/["]/g, "")}</div> : 
-                    <div>
-                    {showBioContainer?  
-                        <form>
-                            <textarea className='bioTextarea' onChange={bioHandler} value={bio}/>
-                            <input type='submit' onClick={submitForm}/>
-                        </form> : <button onClick={showBioContainerHandler}>Add Bio</button> }
+                    {userData.bio ? <div className='bio'>{userData.bio.replace(/["]/g, "")}</div> :
+                        <div>
+                            {showBioContainer ?
+                                <form>
+                                    <textarea className='bioTextarea' onChange={bioHandler} value={bio} />
+                                    <input type='submit' onClick={submitForm} />
+                                </form> : <button onClick={showBioContainerHandler}>Add Bio</button>}
                         </div>
-                        }
+                    }
                 </div>
             </div>
         </div>
