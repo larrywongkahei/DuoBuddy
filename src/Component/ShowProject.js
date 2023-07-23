@@ -1,6 +1,6 @@
 import './ShowProjectCss.css';
 import APIService from '../APIService';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 
@@ -102,8 +102,7 @@ export default function ShowProject() {
                             <img src={each.createdBy?.avatarUrl} />
                         </Link>
                         <p>
-                            <Link to={`/profile/${each?.createdBy?.id}`}>
-
+                            <Link to={`/profile/${each?.createdBy?.id}`} style={{textDecoration:"none", color:"black"}}>
                                 {each.createdBy?.name}
                             </Link>
                         </p>
