@@ -12,7 +12,7 @@ MentorShip is a website that aims to bridge the gap between fresh graduates like
 
 ## To Do:
 * Features
-* * Bookmark projects
+  * Bookmark projects
   * Chat with user in chatroom
   * More...
 
