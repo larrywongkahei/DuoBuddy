@@ -27,11 +27,11 @@ export const AppRoutes = [
         element: <Navigate to="/" />
     },
     {
-        path:"/github",
+        path:"/MentorShip/github",
         element: <Home />
     },
     {
-        path:"/linkedin",
+        path:"/MentorShip/linkedin",
         element: <Home />
     },
     {
