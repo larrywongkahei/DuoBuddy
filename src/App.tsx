@@ -18,7 +18,7 @@ const App:React.FC = () => {
     // urlParam.get("id") = 1
     const urlParam = new URLSearchParams(queryString);
 
-    console.log(window.location.hash)
+    console.log(window.location.pathname)
     
     // check if urlParam has code param for github oauth login
     if(urlParam.has("code") && window.location.pathname === "/github"){
