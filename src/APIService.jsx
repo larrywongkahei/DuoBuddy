@@ -66,6 +66,7 @@ const APIService =
         method: "POST",
         body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' }
       })
+      .then(data => data.json())
   },
 
   // Update user detail, input bio, location or projects in param field

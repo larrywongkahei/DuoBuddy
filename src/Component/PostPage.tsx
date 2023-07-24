@@ -1,7 +1,7 @@
 import "./PostPageCss.css"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-const {User, Comment, Project} = require('./Interface');
+import { Project, User, Comment } from './Interface';
 const APIService = require('../APIService')
 
 const PostPage:React.FC = () => {
@@ -107,7 +107,7 @@ const PostPage:React.FC = () => {
                 "content": `${introduction} \n ${detailOfIdea} \n ${inspiration} \n ${ending}`,
                 "tags": tags
             }
-            await APIService.createProject(payload).then((response:Project) => response.json()).then(data => {
+            await APIService.createProject(payload).then((data:Project) => {
                 APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id).then(response => response.json())
                 navigate(`/post/${data.id}`)
             })
