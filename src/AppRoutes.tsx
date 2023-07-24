@@ -7,7 +7,8 @@ import Profile from "./Component/Profile";
 import SearchResult from "./Component/SearchResult";
 import ShowProject from "./Component/ShowProject";
 import Signup from "./Component/Signup";
-import ProfilePageView from "./Component/ProfilePageView"
+import ProfilePageView from "./Component/ProfilePageView";
+import { Navigate } from "react-router-dom";
 
 // interface routes {
 //     index?:Boolean,
@@ -23,7 +24,7 @@ export const AppRoutes = [
     },
     {
         path:"*",
-        element: <Home />
+        element: <Navigate to="/" />
     },
     {
         path:"/github",
