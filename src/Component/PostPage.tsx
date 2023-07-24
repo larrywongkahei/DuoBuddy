@@ -1,52 +1,52 @@
 import "./PostPageCss.css"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import APIService from '../APIService';
+const {User, Comment, Project} = require('./Interface');
+const APIService = require('../APIService')
 
-export default function PostPage() {
-
+const PostPage:React.FC = () => {
     const navigate = useNavigate();
 
     // To track which part user in, to light up the border
-    const [Sequence, setSequence] = useState(1);
+    const [Sequence, setSequence] = useState<number>(1);
 
 // Title
 
     // Title input data
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState<string>("")
 
     // Title input handler
-    function titleHandler(e) {
+    function titleHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setTitle(e.target.value)
     }
 
 // Introduction 
 
     // Introduction input data
-    const [introduction, setIntroduction] = useState("")
+    const [introduction, setIntroduction] = useState<string>("")
 
     // Introduction input handler
-    function introductionHandler(e) {
+    function introductionHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setIntroduction(e.target.value)
     }
 
 // Detail
 
     // Detail input data
-    const [detailOfIdea, setDetailOfIdea] = useState("")
+    const [detailOfIdea, setDetailOfIdea] = useState<string>("")
 
     // Detail input handler
-    function detailOfIdeaHandler(e) {
+    function detailOfIdeaHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setDetailOfIdea(e.target.value)
     }
 
 // Inspiration
 
     // Inspiration input data
-    const [inspiration, setInspiration] = useState("")
+    const [inspiration, setInspiration] = useState<string>("")
 
     // Inspiration input handler
-    function inspirationHandler(e) {
+    function inspirationHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setInspiration(e.target.value)
     }
 
@@ -54,26 +54,26 @@ export default function PostPage() {
 // Ending
 
     // Ending input data
-    const [ending, setEnding] = useState("")
+    const [ending, setEnding] = useState<string>("")
 
 
     // Ending input handler
-    function endingHandler(e) {
+    function endingHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setEnding(e.target.value)
     }
 
 // Tags
 
     // Tags input data
-    const [showTags, setShowTags] = useState("")
+    const [showTags, setShowTags] = useState<string>("")
 
     // Tag input handler
-    function tagshandler(e) {
+    function tagshandler(e:React.ChangeEvent<HTMLInputElement>) {
         setShowTags(e.target.value)
     }
 
     // Tags added array
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState<string[]>([])
 
     // Add tag button handler
     function addTagButton() {
@@ -107,7 +107,7 @@ export default function PostPage() {
                 "content": `${introduction} \n ${detailOfIdea} \n ${inspiration} \n ${ending}`,
                 "tags": tags
             }
-            await APIService.createProject(payload).then(response => response.json()).then(data => {
+            await APIService.createProject(payload).then((response:Project) => response.json()).then(data => {
                 APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id).then(response => response.json())
                 navigate(`/post/${data.id}`)
             })
@@ -319,4 +319,6 @@ export default function PostPage() {
             </button>
         </div>
     )
-}
+};
+
+export default PostPage;
