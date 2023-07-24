@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
 import NavBar from './Component/NavBar';
 import { useEffect } from 'react';
-import APIService from './APIService';
+import { AppRoutes } from './AppRoutes';
+const APIService = require('./APIService');
 
 
 
-function App() {
+const App:React.FC = () => {
 
   
   useEffect(() => {
@@ -20,12 +19,12 @@ function App() {
     const urlParam = new URLSearchParams(queryString);
     
     // check if urlParam has code param for github oauth login
-    if(urlParam.has("code") & window.location.pathname === "/github"){
+    if(urlParam.has("code") && window.location.pathname === "/github"){
       APIService.FetchDataFromGithub(urlParam.get("code"));
     }
 
     // check if urlParam has code param for linkedin oauth login
-    else if(urlParam.has("code") & window.location.pathname === "/linkedin"){
+    else if(urlParam.has("code") && window.location.pathname === "/linkedin"){
       APIService.FetchDataFromLinkedin(urlParam.get("code"));
     }
 }, [])
@@ -34,7 +33,7 @@ function App() {
     <BrowserRouter>
     <NavBar />
     <Routes>
-      {AppRoutes.map((route, index) => {
+      {AppRoutes.map((route:any, index:number) => {
         const { element, ...rest } = route;
         return <Route key={index} {...rest} element={element}/>;
       })}

@@ -9,7 +9,13 @@ import ShowProject from "./Component/ShowProject";
 import Signup from "./Component/Signup";
 import ProfilePageView from "./Component/ProfilePageView"
 
-const AppRoutes = [
+// interface routes {
+//     index?:Boolean,
+//     path?:string,
+//     element:any,
+// }
+
+export const AppRoutes = [
     {
         index: true,
         element: <Home />
@@ -52,5 +58,3 @@ const AppRoutes = [
     },
 
 ];
-
-export default AppRoutes;
