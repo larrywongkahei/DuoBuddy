@@ -1,24 +1,25 @@
 import './ShowProjectCss.css';
-import APIService from '../APIService';
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
+import { User, Comment, Project } from "./Interface";
+const APIService = require('../APIService');
 
-export default function ShowProject() {
+const ShowProject:React.FC = () => {
 
     // To store all projects fetched from backend
-    const [projectData, setProjectData] = useState({});
+    const [projectData, setProjectData] = useState<Project>();
 
     // To store commentBox input data
-    const [commentBox, setCommentBox] = useState("")
+    const [commentBox, setCommentBox] = useState<string>("")
 
     // Commentbox input data handler
-    function commentBoxTextHandler(e) {
+    function commentBoxTextHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
         setCommentBox(e.target.value);
     }
 
     // Commentbox submit button handler
-    function handleAddComment(e) {
+    function handleAddComment(e:React.SyntheticEvent) {
         e.preventDefault();
         APIService.commentProject(id, sessionStorage.getItem("userId"), commentBox);
         setCommentBox("")
@@ -32,13 +33,13 @@ export default function ShowProject() {
     const id = param.id;
 
     // Create a useState to keep track of user press the reload button
-    const [reload, setReload] = useState(false)
+    const [reload, setReload] = useState<Boolean>(false)
 
 
     // Keep track of the reload state, fetch data again if user press the reload button(Line 125)
     useEffect(() => {
         if (id) {
-            APIService.getProjectById(id).then(data => setProjectData(data))
+            APIService.getProjectById(id).then((data:Project) => setProjectData(data))
         }
     }, [reload])
 
@@ -49,7 +50,7 @@ export default function ShowProject() {
     }, [])
 
     // Function to check if the viewer are the creater, add view if not.
-    async function addViewOrSetData(id) {
+    async function addViewOrSetData(id:string) {
         const data = await APIService.getProjectById(id);
         if (data.createdBy?.name !== sessionStorage.getItem("name")) {
             // CommentProject would add a view if not passing in the content
@@ -120,17 +121,17 @@ export default function ShowProject() {
         <div className='ProjectPageContainer'>
             <div className='ProjectPageHeader'>
                 <h1 className='ProjectPageTitle'>
-                    {projectData.title}
+                    {projectData?.title}
                 </h1>
                 <div className='ProjectPageHeaderDetail'>
                     <p>
-                        Posted: {projectData.createdDate}
+                        Posted: {projectData?.createdDate}
                     </p>
                     <p>
-                        Supports: {projectData.support}
+                        Supports: {projectData?.support}
                     </p>
                     <p>
-                        Views: {projectData.views}
+                        Views: {projectData?.views}
                     </p>
                 </div>
             </div>
@@ -142,9 +143,9 @@ export default function ShowProject() {
                     {tags}
                 </div>
                 <div className='ProjectUserDetail'>
-                    <img src={projectData.createdBy?.avatarUrl} />
+                    <img src={projectData?.createdBy?.avatarUrl} />
                     <p>
-                        {projectData.createdBy?.name}
+                        {projectData?.createdBy?.name}
                     </p>
                 </div>
             </div>
@@ -168,6 +169,7 @@ export default function ShowProject() {
                 </div>
             </div>
         </div>
-
     )
-}
+};
+
+export default ShowProject;
