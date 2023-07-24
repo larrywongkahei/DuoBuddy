@@ -26,6 +26,14 @@ export const AppRoutes = [
         element: <Home />
     },
     {
+        path:"/github",
+        element: <Home />
+    },
+    {
+        path:"/linkedin",
+        element: <Home />
+    },
+    {
         path: "/profile",
         element: <Profile />
     },
