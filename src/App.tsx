@@ -19,6 +19,7 @@ const App:React.FC = () => {
     const urlParam = new URLSearchParams(queryString);
 
     console.log(window.location.pathname)
+    console.log(window.location.hash)
     
     // check if urlParam has code param for github oauth login
     if(urlParam.has("code") && window.location.pathname === "/MentorShip/github"){
