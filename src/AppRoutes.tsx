@@ -18,6 +18,10 @@ import ProfilePageView from "./Component/ProfilePageView"
 export const AppRoutes = [
     {
         index: true,
+        path:"/*",
+        element: <Home />
+    },
+    {
         path:"*",
         element: <Home />
     },
