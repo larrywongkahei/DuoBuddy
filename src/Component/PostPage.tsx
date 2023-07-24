@@ -26,7 +26,7 @@ const PostPage:React.FC = () => {
     const [introduction, setIntroduction] = useState<string>("")
 
     // Introduction input handler
-    function introductionHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function introductionHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
         setIntroduction(e.target.value)
     }
 
@@ -36,7 +36,7 @@ const PostPage:React.FC = () => {
     const [detailOfIdea, setDetailOfIdea] = useState<string>("")
 
     // Detail input handler
-    function detailOfIdeaHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function detailOfIdeaHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
         setDetailOfIdea(e.target.value)
     }
 
@@ -46,7 +46,7 @@ const PostPage:React.FC = () => {
     const [inspiration, setInspiration] = useState<string>("")
 
     // Inspiration input handler
-    function inspirationHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function inspirationHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
         setInspiration(e.target.value)
     }
 
@@ -58,7 +58,7 @@ const PostPage:React.FC = () => {
 
 
     // Ending input handler
-    function endingHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function endingHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
         setEnding(e.target.value)
     }
 
@@ -108,7 +108,7 @@ const PostPage:React.FC = () => {
                 "tags": tags
             }
             await APIService.createProject(payload).then((data:Project) => {
-                APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id).then(response => response.json())
+                APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id)
                 navigate(`/post/${data.id}`)
             })
 
