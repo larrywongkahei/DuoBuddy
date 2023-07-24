@@ -3,31 +3,31 @@ import { Link } from 'react-router-dom';
 import { ImLinkedin } from 'react-icons/im';
 import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import APIService from '../APIService';
 
 
-export default function Login() {
+const Login:React.FC = () => {
 
     // Email input useState
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState<string>("");
 
     // Pass input useState
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState<string>("");
 
     // Email input handler
-    function emailHandler(e) {
+    function emailHandler(e:React.ChangeEvent<HTMLInputElement>):void {
         setEmail(e.target.value);
     };
 
     // Pass input handler
-    function passwordHandler(e) {
+    function passwordHandler(e:React.ChangeEvent<HTMLInputElement>):void {
         setPassword(e.target.value);
     };
 
     // Submit button handler
-    function submitLoginHandler(e) {
+    function submitLoginHandler(e:React.ChangeEvent<HTMLInputElement>):void {
         e.preventDefault();
         setEmail('');
         setPassword('');
@@ -76,4 +76,6 @@ export default function Login() {
             <p className="newHereText">New here? <span><Link to="/signup" className='signupLink'>Sign up</Link></span></p>
         </div>
     )
-}
+};
+
+export default Login;

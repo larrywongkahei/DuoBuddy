@@ -1,3 +1,5 @@
+import React from "react"
+
 const AddTag:React.FC = () => {
     return (
     <h1>
