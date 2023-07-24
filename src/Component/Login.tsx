@@ -36,11 +36,11 @@ const Login:React.FC = () => {
 
 
     function loginWithGithub(){
-        window.location.assign("http://localhost:8080/login/github")
+        window.location.assign("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login/github")
     }
 
     function loginWithLinkedin(){
-        window.location.assign("http://localhost:8080/login/linkedin")
+        window.location.assign("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login/linkedin")
     }
 
 

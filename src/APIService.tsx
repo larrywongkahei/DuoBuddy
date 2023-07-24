@@ -2,7 +2,7 @@ export const APIService =
 {
   // Add user to database
   createUser(name:string, bio:string | null, location:string | null, avatar:string, email:string | null, password:string | null) {
-    return fetch("http://localhost:8080/user",
+    return fetch("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user",
       {
         method: "POST",
         body: JSON.stringify({ "name": name, "bio": bio, "location": location, "avatarUrl": avatar, "email": email, "password": password}), headers: {
@@ -22,7 +22,7 @@ export const APIService =
   },
 
   async signin(email:string, password:string){
-    const fetchdata = await fetch("http://localhost:8080/login",{
+    const fetchdata = await fetch("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login",{
       method:"POST",
       body:JSON.stringify({
         "email" : email,
@@ -42,13 +42,13 @@ export const APIService =
 
   // Used when user has logged in and reload page
   fetchUser(email:string | null) {
-    return fetch(`http://localhost:8080/user/dataFetching?email=${email}`)
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user/dataFetching?email=${email}`)
       .then(response => response.json())
   },
 
   // Check if user in the database, if not, Create user
   async fetchUserOrCreateUser(name:string, bio:string | null, location:string | null, avatar_url:string, email:string | null, password:string | null) {
-    const fetchdata = await fetch(`http://localhost:8080/user/dataFetching?email=${email}`)
+    const fetchdata = await fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user/dataFetching?email=${email}`)
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
       sessionStorage.setItem("userId", data.id)
@@ -61,7 +61,7 @@ export const APIService =
 
   // Post project to database
   createProject(payload:Record<string, string | null | string[]>) {
-    return fetch("http://localhost:8080/project",
+    return fetch("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project",
       {
         method: "POST",
         body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' }
@@ -72,33 +72,33 @@ export const APIService =
   // Update user detail, input bio, location or projects in param field
   // for project, input project id into the body
   updateUser(userId:string | null, param:string, payload:Record<string, string> | string) {
-    return fetch(`http://localhost:8080/user/${userId}/${param}`,
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user/${userId}/${param}`,
       { method: "PUT", body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' } })
       .then(data => data.json())
   },
 
   getAllProject() {
-    return fetch("http://localhost:8080/project")
+    return fetch("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project")
       .then(response => response.json())
   },
 
   getProjectById(id:string) {
-    return fetch(`http://localhost:8080/project/${id}`)
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${id}`)
       .then(response => response.json())
   },
   // searchData could be tags or title
   getProjectsBySearch(searchData:string) {
-    return fetch(`http://localhost:8080/project/getSearchResult?searchData=${searchData}`)
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/getSearchResult?searchData=${searchData}`)
       .then(response => response.json())
   },
   getUserById(id:string) {
-    return fetch(`http://localhost:8080/user/dataFetching?id=${id}`)
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user/dataFetching?id=${id}`)
       .then(response => response.json())
   },
 
   // Add comment to project
   commentProject(projectId:string, userId:string | null, content:string | null) {
-    return fetch(`http://localhost:8080/project/${projectId}?userId=${userId}`, {
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}`, {
       method: "PUT",
       body: content,
       headers: { 'Content-Type': 'application/json' }
@@ -121,7 +121,7 @@ export const APIService =
 
   // Fetch data from github oauth api
   async FetchDataFromGithub(code:string) {
-    const response = await fetch(`http://localhost:8080/login/github/code?code=${code}`)
+    const response = await fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login/github/code?code=${code}`)
     const data = await response.json()
     sessionStorage.setItem("name", data.login);
     sessionStorage.setItem("bio", data.bio)
@@ -133,7 +133,7 @@ export const APIService =
 
   // Fetch data from linkedin oauth api
   async FetchDataFromLinkedin(code:string) {
-    const response = await fetch(`http://localhost:8080/login/linkedin/code?code=${code}`)
+    const response = await fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login/linkedin/code?code=${code}`)
     const data = await response.json()
     sessionStorage.setItem("name", data.localizedFirstName + " " + data.localizedLastName);
     sessionStorage.setItem("email", data.email);
