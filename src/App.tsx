@@ -19,12 +19,12 @@ const App:React.FC = () => {
     const urlParam = new URLSearchParams(queryString);
     
     // check if urlParam has code param for github oauth login
-    if(urlParam.has("code") && window.location.pathname === "/github"){
+    if(urlParam.has("code") && window.location.hash === "/github"){
       APIService.FetchDataFromGithub(urlParam?.get("code") || "");
     }
 
     // check if urlParam has code param for linkedin oauth login
-    else if(urlParam.has("code") && window.location.pathname === "/linkedin"){
+    else if(urlParam.has("code") && window.location.hash === "/linkedin"){
       APIService.FetchDataFromLinkedin(urlParam?.get("code") || "");
     }
 }, [])
