@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from './Component/NavBar';
 import { useEffect } from 'react';
 import { AppRoutes } from './AppRoutes';
@@ -21,18 +21,18 @@ const App:React.FC = () => {
     console.log(window.location.hash)
     
     // check if urlParam has code param for github oauth login
-    if(urlParam.has("code") && window.location.hash === "/github"){
+    if(urlParam.has("code") && window.location.pathname === "/github"){
       APIService.FetchDataFromGithub(urlParam?.get("code") || "");
     }
 
     // check if urlParam has code param for linkedin oauth login
-    else if(urlParam.has("code") && window.location.hash === "/linkedin"){
+    else if(urlParam.has("code") && window.location.pathname === "/linkedin"){
       APIService.FetchDataFromLinkedin(urlParam?.get("code") || "");
     }
 }, [])
 
   return (
-    <HashRouter>
+    <BrowserRouter>
     <NavBar />
     <Routes>
       {AppRoutes.map((route:any, index:number) => {
@@ -40,7 +40,7 @@ const App:React.FC = () => {
         return <Route key={index} {...rest} element={element}/>;
       })}
     </Routes>
-  </HashRouter>
+  </BrowserRouter>
   );
 }
 
