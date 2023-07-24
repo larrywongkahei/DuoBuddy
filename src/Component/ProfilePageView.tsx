@@ -7,14 +7,14 @@ import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { User, Comment, Project } from "./Interface";
-const APIService = require("../APIService");
+import { APIService } from '../APIService';
 
 const ProfilePageView:React.FC = () => {
     const [userData, setUserData] = useState<User>()
     const param = useParams();
-    const id = param.id;
+    const id = param?.id;
     useEffect(() => {
-        APIService.getUserById(id).then((data:User) => setUserData(data))
+        APIService.getUserById(id || "").then((data:User) => setUserData(data))
     }, [])
     console.log(userData)
 

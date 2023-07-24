@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 import { User, Comment, Project } from "./Interface";
-const APIService = require('../APIService');
+import { APIService } from '../APIService';
 
 const ShowProject:React.FC = () => {
 
@@ -21,7 +21,7 @@ const ShowProject:React.FC = () => {
     // Commentbox submit button handler
     function handleAddComment(e:React.SyntheticEvent) {
         e.preventDefault();
-        APIService.commentProject(id, sessionStorage.getItem("userId"), commentBox);
+        APIService.commentProject(id || "", sessionStorage?.getItem("userId") || "", commentBox);
         setCommentBox("")
     }
 

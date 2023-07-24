@@ -8,7 +8,7 @@ import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { User, Comment, Project } from "./Interface";
-const APIService = require('../APIService');
+import { APIService } from '../APIService';
 
 const Profile:React.FC = () => {
 

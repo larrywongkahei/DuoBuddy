@@ -2,7 +2,7 @@ import "./PostPageCss.css"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { Project, User, Comment } from './Interface';
-const APIService = require('../APIService')
+import { APIService } from '../APIService';
 
 const PostPage:React.FC = () => {
     const navigate = useNavigate();
@@ -101,14 +101,14 @@ const PostPage:React.FC = () => {
     // Post data button handler
     async function submitButtonHandler() {
         if (title !== "" && detailOfIdea !== "") {
-            const payload = {
+            const payload:Record<string, string | string[] | null> = {
                 "title": title,
                 "userId": sessionStorage.getItem("userId"),
                 "content": `${introduction} \n ${detailOfIdea} \n ${inspiration} \n ${ending}`,
                 "tags": tags
             }
             await APIService.createProject(payload).then((data:Project) => {
-                APIService.updateUser(sessionStorage.getItem("userId"), "projects", data.id)
+                APIService.updateUser(sessionStorage?.getItem("userId"), "projects", data.id)
                 navigate(`/post/${data.id}`)
             })
 

@@ -4,7 +4,7 @@ import { ImLinkedin } from 'react-icons/im';
 import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import { useGoogleLogin } from '@react-oauth/google';
-const APIService = require('../APIService');
+import { APIService } from '../APIService';
 
 export default function Signup() {
 

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavBar from './Component/NavBar';
 import { useEffect } from 'react';
 import { AppRoutes } from './AppRoutes';
-const APIService = require('./APIService');
+import { APIService } from './APIService';
 
 
 
@@ -20,12 +20,12 @@ const App:React.FC = () => {
     
     // check if urlParam has code param for github oauth login
     if(urlParam.has("code") && window.location.pathname === "/github"){
-      APIService.FetchDataFromGithub(urlParam.get("code"));
+      APIService.FetchDataFromGithub(urlParam?.get("code") || "");
     }
 
     // check if urlParam has code param for linkedin oauth login
     else if(urlParam.has("code") && window.location.pathname === "/linkedin"){
-      APIService.FetchDataFromLinkedin(urlParam.get("code"));
+      APIService.FetchDataFromLinkedin(urlParam?.get("code") || "");
     }
 }, [])
 

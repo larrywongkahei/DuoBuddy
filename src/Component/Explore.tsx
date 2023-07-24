@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Project } from './Interface';
-const APIService = require('../APIService');
+import { APIService } from '../APIService';
 
 const Explore:React.FC = ()  => {
 

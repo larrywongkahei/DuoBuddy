@@ -41,8 +41,8 @@ export const APIService =
   },
 
   // Used when user has logged in and reload page
-  fetchUser() {
-    return fetch(`http://localhost:8080/user/dataFetching?email=${sessionStorage.getItem("email")}`)
+  fetchUser(email:string | null) {
+    return fetch(`http://localhost:8080/user/dataFetching?email=${email}`)
       .then(response => response.json())
   },
 
@@ -60,7 +60,7 @@ export const APIService =
   },
 
   // Post project to database
-  createProject(payload:Record<string, string>) {
+  createProject(payload:Record<string, string | null | string[]>) {
     return fetch("http://localhost:8080/project",
       {
         method: "POST",
@@ -71,7 +71,7 @@ export const APIService =
 
   // Update user detail, input bio, location or projects in param field
   // for project, input project id into the body
-  updateUser(userId:string, param:string, payload:string) {
+  updateUser(userId:string | null, param:string, payload:Record<string, string> | string) {
     return fetch(`http://localhost:8080/user/${userId}/${param}`,
       { method: "PUT", body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' } })
       .then(data => data.json())
@@ -97,7 +97,7 @@ export const APIService =
   },
 
   // Add comment to project
-  commentProject(projectId:string, userId:string, content:string) {
+  commentProject(projectId:string, userId:string | null, content:string | null) {
     return fetch(`http://localhost:8080/project/${projectId}?userId=${userId}`, {
       method: "PUT",
       body: content,

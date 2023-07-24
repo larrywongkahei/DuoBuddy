@@ -2,7 +2,7 @@
 import './SearchResultCss.css';
 import { useEffect, useState } from 'react';
 import { User, Comment, Project } from "./Interface";
-const APIService = require('../APIService');
+import { APIService } from '../APIService';
 
 const SearchResult:React.FC = () =>  {
 
@@ -17,7 +17,7 @@ const SearchResult:React.FC = () =>  {
 
     // Fetch projects data from backend
     useEffect(() => {
-        APIService.getProjectsBySearch(dataToSearch).then((data:Project[]) => setProjectToShow(data));
+        APIService.getProjectsBySearch(dataToSearch || "").then((data:Project[]) => setProjectToShow(data));
     }, [])
 
     // Search field input

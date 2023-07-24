@@ -5,7 +5,7 @@ import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import React, { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
-const APIService = require('../APIService');
+import { APIService } from '../APIService';
 
 
 const Login:React.FC = () => {
