@@ -4,33 +4,33 @@ import { ImLinkedin } from 'react-icons/im';
 import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import { useGoogleLogin } from '@react-oauth/google';
-import APIService from '../APIService';
+const APIService = require('../APIService');
 
 export default function Signup() {
 
     // Display name input data
-    const [displayName, setDisplayName] = useState("")
+    const [displayName, setDisplayName] = useState<string>("")
 
     // Display name input data handler
-    function displayNameHandler(e) {
+    function displayNameHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setDisplayName(e.target.value)
     }
 
 
     // Email input data
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState<string>("")
 
     // Email input data handler
-    function emailHandler(e) {
+    function emailHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setEmail(e.target.value)
     }
 
 
     // Password input data
-    const [password, setPassword] = useState("")
+    const [password, setPassword] = useState<string>("")
 
     // Pass input data hanlder
-    function passwordHandler(e) {
+    function passwordHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setPassword(e.target.value)
     }
 
@@ -45,7 +45,7 @@ export default function Signup() {
     })
 
     // Signup submit button handler
-    function submitButtonHandler(e){
+    function submitButtonHandler(e:React.SyntheticEvent){
         e.preventDefault()
         APIService.signup(displayName, email, password);
     }
