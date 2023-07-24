@@ -1,34 +1,35 @@
 ﻿import { useParams, Link, useNavigate } from 'react-router-dom';
 import './SearchResultCss.css';
 import { useEffect, useState } from 'react';
-import APIService from '../APIService';
+import { User, Comment, Project } from "./Interface";
+const APIService = require('../APIService');
 
-export default function SearchResult() {
+const SearchResult:React.FC = () =>  {
 
     // To get all param
     const param = useParams();
 
     // To get dataToSearch param from all param
-    const dataToSearch = param.searchdata
+    const dataToSearch = param?.searchdata
 
     // To store all projects fetched from backend
-    const [projectsToShow, setProjectToShow] = useState([])
+    const [projectsToShow, setProjectToShow] = useState<Project[]>([])
 
     // Fetch projects data from backend
     useEffect(() => {
-        APIService.getProjectsBySearch(dataToSearch).then(data => setProjectToShow(data));
+        APIService.getProjectsBySearch(dataToSearch).then((data:Project[]) => setProjectToShow(data));
     }, [])
 
     // Search field input
     const [searchField, setSearchField] = useState("")
 
     // Search field input handler
-    function searchFieldHandler(e){
+    function searchFieldHandler(e:React.ChangeEvent<HTMLInputElement>){
         setSearchField(e.target.value)
     }
 
     // Search field submit button handler
-    function searchFieldSubmit(e){
+    function searchFieldSubmit(e:React.SyntheticEvent){
         e.preventDefault();
         // /\s/g = all whitespace
         const cleanedSearchField = searchField.replace(/\s/g, "")
@@ -100,4 +101,6 @@ export default function SearchResult() {
             </div>
         </div>
     )
-}
+};
+
+export default SearchResult;

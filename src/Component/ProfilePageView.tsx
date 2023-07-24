@@ -9,7 +9,7 @@ import { BsGithub } from 'react-icons/bs';
 import { User, Comment, Project } from "./Interface";
 const APIService = require("../APIService");
 
-export default function ProfilePageView(){
+const ProfilePageView:React.FC = () => {
     const [userData, setUserData] = useState<User>()
     const param = useParams();
     const id = param.id;
@@ -53,4 +53,8 @@ export default function ProfilePageView(){
                 <div className='bio'>{userData?.bio.replace(/["]/g, "")}</div> : <p>No bio</p> }
         </div>
     </div>
-    </div>)}
+    </div>
+    )
+};
+
+export default ProfilePageView;
