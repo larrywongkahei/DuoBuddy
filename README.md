@@ -17,4 +17,4 @@ MentorShip is a website that aims to bridge the gap between fresh graduates like
   * More...
 
 ## Other:
-Please contact with me <a href="mailto:makemak123@gmail.com" >Here</a>
+Please contact with me makemak123@gmail.com
