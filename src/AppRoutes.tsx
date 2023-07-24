@@ -18,7 +18,7 @@ import ProfilePageView from "./Component/ProfilePageView"
 export const AppRoutes = [
     {
         index: true,
-        path:"*",
+        path:"/MentorShip|/github",
         element: <Home />
     },
     {
