@@ -21,12 +21,12 @@ const App:React.FC = () => {
     console.log(window.location.pathname)
     
     // check if urlParam has code param for github oauth login
-    if(urlParam.has("code") && window.location.pathname === "/github"){
+    if(urlParam.has("code") && window.location.pathname === "/MentorShip/github"){
       APIService.FetchDataFromGithub(urlParam?.get("code") || "");
     }
 
     // check if urlParam has code param for linkedin oauth login
-    else if(urlParam.has("code") && window.location.pathname === "/linkedin"){
+    else if(urlParam.has("code") && window.location.pathname === "/MentorShip/linkedin"){
       APIService.FetchDataFromLinkedin(urlParam?.get("code") || "");
     }
 }, [])
