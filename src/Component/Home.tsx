@@ -13,12 +13,12 @@ const Home:React.FC = ()  => {
     const navigate = useNavigate();
 
     // Searchfield input handler
-    function inputHandler(e) {
+    function inputHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setInput(e.target.value);
     };
 
     // Submit form button handler
-    function handleSubmitForm(e) {
+    function handleSubmitForm(e:React.SyntheticEvent) {
         e.preventDefault();
         // /\s/g = all whitespace
         const cleanedSearchField = input.replace(/\s/g, "")

@@ -5,7 +5,7 @@ import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import React, { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
-import APIService from '../APIService';
+const APIService = require('../APIService');
 
 
 const Login:React.FC = () => {
@@ -27,7 +27,7 @@ const Login:React.FC = () => {
     };
 
     // Submit button handler
-    function submitLoginHandler(e:React.ChangeEvent<HTMLInputElement>):void {
+    function submitLoginHandler(e:React.SyntheticEvent):void {
         e.preventDefault();
         setEmail('');
         setPassword('');
