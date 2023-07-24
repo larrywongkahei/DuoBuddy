@@ -1,26 +1,27 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
-import APIService from "../APIService";
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { IoMdMail } from 'react-icons/io'
 import { MdLocationOn } from 'react-icons/md'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
+import { User, Comment, Project } from "./Interface";
+const APIService = require("../APIService");
 
 export default function ProfilePageView(){
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState<User>()
     const param = useParams();
     const id = param.id;
     useEffect(() => {
-        APIService.getUserById(id).then(data => setUserData(data))
+        APIService.getUserById(id).then((data:User) => setUserData(data))
     }, [])
     console.log(userData)
 
     return (
         <div className='profileContainer'>
         <div className='profilePictureContainer'>
-            <img src={userData?.avatarUrl} className='profilePicture' />
+            <img src={userData?.avatarUrl || ""} className='profilePicture' />
             <p className='name'>{userData?.name}</p>
             <table>
                 <tr>
@@ -38,9 +39,9 @@ export default function ProfilePageView(){
                 </tr>
             </table>
             <div className='contactIconsContainer'>
-                {Object.keys(userData?.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github']}/> : null}
-                {Object.keys(userData?.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin']}/> : null}
-                {Object.keys(userData?.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter']}/> : null}
+                {Object.keys(userData?.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github'] || ""}/> : null}
+                {Object.keys(userData?.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin'] || ""}/> : null}
+                {Object.keys(userData?.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter'] || ""}/> : null}
             </div>
         </div>
         <div className='profileDataContainer'>

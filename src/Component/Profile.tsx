@@ -8,10 +8,9 @@ import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { User, Comment, Project } from "./Interface";
-import { BlockList } from 'net';
 const APIService = require('../APIService');
 
-export default function Profile() {
+const Profile:React.FC = () => {
 
 
     // Store userData fetched from backend
@@ -151,4 +150,6 @@ export default function Profile() {
             </div>
         </div>
     )
-}
+};
+
+export default Profile;
