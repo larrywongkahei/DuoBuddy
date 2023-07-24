@@ -76,15 +76,15 @@ const Profile:React.FC = () => {
     }
 
     // Update data function
-    function updateData(param:string, data:string) {
-        APIService.updateUser(sessionStorage.getItem('userId'), param, data);
+    async function updateData(param:string, data:string) {
+        await APIService.updateUser(sessionStorage.getItem('userId'), param, data);
         window.location.reload();
     }
 
 
-    function submitForm(e:React.SyntheticEvent) {
+    async function submitForm(e:React.SyntheticEvent) {
         e.preventDefault();
-        APIService.updateUser(sessionStorage.getItem('userId'), 'bio', bio);
+        await APIService.updateUser(sessionStorage.getItem('userId'), 'bio', bio);
         window.location.reload();
     }
 
