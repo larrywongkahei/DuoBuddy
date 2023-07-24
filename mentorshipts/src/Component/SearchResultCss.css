@@ -1,0 +1,75 @@
+﻿.title {
+    font-size: 24px;
+}
+
+.title::before {
+    content: "🔍";
+    margin-right: 10px;
+}
+
+.searchResultContainer {
+    text-align: center;
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+
+.searchPageInput {
+    width: 30rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 30px;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+}
+
+.SearchResultTitle {
+    padding-bottom: 3rem;
+}
+
+.eachResult h1 {
+    color: black;
+}
+
+.SearchResultDataContainer {
+    margin-top: 5rem;
+}
+
+.ResultDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ResultDetailLeft {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.ResultDetailRight {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: aliceblue;
+    align-items: center;
+}
+
+.ResultDetailRight img {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 10px;
+}
+
+.searchResultProjects {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.ResultDetailsTags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}

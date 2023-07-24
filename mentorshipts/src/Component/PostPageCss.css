@@ -1,0 +1,463 @@
+.postPageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.postPageContainer textarea{
+    font-size: 16px;
+    font-style: italic;
+    padding-left: 6px;
+}
+
+.inputContainer {
+    width: 70%;
+}
+
+.introContainer {
+    text-align: end;
+    margin-right: 2rem;
+}
+
+/* First Part */
+.container1 {
+    display: flex;
+    flex-direction: row;
+}
+.instructionOfExplanationContainer {
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.instructionOfExplanationContainer h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.explanationContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    background-color:deepskyblue;   
+    margin-bottom: 3rem;
+    height: 18rem;
+    width: 70%;
+}
+
+.askReady {
+    text-align: center;
+}
+
+
+/* First Content */
+.firstContent {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.content1Container {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 12rem;
+    width: 70%;
+}
+
+.instructionOfContent1Container {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24;
+    width: 30%;
+}
+
+.instructionOfContent1Container h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainer h1{
+    font-size: 24px;
+}
+
+.content1Container input{
+    width: 80%;
+    height: 24px;
+    font-size: 16px;
+    padding-left: 8px;
+}
+
+.inputAndButton {
+    display: flex;
+    flex-direction: column;
+}
+
+.nextButton {
+    background-color: blue;
+    color: white;
+    height: 35px;
+    width: 80px;
+    margin-top: 5px;
+}
+
+/* Second Part */
+
+.secondContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.secondContent textarea{
+    height: 6rem;
+    width: 80%;
+    overflow:scroll;
+    resize: none;
+    padding-left: 8px;
+}
+
+.introduceYourselfContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 15rem;
+    width: 70%;
+    
+}
+
+.nonClickableIntroduceYourselfContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 15rem;
+    width: 70%;
+    pointer-events: none;
+    color: grey;
+}
+
+
+.instructionOfIntroduceYourselfContainer {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24;
+    width: 30%;
+}
+
+.instructionOfIntroduceYourselfContainer h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Third Part */
+
+.thirdContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.ideaDetailContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 19rem;
+    width: 70%;
+}
+
+.nonClickableIdeaDetailContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 19rem;
+    width: 70%;
+    pointer-events: none;
+    color: grey;
+}
+
+.thirdContent textarea{
+    height: 10rem;
+    width: 80%;
+    overflow:scroll;
+    resize: none;
+    padding-left: 8px;
+}
+
+.instructionOfIdeaDetailContainer {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24;
+    width: 30%;
+}
+
+.instructionOfIdeaDetailContainer h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* fourth Part */
+.fourthContent {
+    display: flex;
+    flex-direction: row;
+}
+.explainInspiration {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 22rem;
+    width: 70%;
+}
+
+.nonClickableExplainInspiration {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 22rem;
+    width: 70%;
+    pointer-events: none;
+    color: grey;
+}
+
+.fourthContent textarea {
+    height: 12rem;
+    width: 80%;
+    overflow:scroll;
+    resize: none;
+    padding-left: 8px;
+}
+
+
+.instructionOfExplainIdea {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24;
+    width: 30%;
+}
+
+.instructionOfExplainIdea h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fifthContent */
+.fifthContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.instructionOfOthers {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24;
+    width: 30%;
+}
+
+.others {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 18rem;
+    width: 70%;
+}
+
+.nonClickableOthers {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 18rem;
+    width: 70%;
+    pointer-events: none;
+    color: grey;
+}
+
+.instructionOfOthers h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextPage {
+    width: 8rem;
+    height: 3rem;
+    background-color:cadetblue;
+    color: white;
+    align-self: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.nextLink {
+    color: white;
+    text-decoration: none;
+}
+
+.nonCLickableNextLink {
+    color: white;
+    text-decoration: none;
+    pointer-events: none;
+}
+
+.fifthContent textarea {
+    height: 8rem;
+    width: 80%;
+    overflow:scroll;
+    resize: none;
+    padding-left: 8px;
+}
+
+/* sixthContent */
+
+.sixthContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.instructionOfTags {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24;
+    width: 30%;
+}
+
+.tagsContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 16rem;
+    width: 70%;
+}
+
+.nonClickableTagsContainer {
+    border-style: solid;
+    padding:2rem;
+    padding-right: 0px !important;
+    margin-bottom: 3rem;
+    height: 16rem;
+    width: 70%;
+    pointer-events: none;
+    color: grey;
+}
+
+.instructionOfTags h1{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tagsBox {
+    border-style: solid;
+    border-width: 1px;
+    height: 6rem;
+    margin-bottom: 1.5rem;
+    width: 80%;
+    padding-left: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+
+.tagsInput {
+    height: 2rem;
+    font-size: 18px;
+    padding-left: 8px;
+    width: 70%;
+}
+
+.addTagsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.addTagsContainer button{
+    width: 5rem;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.tag {
+    border-style: solid;
+    border-radius: 20px;
+    height: 2rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+    padding-left: .7rem;
+    padding-right: .7rem;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.tagContent {
+    margin: 0px !important;   
+}
