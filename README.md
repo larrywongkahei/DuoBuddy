@@ -2,6 +2,13 @@
 
 MentorShip is a website that aims to bridge the gap between fresh graduates like us and experienced industry mentors.
 
+## Tools
+
+* TypeScript
+* React
+* Java
+* Spring
+
 ## User Could:
 
 * Update profile details ( Bio, Contact etc...)
