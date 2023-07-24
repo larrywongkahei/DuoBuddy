@@ -66,6 +66,7 @@ const APIService =
         method: "POST",
         body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' }
       })
+      .then(data => data.json())
   },
 
   // Update user detail, input bio, location or projects in param field
@@ -73,6 +74,7 @@ const APIService =
   updateUser(userId, param, payload) {
     return fetch(`http://localhost:8080/user/${userId}/${param}`,
       { method: "PUT", body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' } })
+      .then(data => data.json())
   },
 
   getAllProject() {

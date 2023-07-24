@@ -24,7 +24,7 @@ export default function NavBar(){
                 <Link className="navLink" to="/explore">Explore</Link>
             </div>
             : <div className='topRightLinks'>
-                <Link className="navLink" to="/profile"><img className="userAvatar" src={sessionStorage.getItem("avatar_url")} /></Link>
+                <Link className="navLink" to="/profile"><img className="userAvatar" src={sessionStorage?.getItem("avatar_url") || ""} /></Link>
                 <Link className="navLink" to="/explore">Explore</Link>
                 <p className="navLink" onClick={logout}>LogOut</p>
                 </div>}

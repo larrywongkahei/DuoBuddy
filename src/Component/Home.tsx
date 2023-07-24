@@ -6,19 +6,19 @@ import { SiGmail } from 'react-icons/si';
 import { BsGithub } from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
 
-export default function Home() {
+const Home:React.FC = ()  => {
 
     // Searchfield input
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState<string>("");
     const navigate = useNavigate();
 
     // Searchfield input handler
-    function inputHandler(e) {
+    function inputHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setInput(e.target.value);
     };
 
     // Submit form button handler
-    function handleSubmitForm(e) {
+    function handleSubmitForm(e:React.SyntheticEvent) {
         e.preventDefault();
         // /\s/g = all whitespace
         const cleanedSearchField = input.replace(/\s/g, "")
@@ -62,3 +62,5 @@ export default function Home() {
         </div>
     );
 };
+
+export default Home;

@@ -1,6 +1,8 @@
 ﻿import './ExploreCss.css';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Project } from './Interface';
 const APIService = require('../APIService');
 
 const Explore:React.FC = ()  => {
@@ -9,53 +11,17 @@ const Explore:React.FC = ()  => {
     const [filter, setFilter] = useState<string>("");
 
     // To Store all projects data fetched from backend
-    const [Projects, setProjects] = useState<project[]>([]);
+    const [Projects, setProjects] = useState<Project[]>([]);
     const navigate = useNavigate()
-
-    interface User {
-        id : string;
-        name : string;
-        bio : string;
-        createdDate : string;
-        contact : Record<string, string>;
-        location : string;
-        projects : string[];
-        avatarUrl : string;
-        email : string;
-        password : string;
-        phoneNumber : string;
-    }
-
-    interface Comment{
-        id? : string;
-        userId : string;
-        createdDate : string;
-        createdBy : User;
-        userfulVotes : number;
-        content : string;
-    }
-
-    interface project {
-        id : string;
-        title : string;
-        userId : string;
-        createdBy : User;
-        createdDate : string;
-        tags : string[];
-        support : number;
-        views : number;
-        content : string;
-        comments : Comment[];
-    }
 
     useEffect(() => {
         // Fetch all project from backend
-        APIService.getAllProject().then((data:project[]) => setProjects(data));
+        APIService.getAllProject().then((data:Project[]) => setProjects(data));
     }, [])
 
     // Function returning the largest number of the type in input project
     // Coded it in a function for better readibility
-    function findMaxNumberFromType(projects:project[], type:string):number{
+    function findMaxNumberFromType(projects:Project[], type:string):number{
         let maxNumber = 0;
         switch (type) {
             case "Comments":
@@ -79,8 +45,8 @@ const Explore:React.FC = ()  => {
 
     // Function returning a sorted array by input type
     // Coded it in a function to prevent hard code them for each type
-    function returnArraySortedByType(projects:project[], type:string):project[] {
-        const newArray:project[] = []
+    function returnArraySortedByType(projects:Project[], type:string):Project[] {
+        const newArray:Project[] = []
         let projectClone = [...projects];
         switch (type) {
             case "Comments":
@@ -110,7 +76,7 @@ const Explore:React.FC = ()  => {
         setFilter(e?.target?.value);
         switch (e?.target?.value) {
             case "Newest":
-                APIService.getAllProject().then((data:project[]) => setProjects(data.reverse()));
+                APIService.getAllProject().then((data:Project[]) => setProjects(data.reverse()));
                 break;
             case "Comment":
                 setProjects(returnArraySortedByType(Projects, "Comments"));
