@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import NavBar from './Component/NavBar';
 import { useEffect } from 'react';
 import { AppRoutes } from './AppRoutes';
@@ -32,7 +32,7 @@ const App:React.FC = () => {
 }, [])
 
   return (
-    <BrowserRouter>
+    <HashRouter>
     <NavBar />
     <Routes>
       {AppRoutes.map((route:any, index:number) => {
@@ -40,7 +40,7 @@ const App:React.FC = () => {
         return <Route key={index} {...rest} element={element}/>;
       })}
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
   );
 }
 
