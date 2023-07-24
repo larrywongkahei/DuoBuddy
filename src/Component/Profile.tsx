@@ -1,6 +1,5 @@
 ﻿import './ProfileCss.css';
 import { useState, useEffect } from 'react';
-import APIService from '../APIService';
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { IoMdMail } from 'react-icons/io'
 import { MdLocationOn } from 'react-icons/md'
@@ -8,35 +7,39 @@ import { GiConfirmed } from 'react-icons/gi'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
+import { User, Comment, Project } from "./Interface";
+import { BlockList } from 'net';
+const APIService = require('../APIService');
 
 export default function Profile() {
 
+
     // Store userData fetched from backend
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState<User>();
 
     // Store input value if user doesn't already have one
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [location, setLocation] = useState("");
-    const [bio, setBio] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState<string>("");
+    const [location, setLocation] = useState<string>("");
+    const [bio, setBio] = useState<string>("");
 
     // Buttons to keep track of users action
-    const [showBioContainer, setShowBioContainer] = useState(false);
-    const [showAddContact, setShowAddContact] = useState(false);
+    const [showBioContainer, setShowBioContainer] = useState<Boolean>(false);
+    const [showAddContact, setShowAddContact] = useState<Boolean>(false);
 
     // keep track of user's choice of adding contact
-    const [chosenContact, setChosenContact] = useState("");
+    const [chosenContact, setChosenContact] = useState<string>("");
 
     // User input contact url
-    const [contactURL, setContactURL] = useState("");
+    const [contactURL, setContactURL] = useState<string>("");
 
     useEffect(() => {
-        APIService.fetchUser(sessionStorage.getItem("email")).then(data => setUserData(data))
+        APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data))
     }, [])
 
     // Button handler for input contact update button
-    async function updateContactButton(e) {
+    async function updateContactButton(e:React.SyntheticEvent) {
         e.preventDefault();
-        const dataToUpdate = {};
+        const dataToUpdate:Record<string, string> = {};
         dataToUpdate[chosenContact] = contactURL;
         await APIService.updateUser(sessionStorage.getItem("userId"), 'contact', dataToUpdate);
         window.location.reload();
@@ -45,7 +48,7 @@ export default function Profile() {
 
 
     // Set user's choice for contant
-    function chosenContactHandler(option) {
+    function chosenContactHandler(option:string) {
         setChosenContact(option);
     }
 
@@ -55,16 +58,16 @@ export default function Profile() {
     }
 
     // set input data
-    function bioHandler(e) {
+    function bioHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
         setBio(e.target.value)
     }
-    function phoneNumberHandler(e) {
+    function phoneNumberHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setPhoneNumber(e.target.value);
     }
-    function locationHandler(e) {
+    function locationHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setLocation(e.target.value);
     }
-    function contactURLHandler(e) {
+    function contactURLHandler(e:React.ChangeEvent<HTMLInputElement>) {
         setContactURL(e.target.value);
     }
 
@@ -74,13 +77,13 @@ export default function Profile() {
     }
 
     // Update data function
-    function updateData(param, data) {
+    function updateData(param:string, data:string) {
         APIService.updateUser(sessionStorage.getItem('userId'), param, data);
         window.location.reload();
     }
 
 
-    function submitForm(e) {
+    function submitForm(e:React.SyntheticEvent) {
         e.preventDefault();
         APIService.updateUser(sessionStorage.getItem('userId'), 'bio', bio);
         window.location.reload();
@@ -90,12 +93,12 @@ export default function Profile() {
     return (
         <div className='profileContainer'>
             <div className='profilePictureContainer'>
-                <img src={sessionStorage.getItem("avatar_url")} className='profilePicture' />
+                <img src={sessionStorage.getItem("avatar_url") || ""} className='profilePicture' />
                 <p className='name'>{sessionStorage.getItem("name")}</p>
                 <table>
                     <tr>
                         <td><IoMdMail className='profileIcons' /></td>
-                        <td><a href={`mailto:${sessionStorage.getItem("email")}`} className='clickableContact'><p>{userData?.email}</p></a></td>
+                        <td><a href={`mailto:${sessionStorage.getItem("email")}`} className='clickableContact'><p>{userData?.email || ""}</p></a></td>
                     </tr>
                     <tr>
                         <td><MdLocationOn className='profileIcons' /></td>
@@ -108,12 +111,12 @@ export default function Profile() {
                     </tr>
                 </table>
                 <div className='contactIconsContainer'>
-                    {Object.keys(userData.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github']} /> : null}
-                    {Object.keys(userData.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin']} /> : null}
-                    {Object.keys(userData.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter']} /> : null}
+                    {Object.keys(userData?.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github'] || ""} /> : null}
+                    {Object.keys(userData?.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin'] || ""} /> : null}
+                    {Object.keys(userData?.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter'] || ""} /> : null}
                 </div>
                 <div>
-                    {Object.keys(userData.contact || {}).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
+                    {Object.keys(userData?.contact || {}).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
                     {showAddContact ?
                         <div>
                             <div className='contactIconsContainer'>
@@ -135,7 +138,7 @@ export default function Profile() {
                     <p>
                         Bio
                     </p>
-                    {userData.bio ? <div className='bio'>{userData.bio.replace(/["]/g, "")}</div> :
+                    {userData?.bio ? <div className='bio'>{userData.bio.replace(/["]/g, "")}</div> :
                         <div>
                             {showBioContainer ?
                                 <form>

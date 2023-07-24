@@ -32,3 +32,18 @@ export interface Project {
     content : string;
     comments : Comment[];
 }
+
+// export interface UserData {
+//     avatarUrl : string,
+//     bio : string | null,
+//     contact : Record<string, string>,
+//     createdDate : string,
+//     email : string,
+//     id : string,
+//     location : string | null,
+//     name : string,
+//     password : string | null,
+//     phoneNumber : string | null,
+//     projects : Project[],
+
+// }
