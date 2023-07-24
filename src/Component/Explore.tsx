@@ -1,25 +1,61 @@
 ﻿import './ExploreCss.css';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import APIService from '../APIService';
+const APIService = require('../APIService');
 
-export default function Explore() {
+const Explore:React.FC = ()  => {
 
     // Filter selection
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState<string>("");
 
     // To Store all projects data fetched from backend
-    const [Projects, setProjects] = useState([]);
+    const [Projects, setProjects] = useState<project[]>([]);
     const navigate = useNavigate()
+
+    interface User {
+        id : string;
+        name : string;
+        bio : string;
+        createdDate : string;
+        contact : Record<string, string>;
+        location : string;
+        projects : string[];
+        avatarUrl : string;
+        email : string;
+        password : string;
+        phoneNumber : string;
+    }
+
+    interface Comment{
+        id? : string;
+        userId : string;
+        createdDate : string;
+        createdBy : User;
+        userfulVotes : number;
+        content : string;
+    }
+
+    interface project {
+        id : string;
+        title : string;
+        userId : string;
+        createdBy : User;
+        createdDate : string;
+        tags : string[];
+        support : number;
+        views : number;
+        content : string;
+        comments : Comment[];
+    }
 
     useEffect(() => {
         // Fetch all project from backend
-        APIService.getAllProject().then(data => setProjects(data));
+        APIService.getAllProject().then((data:project[]) => setProjects(data));
     }, [])
 
     // Function returning the largest number of the type in input project
     // Coded it in a function for better readibility
-    function findMaxNumberFromType(projects, type) {
+    function findMaxNumberFromType(projects:project[], type:string):number{
         let maxNumber = 0;
         switch (type) {
             case "Comments":
@@ -31,18 +67,20 @@ export default function Explore() {
                 return maxNumber
             case "Views":
                 for (var i = 0; i < projects.length; i++) {
-                    if (projects[i].views.length > maxNumber) {
-                        maxNumber = projects[i].views.length
+                    if (projects[i].views > maxNumber) {
+                        maxNumber = projects[i].views
                     }
                 }
                 return maxNumber
         }
+        return 0;
     }
+
 
     // Function returning a sorted array by input type
     // Coded it in a function to prevent hard code them for each type
-    function returnArraySortedByType(projects, type) {
-        const newArray = []
+    function returnArraySortedByType(projects:project[], type:string):project[] {
+        const newArray:project[] = []
         let projectClone = [...projects];
         switch (type) {
             case "Comments":
@@ -58,20 +96,21 @@ export default function Explore() {
                 while (newArray.length != projects.length) {
                     let maxNumber = findMaxNumberFromType(projectClone, type)
                     // push project that views length is same as the largest number
-                    projectClone.filter(e => e.views.length >= maxNumber).forEach(e => newArray.push(e))
+                    projectClone.filter(e => e.views >= maxNumber).forEach(e => newArray.push(e))
                     // Filter out the array
-                    projectClone = projectClone.filter(e => e.views.length < maxNumber)
+                    projectClone = projectClone.filter(e => e.views < maxNumber)
                 }
                 return newArray;
         }
+        return newArray;
     }
 
     // Selection filter handler
-    function filterHandler(e) {
-        setFilter(e.target.value);
-        switch (e.target.value) {
+    function filterHandler(e:React.ChangeEvent<HTMLSelectElement>) {
+        setFilter(e?.target?.value);
+        switch (e?.target?.value) {
             case "Newest":
-                APIService.getAllProject().then(data => setProjects(data.reverse()));
+                APIService.getAllProject().then((data:project[]) => setProjects(data.reverse()));
                 break;
             case "Comment":
                 setProjects(returnArraySortedByType(Projects, "Comments"));
@@ -167,3 +206,5 @@ export default function Explore() {
         </div>
     )
 }
+
+export default Explore

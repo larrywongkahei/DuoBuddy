@@ -5,3 +5,5 @@ const AddTag:React.FC = () => {
     </h1>
     )
 }
+
+export default AddTag
