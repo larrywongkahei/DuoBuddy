@@ -18,7 +18,7 @@ export const APIService =
     sessionStorage.setItem("name", name)
     sessionStorage.setItem("email", email)
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png")
-    this.createUser(name, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", email, password)
+    await this.createUser(name, null, null, "https://larrywongkahei.github.io/img/pixel_art.png", email, password)
   },
 
   async signin(email:string, password:string){

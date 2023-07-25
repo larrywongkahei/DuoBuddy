@@ -45,9 +45,9 @@ export default function Signup() {
     })
 
     // Signup submit button handler
-    function submitButtonHandler(e:React.SyntheticEvent) : void{
+    async function submitButtonHandler(e:React.SyntheticEvent) : void{
         e.preventDefault()
-        APIService.signup(displayName, email, password);
+        await APIService.signup(displayName, email, password);
     }
 
 
