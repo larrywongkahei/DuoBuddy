@@ -9,10 +9,11 @@ import { APIService } from './APIService';
 
 const App:React.FC = () => {
 
+  const allparam = useParams();
+  console.log(allparam?.id)
 
   useEffect(() => {
-    const allparam = useParams();
-    console.log(allparam?.id)
+    
     // get queryString (http://localhost:3000/login?id=1 to ?id=1)
     // const queryString = window.location.search;
 
