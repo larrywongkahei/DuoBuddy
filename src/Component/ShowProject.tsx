@@ -40,8 +40,6 @@ const ShowProject: React.FC = () => {
     // Get id from all param
     const id = param.id;
 
-    const nav = useNavigate();
-
     // Create a useState to keep track of user press the reload button
     const [reload, setReload] = useState<Boolean>(false)
 
