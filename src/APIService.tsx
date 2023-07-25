@@ -9,12 +9,7 @@ export const APIService =
           'Content-Type': 'application/json'
         }
       }).then(response => response.json())
-      .then(data => {
-        sessionStorage.setItem("userId", data.id);
-        sessionStorage.setItem("email", data.email);
-        sessionStorage.setItem("name", data.name);
-        sessionStorage.setItem("avatar_url", data.avatarUrl);
-      })
+      .then(data => sessionStorage.setItem("userId", data.id))
       .then(() => window.location.href = "https://larrywongkahei.github.io/MentorShip/")
   },
 
