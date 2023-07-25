@@ -27,11 +27,11 @@ const Login:React.FC = () => {
     };
 
     // Submit button handler
-    async function submitLoginHandler(e:React.SyntheticEvent):void {
+    function submitLoginHandler(e:React.SyntheticEvent):void {
         e.preventDefault();
         setEmail('');
         setPassword('');
-        await APIService.signin(email, password);
+        APIService.signin(email, password);
     };
 
 
