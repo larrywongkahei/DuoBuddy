@@ -25,6 +25,7 @@ const App:React.FC = () => {
       sessionStorage.setItem("userId", data.id);
       sessionStorage.setItem("email", data.email);
       sessionStorage.setItem("avatar_url", data.avatarUrl);
+      window.location.href = "https://larrywongkahei.github.io/MentorShip/";
     })
     
     // check if urlParam has code param for github oauth login
