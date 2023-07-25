@@ -10,6 +10,8 @@ const ShowProject: React.FC = () => {
     // To store all projects fetched from backend
     const [projectData, setProjectData] = useState<Project>();
 
+    const [apply, setApply] = useState(false);
+
     // To store commentBox input data
     const [commentBox, setCommentBox] = useState<string>("")
 
@@ -59,8 +61,8 @@ const ShowProject: React.FC = () => {
 
     async function applyToBuildProjectTogether(e: React.MouseEvent) {
         if (sessionStorage.length > 0) {
-            await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId"), null)
-            nav(`post/${id}`)
+            await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId"), null);
+            setApply(true);
         } else {
             alert("Login First");
         }
@@ -141,7 +143,7 @@ const ShowProject: React.FC = () => {
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
-                    {projectData?.applications.includes(sessionStorage?.getItem("userId") || "dummyData") ?
+                    {projectData?.applications.includes(sessionStorage?.getItem("userId") || "dummyData") || apply?
                         <button onClick={applyToBuildProjectTogether}>
                             Applied
                         </button> : <button onClick={applyToBuildProjectTogether}>
