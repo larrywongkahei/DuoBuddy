@@ -143,9 +143,13 @@ const ShowProject:React.FC = () => {
                     {tags}
                 </div>
                 <div className='ProjectUserDetail'>
+                <Link to={`/profile/${projectData?.createdBy.id}`} >
                     <img src={projectData?.createdBy?.avatarUrl} />
+                    </Link>
                     <p>
+                    <Link to={`/profile/${projectData?.createdBy.id}`} style={{textDecoration:"none", color:"black"}}>
                         {projectData?.createdBy?.name}
+                        </Link>
                     </p>
                 </div>
             </div>
