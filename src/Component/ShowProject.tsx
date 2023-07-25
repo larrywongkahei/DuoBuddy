@@ -55,7 +55,7 @@ const ShowProject:React.FC = () => {
         }
     }, [])
 
-    async function applyToBuildProjectTogether(e:React.SyntheticEvent){
+    async function applyToBuildProjectTogether(e:React.MouseEvent){
         console.log('hi')
     }
 
