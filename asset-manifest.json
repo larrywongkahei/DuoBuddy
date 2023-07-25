@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MentorShip/static/css/main.940127b8.css",
-    "main.js": "/MentorShip/static/js/main.7dbf59d6.js",
+    "main.js": "/MentorShip/static/js/main.3d3e21f0.js",
     "static/js/787.f1813f58.chunk.js": "/MentorShip/static/js/787.f1813f58.chunk.js",
     "index.html": "/MentorShip/index.html",
     "main.940127b8.css.map": "/MentorShip/static/css/main.940127b8.css.map",
-    "main.7dbf59d6.js.map": "/MentorShip/static/js/main.7dbf59d6.js.map",
+    "main.3d3e21f0.js.map": "/MentorShip/static/js/main.3d3e21f0.js.map",
     "787.f1813f58.chunk.js.map": "/MentorShip/static/js/787.f1813f58.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.940127b8.css",
-    "static/js/main.7dbf59d6.js"
+    "static/js/main.3d3e21f0.js"
   ]
 }
