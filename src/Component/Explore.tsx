@@ -32,9 +32,9 @@ const Explore:React.FC = ()  => {
                 }
                 return maxNumber
             case "Views":
-                for (var i = 0; i < projects.length; i++) {
-                    if (projects[i].views > maxNumber) {
-                        maxNumber = projects[i].views
+                for (var x = 0; x < projects.length; x++) {
+                    if (projects[x].views > maxNumber) {
+                        maxNumber = projects[x].views
                     }
                 }
                 return maxNumber
@@ -50,7 +50,7 @@ const Explore:React.FC = ()  => {
         let projectClone = [...projects];
         switch (type) {
             case "Comments":
-                while (newArray.length != projects.length) {
+                while (newArray.length !== projects.length) {
                     let maxNumber = findMaxNumberFromType(projectClone, type)
                     // push project that comment length is same as the largest number
                     projectClone.filter(e => e.comments.length >= maxNumber).forEach(e => newArray.push(e))
@@ -59,7 +59,7 @@ const Explore:React.FC = ()  => {
                 }
                 return newArray;
             case "Views":
-                while (newArray.length != projects.length) {
+                while (newArray.length !== projects.length) {
                     let maxNumber = findMaxNumberFromType(projectClone, type)
                     // push project that views length is same as the largest number
                     projectClone.filter(e => e.views >= maxNumber).forEach(e => newArray.push(e))
@@ -114,7 +114,7 @@ const Explore:React.FC = ()  => {
                 </div>
                 <div className='rightDetail'>
                     <Link to={`/profile/${each.createdBy.id}`} >
-                        <img src={each.createdBy?.avatarUrl} />
+                        <img src={each.createdBy?.avatarUrl} alt='logo'/>
                     </Link>
 
                     <div className='createdUser'>

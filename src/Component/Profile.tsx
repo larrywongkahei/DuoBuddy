@@ -7,7 +7,7 @@ import { GiConfirmed } from 'react-icons/gi'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-import { User, Comment, Project } from "./Interface";
+import { User } from "./Interface";
 import { APIService } from '../APIService';
 
 const Profile:React.FC = () => {
@@ -92,7 +92,7 @@ const Profile:React.FC = () => {
     return (
         <div className='profileContainer'>
             <div className='profilePictureContainer'>
-                <img src={userData?.avatarUrl} className='profilePicture' />
+                <img src={userData?.avatarUrl} className='profilePicture' alt='logo'/>
                 <p className='name'>{sessionStorage.getItem("name")}</p>
                 <table>
                     <tr>

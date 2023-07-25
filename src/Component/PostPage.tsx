@@ -1,7 +1,7 @@
 import "./PostPageCss.css"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { Project, User, Comment } from './Interface';
+import { Project } from './Interface';
 import { APIService } from '../APIService';
 
 const PostPage:React.FC = () => {

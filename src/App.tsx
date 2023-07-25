@@ -4,7 +4,7 @@ import NavBar from './Component/NavBar';
 import { useEffect } from 'react';
 import { AppRoutes } from './AppRoutes';
 import { APIService } from './APIService';
-import { Project, User, Comment } from './Component/Interface';
+import { User } from './Component/Interface';
 
 
 

@@ -1,7 +1,7 @@
 ﻿import { useParams, Link, useNavigate } from 'react-router-dom';
 import './SearchResultCss.css';
 import { useEffect, useState } from 'react';
-import { User, Comment, Project } from "./Interface";
+import { Project } from "./Interface";
 import { APIService } from '../APIService';
 
 const SearchResult: React.FC = () => {
@@ -66,7 +66,7 @@ const SearchResult: React.FC = () => {
                     </div>
                     <div className='ResultDetailRight'>
                         <Link to={`/profile/${each?.createdBy.id}`} >
-                            <img src={each.createdBy?.avatarUrl} />
+                            <img src={each.createdBy?.avatarUrl} alt='logo'/>
                         </Link>
                         <Link to={`/profile/${each?.createdBy.id}`} style={{ textDecoration: "none", color: "black" }}>
                             <p>
