@@ -55,6 +55,10 @@ const ShowProject:React.FC = () => {
         }
     }, [])
 
+    async function applyToBuildProjectTogether(e:React.SyntheticEvent){
+        console.log('hi')
+    }
+
     // Function to check if the viewer are the creater, add view if not.
     async function addViewOrSetData(id:string) {
         const data = await APIService.getProjectById(id);
@@ -129,7 +133,7 @@ const ShowProject:React.FC = () => {
                 <h1 className='ProjectPageTitle'>
                     {projectData?.title}
                 </h1>
-                <button>
+                <button onClick={applyToBuildProjectTogether}>
                     Apply to build project together
                 </button>
                 <div className='ProjectPageHeaderDetail'>
