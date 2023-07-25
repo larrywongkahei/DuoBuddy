@@ -1,5 +1,5 @@
 import './ShowProjectCss.css';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 import { User, Comment, Project } from "./Interface";
@@ -38,6 +38,8 @@ const ShowProject: React.FC = () => {
     // Get id from all param
     const id = param.id;
 
+    const nav = useNavigate();
+
     // Create a useState to keep track of user press the reload button
     const [reload, setReload] = useState<Boolean>(false)
 
@@ -58,6 +60,7 @@ const ShowProject: React.FC = () => {
     async function applyToBuildProjectTogether(e: React.MouseEvent) {
         if (sessionStorage.length > 0) {
             await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId"), null)
+            nav(`post/${id}`)
         } else {
             alert("Login First");
         }
