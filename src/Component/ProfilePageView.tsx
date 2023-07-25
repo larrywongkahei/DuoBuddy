@@ -16,7 +16,6 @@ const ProfilePageView:React.FC = () => {
     useEffect(() => {
         APIService.getUserById(id || "").then((data:User) => setUserData(data))
     }, [])
-    console.log(userData)
 
     return (
         <div className='profileContainer'>
