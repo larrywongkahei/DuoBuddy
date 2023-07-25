@@ -54,12 +54,13 @@ const ShowProject: React.FC = () => {
     useEffect(() => {
         if (id) {
             addViewOrSetData(id);
+            console.log(id)
         }
     }, [])
 
     async function applyToBuildProjectTogether(e: React.MouseEvent) {
         if (sessionStorage.length > 0) {
-            await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId"), null);
+            await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId") || "");
             setApply(true);
         } else {
             alert("Login First");
@@ -70,11 +71,12 @@ const ShowProject: React.FC = () => {
     async function addViewOrSetData(id: string) {
         const data = await APIService.getProjectById(id);
         if (data.createdBy?.name !== sessionStorage.getItem("name")) {
-            // CommentProject would add a view if not passing in the content
-            const responseToSet = await APIService.commentProject(id, null, null);
+            const responseToSet = await APIService.addView(id);
             const dataToSet = await responseToSet.json();
             setProjectData(dataToSet);
+            console.log(dataToSet)
         } else {
+            console.log(data)
             setProjectData(data)
         }
     }
@@ -141,7 +143,7 @@ const ShowProject: React.FC = () => {
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
-                    {projectData?.applications.includes(sessionStorage?.getItem("userId") || "dummyData") || apply?
+                    {projectData?.applications?.includes(sessionStorage?.getItem("userId") || "dummyData") || apply?
                         <button onClick={applyToBuildProjectTogether}>
                             Applied
                         </button> : <button onClick={applyToBuildProjectTogether}>
@@ -171,11 +173,11 @@ const ShowProject: React.FC = () => {
                     {tags}
                 </div>
                 <div className='ProjectUserDetail'>
-                    <Link to={`/profile/${projectData?.createdBy.id}`} >
+                    <Link to={`/profile/${projectData?.createdBy?.id}`} >
                         <img src={projectData?.createdBy?.avatarUrl} />
                     </Link>
                     <p>
-                        <Link to={`/profile/${projectData?.createdBy.id}`} style={{ textDecoration: "none", color: "black" }}>
+                        <Link to={`/profile/${projectData?.createdBy?.id}`} style={{ textDecoration: "none", color: "black" }}>
                             {projectData?.createdBy?.name}
                         </Link>
                     </p>
