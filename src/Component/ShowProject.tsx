@@ -21,8 +21,14 @@ const ShowProject:React.FC = () => {
     // Commentbox submit button handler
     function handleAddComment(e:React.SyntheticEvent) {
         e.preventDefault();
-        APIService.commentProject(id || "", sessionStorage?.getItem("userId") || "", commentBox);
-        setCommentBox("")
+        if(sessionStorage.length > 0){
+            APIService.commentProject(id || "", sessionStorage?.getItem("userId") || "", commentBox);
+            setCommentBox("");
+        }else{
+            alert("Log in first");
+            setCommentBox("");
+        }
+
     }
 
 
