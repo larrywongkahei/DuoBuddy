@@ -65,12 +65,16 @@
     gap: 6px;
     flex-wrap: wrap;
     overflow: scroll;
+    justify-items: flex-end;
+    align-items: end;
+    margin: 0px;
 }
 
 .allProjectsContainer {
     display: flex;
     flex-direction: column;
-
+    padding-left: 14rem;
+    padding-right: 14rem;
 }
 
 .tags {
@@ -88,8 +92,10 @@
 }
 
 .eachProject{
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    padding:2rem;
 }
 
 .eachProject h1{
@@ -100,7 +106,6 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    margin-bottom: 4px;
 }
 
 .rightDetail img {
