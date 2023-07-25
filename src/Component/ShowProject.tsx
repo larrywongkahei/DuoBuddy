@@ -134,10 +134,14 @@ const ShowProject:React.FC = () => {
                 <h1 className='ProjectPageTitle'>
                     {projectData?.title}
                 </h1>
-                {projectData?.applications.c}
-                <button onClick={applyToBuildProjectTogether}>
-                    Apply to build project together
-                </button>
+                {projectData?.applications.includes(sessionStorage?.getItem("userId") || "dummyData") ?
+                                <button onClick={applyToBuildProjectTogether}>
+                                Applied
+                            </button> : <button onClick={applyToBuildProjectTogether}>
+                                Apply to build project together
+                            </button> 
+                }
+
                 <div className='ProjectPageHeaderDetail'>
                     <p>
                         Posted: {projectData?.createdDate}
