@@ -92,7 +92,7 @@ const Profile:React.FC = () => {
     return (
         <div className='profileContainer'>
             <div className='profilePictureContainer'>
-                <img src={sessionStorage.getItem("avatar_url") || ""} className='profilePicture' />
+                <img src={userData?.avatarUrl} className='profilePicture' />
                 <p className='name'>{sessionStorage.getItem("name")}</p>
                 <table>
                     <tr>
