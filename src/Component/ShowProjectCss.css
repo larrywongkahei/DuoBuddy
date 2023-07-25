@@ -146,3 +146,9 @@
     cursor:progress;
     transform: translateY(3px);
 }
+
+.TitleAndApplyButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

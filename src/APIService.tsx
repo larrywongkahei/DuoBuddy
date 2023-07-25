@@ -112,6 +112,13 @@ export const APIService =
       headers: { 'Content-Type': 'application/json' }
     })
   },
+  applyToBuildProject(projectId: string, userId: string | null, content: string | null) {
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}`, {
+      method: "PUT",
+      body: content,
+      headers: { 'Content-Type': 'application/json' }
+    })
+  },
 
   // Fetch data from google oauth api
   async FetchDataFromGoogle(token: string) {
