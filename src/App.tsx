@@ -9,8 +9,6 @@ import { APIService } from './APIService';
 
 const App:React.FC = () => {
 
-  const allparam = useParams();
-  console.log(allparam?.id)
 
   useEffect(() => {
     
@@ -20,8 +18,11 @@ const App:React.FC = () => {
     // get params value from the queryString
     // urlParam.get("id") = 1
     // const urlParam = new URLSearchParams(queryString);
-    
+    console.log("search")
+    console.log(window.location.search)
+    console.log("pathname")
     console.log(window.location.pathname)
+    console.log("hash")
     console.log(window.location.hash)
     
     // check if urlParam has code param for github oauth login

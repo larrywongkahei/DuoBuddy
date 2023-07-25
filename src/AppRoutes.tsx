@@ -17,7 +17,7 @@ export const AppRoutes = [
         element: <Home />
     },
     {
-        path:"/*/:id",
+        path:"*",
         element: <Navigate to="/" />
     },
     {
