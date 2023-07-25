@@ -1,8 +1,8 @@
 import './ShowProjectCss.css';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
-import { User, Comment, Project } from "./Interface";
+import { Project } from "./Interface";
 import { APIService } from '../APIService';
 
 const ShowProject: React.FC = () => {
@@ -116,7 +116,7 @@ const ShowProject: React.FC = () => {
                 <div className='CommentRightDetail'>
                     <div>
                         <Link to={`/profile/${each?.createdBy?.id}`}>
-                            <img src={each.createdBy?.avatarUrl} />
+                            <img src={each.createdBy?.avatarUrl} alt='logo'/>
                         </Link>
                         <p>
                             <Link to={`/profile/${each?.createdBy?.id}`} style={{ textDecoration: "none", color: "black" }}>
@@ -171,7 +171,7 @@ const ShowProject: React.FC = () => {
                 </div>
                 <div className='ProjectUserDetail'>
                     <Link to={`/profile/${projectData?.createdBy?.id}`} >
-                        <img src={projectData?.createdBy?.avatarUrl} />
+                        <img src={projectData?.createdBy?.avatarUrl} alt='logo'/>
                     </Link>
                     <p>
                         <Link to={`/profile/${projectData?.createdBy?.id}`} style={{ textDecoration: "none", color: "black" }}>
