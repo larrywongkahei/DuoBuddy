@@ -11,6 +11,7 @@ const Home:React.FC = ()  => {
     // Searchfield input
     const [input, setInput] = useState<string>("");
     const navigate = useNavigate();
+    console.log("home?")
 
     // Searchfield input handler
     function inputHandler(e:React.ChangeEvent<HTMLInputElement>) {
