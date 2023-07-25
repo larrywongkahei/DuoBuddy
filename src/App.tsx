@@ -24,6 +24,7 @@ const App:React.FC = () => {
       sessionStorage.setItem("name", data.name);
       sessionStorage.setItem("userId", data.id);
       sessionStorage.setItem("email", data.email);
+      sessionStorage.setItem("avatar_url", data.avatarUrl);
     })
     
     // check if urlParam has code param for github oauth login
