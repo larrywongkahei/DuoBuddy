@@ -56,7 +56,8 @@ const ShowProject:React.FC = () => {
     }, [])
 
     async function applyToBuildProjectTogether(e:React.MouseEvent){
-        console.log('hi')
+        // 
+        await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId"), null)
     }
 
     // Function to check if the viewer are the creater, add view if not.
