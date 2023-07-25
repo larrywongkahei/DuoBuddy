@@ -134,6 +134,7 @@ const ShowProject:React.FC = () => {
                 <h1 className='ProjectPageTitle'>
                     {projectData?.title}
                 </h1>
+                {projectData?.applications.c}
                 <button onClick={applyToBuildProjectTogether}>
                     Apply to build project together
                 </button>
