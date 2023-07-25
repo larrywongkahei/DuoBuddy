@@ -26,7 +26,7 @@ const Home:React.FC = ()  => {
             alert("Seach could not be empty")
         }
         else{
-            navigate(`/searchresult/${cleanedSearchField}`);
+            navigate(`/searchResult/${cleanedSearchField}`);
         }
     };
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { User, Comment, Project } from "./Interface";
 import { APIService } from '../APIService';
 
-const SearchResult:React.FC = () =>  {
+const SearchResult: React.FC = () => {
 
     // To get all param
     const param = useParams();
@@ -14,30 +14,31 @@ const SearchResult:React.FC = () =>  {
 
     // To store all projects fetched from backend
     const [projectsToShow, setProjectToShow] = useState<Project[]>([])
+    const nav = useNavigate();
 
     // Fetch projects data from backend
     useEffect(() => {
-        APIService.getProjectsBySearch(dataToSearch || "").then((data:Project[]) => setProjectToShow(data));
-    }, [])
+        APIService.getProjectsBySearch(dataToSearch || "").then((data: Project[]) => setProjectToShow(data));
+    }, [dataToSearch])
 
     // Search field input
     const [searchField, setSearchField] = useState("")
 
     // Search field input handler
-    function searchFieldHandler(e:React.ChangeEvent<HTMLInputElement>){
+    function searchFieldHandler(e: React.ChangeEvent<HTMLInputElement>) {
         setSearchField(e.target.value)
     }
 
     // Search field submit button handler
-    function searchFieldSubmit(e:React.SyntheticEvent){
+    function searchFieldSubmit(e: React.SyntheticEvent) {
         e.preventDefault();
         // /\s/g = all whitespace
         const cleanedSearchField = searchField.replace(/\s/g, "")
-        if(cleanedSearchField.length === 0){
+        if (cleanedSearchField.length === 0) {
             alert("Seach could not be empty")
         }
-        else{
-            window.location.pathname = `/searchResult/${cleanedSearchField}`;
+        else {
+            nav(`/searchResult/${cleanedSearchField}`);
         }
         setSearchField("")
     }
@@ -56,21 +57,21 @@ const SearchResult:React.FC = () =>  {
                         {each.tags.map((tag, index) => {
                             return (
                                 <div className='ContentTags' key={index}>
-                                <p className=''>
-                                    {tag}
-                                </p>
-                            </div>
+                                    <p className=''>
+                                        {tag}
+                                    </p>
+                                </div>
                             )
                         })}
                     </div>
                     <div className='ResultDetailRight'>
                         <Link to={`/profile/${each?.createdBy.id}`} >
-                        <img src={each.createdBy?.avatarUrl} />
+                            <img src={each.createdBy?.avatarUrl} />
                         </Link>
-                        <Link to={`/profile/${each?.createdBy.id}`} style={{textDecoration:"none", color:"black"}}>
-                        <p>
-                            {each.createdBy?.name}
-                        </p>
+                        <Link to={`/profile/${each?.createdBy.id}`} style={{ textDecoration: "none", color: "black" }}>
+                            <p>
+                                {each.createdBy?.name}
+                            </p>
                         </Link>
                         <p>
                             {each.createdDate}
@@ -88,8 +89,8 @@ const SearchResult:React.FC = () =>  {
                 Search Results
             </h1>
             <form>
-                <input type="text" className="searchPageInput" value={searchField} onChange={searchFieldHandler}/>
-                <input type='submit' style={{display:"none"}} onClick={searchFieldSubmit}/>
+                <input type="text" className="searchPageInput" value={searchField} onChange={searchFieldHandler} />
+                <input type='submit' style={{ display: "none" }} onClick={searchFieldSubmit} />
             </form>
             <h1 className='SearchResultTitle'>
                 {projectsToShow.length} Search Results
