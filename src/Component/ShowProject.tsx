@@ -141,7 +141,7 @@ const ShowProject: React.FC = () => {
                         {projectData?.title}
                     </h1>
                     {
-                        projectData?.createdBy?.name === sessionStorage?.getItem("userId") ? 
+                        projectData?.createdBy?.name === sessionStorage?.getItem("name") ? 
                     <button>
                         Close this post
                     </button>
