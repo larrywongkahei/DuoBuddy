@@ -140,6 +140,13 @@ const ShowProject: React.FC = () => {
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
+                    {
+                        projectData?.createdBy?.name === sessionStorage?.getItem("userId") ? 
+                    <button>
+                        Close this post
+                    </button>
+                    :
+                    <>
                     {projectData?.applications?.includes(sessionStorage?.getItem("userId") || "dummyData") || apply?
                         <button onClick={applyToBuildProjectTogether}>
                             Applied
@@ -147,6 +154,8 @@ const ShowProject: React.FC = () => {
                             Apply to build project together
                         </button>
                     }
+                    </>
+                }
                 </div>
 
 
