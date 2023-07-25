@@ -54,7 +54,6 @@ const ShowProject: React.FC = () => {
     useEffect(() => {
         if (id) {
             addViewOrSetData(id);
-            console.log(id)
         }
     }, [])
 
@@ -74,9 +73,7 @@ const ShowProject: React.FC = () => {
             const responseToSet = await APIService.addView(id);
             const dataToSet = await responseToSet.json();
             setProjectData(dataToSet);
-            console.log(dataToSet)
         } else {
-            console.log(data)
             setProjectData(data)
         }
     }
