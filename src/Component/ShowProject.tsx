@@ -129,6 +129,9 @@ const ShowProject:React.FC = () => {
                 <h1 className='ProjectPageTitle'>
                     {projectData?.title}
                 </h1>
+                <button>
+                    Apply to build project together
+                </button>
                 <div className='ProjectPageHeaderDetail'>
                     <p>
                         Posted: {projectData?.createdDate}
