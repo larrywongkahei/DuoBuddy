@@ -8,7 +8,7 @@ import SearchResult from "./Component/SearchResult";
 import ShowProject from "./Component/ShowProject";
 import Signup from "./Component/Signup";
 import ProfilePageView from "./Component/ProfilePageView";
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export const AppRoutes = [
     {
@@ -16,17 +16,9 @@ export const AppRoutes = [
         path:"/*",
         element: <Home />
     },
-    // {
-    //     path:"*",
-    //     element: <Navigate to="/" />
-    // },
     {
-        path:"/MentorShip/github",
-        element: <Home />
-    },
-    {
-        path:"/MentorShip/linkedin",
-        element: <Home />
+        path:"/*/:id",
+        element: <Navigate to="/" />
     },
     {
         path: "/profile",

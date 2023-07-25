@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, useParams } from "react-router-dom";
 import NavBar from './Component/NavBar';
 import { useEffect } from 'react';
 import { AppRoutes } from './AppRoutes';
@@ -9,15 +9,17 @@ import { APIService } from './APIService';
 
 const App:React.FC = () => {
 
-  
+
   useEffect(() => {
+    const allparam = useParams();
+    console.log(allparam?.id)
     // get queryString (http://localhost:3000/login?id=1 to ?id=1)
     // const queryString = window.location.search;
 
     // get params value from the queryString
     // urlParam.get("id") = 1
     // const urlParam = new URLSearchParams(queryString);
-
+    
     console.log(window.location.pathname)
     console.log(window.location.hash)
     
