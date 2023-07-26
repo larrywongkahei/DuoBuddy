@@ -5,6 +5,7 @@ import { ImLinkedin } from 'react-icons/im';
 import { SiGmail } from 'react-icons/si';
 import { BsGithub } from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
+import logo from '../logo.png';
 
 const Home:React.FC = ()  => {
 
@@ -44,6 +45,7 @@ const Home:React.FC = ()  => {
 
     return (
         <div className="HomePageBody">
+            <img src={logo} alt='logo' style={{width:"18rem", height:"14rem", marginBottom:"2rem"}}/>
             <h1 className="projectTitle" >Project Ideas</h1>
             <form className="titleSearch">
                 <p className="searchLabel">Search</p>

@@ -11,12 +11,19 @@
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 3rem;
+    align-items: flex-end;
 }
 
 .Title {
+    display: flex;
+    flex-direction: row;
     font-size: 42px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    align-items: flex-end;
+}
 
+.Title p{
+    margin: 0px;
 }
 
 .topRightLinks {

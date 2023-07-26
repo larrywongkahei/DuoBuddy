@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HiOutlineLogin } from 'react-icons/hi';
+import logo from '../logo.png';
 import './NavBarCss.css';
 
 
@@ -13,9 +14,12 @@ export default function NavBar(){
     }
     return (
         <div className='NavBarContainer'>
+            <Link className='navLink' to="/">
             <div className="Title">
-                <Link className='navLink' to="/">MentorShip</Link>
+                <img src={logo} alt='logo' style={{width:"5rem", height:"4rem"}}/>
+                <p>DuoBuddy</p>
             </div>
+            </Link>
             {/* User Session Storage to check if the user has logged in */}
             {sessionStorage.length === 0 ?
             <div className='topRightLinks'>
