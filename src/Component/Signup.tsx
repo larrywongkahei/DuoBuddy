@@ -40,8 +40,13 @@ export default function Signup() {
     }
 
     function loginWithGithub() : void{
-        window.location.assign("http://localhost:8080/login/github")
+        window.location.assign("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login/github")
     }
+
+    function loginWithLinkedin():void{
+        window.location.assign("https://mentorshipbackend-ceeb21a607e1.herokuapp.com/login/linkedin")
+    }
+
 
     const loginWithGmail = useGoogleLogin({
         onSuccess: response => {
@@ -62,7 +67,7 @@ export default function Signup() {
                 Sign up with
             </h1>
             <div className="icons">
-                <ImLinkedin className="linkedin" />
+                <ImLinkedin className="linkedin" onClick={loginWithLinkedin} style={{cursor:"pointer"}}/>
                 <BsGithub className="github" onClick={loginWithGithub} style={{cursor:"pointer"}}/>
                 <SiGmail className="email" onClick={() => loginWithGmail()} style={{cursor:"pointer"}}/>
             </div>
@@ -73,7 +78,7 @@ export default function Signup() {
                 <input type="text" placeholder="Display name" value={displayName} onChange={displayNameHandler} />
                 <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
                 <input type="password" placeholder="Password" value={password} onChange={passwordHandler}/>
-                <input type="password" placeholder="Confirm Password" value={password} onChange={passwordHandler}/>
+                <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={confirmPasswordHandler}/>
                 <div className="buttonContainer">
                     <button type="submit" onClick={submitButtonHandler}>Sign up</button>
                 </div>
