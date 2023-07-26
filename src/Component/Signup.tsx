@@ -57,7 +57,15 @@ export default function Signup() {
     // Signup submit button handler
     function submitButtonHandler(e:React.SyntheticEvent) : void{
         e.preventDefault()
-        APIService.signup(displayName, email, password);
+        if(displayName.replace(/\s/g, "") === "" || email.replace(/\s/g, "") === "" || password.replace(/\s/g, "") === ""){
+            if(password !== confirmPassword){
+                alert("Password not match");
+            }else{
+                APIService.signup(displayName, email, password);
+            }
+        }else{
+            alert("Please fill in all the fields");
+        }
     }
 
 
@@ -80,7 +88,7 @@ export default function Signup() {
                 <input type="password" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={confirmPasswordHandler}/>
                 <div className="buttonContainer">
-                    <button type="submit" onClick={submitButtonHandler}>Sign up</button>
+                    <button type="submit" onClick={submitButtonHandler} style={{marginBottom:"20px"}}>Sign up</button>
                 </div>
             </form>
         </div>
