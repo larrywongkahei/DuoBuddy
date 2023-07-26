@@ -67,7 +67,8 @@ export default function Signup() {
             <form className="form">
                 <input type="text" placeholder="Display name" value={displayName} onChange={displayNameHandler} />
                 <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
-                <input type="text" placeholder="Password" value={password} onChange={passwordHandler}/>
+                <input type="password" placeholder="Password" value={password} onChange={passwordHandler}/>
+                <input type="password" placeholder="Confirm Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
                     <button type="submit" onClick={submitButtonHandler}>Sign up</button>
                 </div>

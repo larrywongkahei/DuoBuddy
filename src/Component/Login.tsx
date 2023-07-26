@@ -68,7 +68,7 @@ const Login:React.FC = () => {
             </h2>
             <form className="form">
                 <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
-                <input type="text" placeholder="Password" value={password} onChange={passwordHandler}/>
+                <input type="password" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
                     <button type="submit" onClick={submitLoginHandler}>Sign in</button>
                 </div>
