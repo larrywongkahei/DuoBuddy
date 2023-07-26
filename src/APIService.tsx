@@ -45,7 +45,7 @@ export const APIService =
     sessionStorage.setItem("email", email);
     sessionStorage.setItem("avatar_url", "https://larrywongkahei.github.io/img/pixel_art.png")
     sessionStorage.setItem("userId", data.id)
-    return window.location.href = "https://larrywongkahei.github.io/DuoBuddy/"
+    return window.location.href = `https://larrywongkahei.github.io/DuoBuddy?userId=${data.id}`
   },
 
   // Used when user has logged in and reload page
@@ -60,7 +60,7 @@ export const APIService =
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
       sessionStorage.setItem("userId", data.id)
-      window.location.href = "https://larrywongkahei.github.io/DuoBuddy/"
+      window.location.href = `https://larrywongkahei.github.io/DuoBuddy${data.id}`
     }
     else {
       this.createUser(name, bio, location, avatar_url, email, password)
