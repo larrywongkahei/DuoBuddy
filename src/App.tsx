@@ -10,7 +10,6 @@ import { User } from './Component/Interface';
 
 const App:React.FC = () => {
 
-
   useEffect(() => {
     
     // get queryString (http://localhost:3000/login?id=1 to ?id=1)

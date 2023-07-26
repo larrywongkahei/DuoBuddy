@@ -45,10 +45,6 @@ export const AppRoutes = [
         element:<PostPage />
     },
     {
-        path:"/idea/post/addtag",
-        element:<AddTag />
-    },
-    {
         path:"/post/:id",
         element:<ShowProject />
     },
