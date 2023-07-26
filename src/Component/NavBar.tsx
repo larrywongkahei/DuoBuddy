@@ -10,7 +10,7 @@ export default function NavBar(){
     // I use session storage to prevent data lost when reload the page
     function logout(){
         sessionStorage.clear();
-        window.location.href="https://larrywongkahei.github.io/MentorShip/";
+        window.location.href="https://larrywongkahei.github.io/DouBuddy/";
     }
     return (
         <div className='NavBarContainer'>
