@@ -1,4 +1,3 @@
-import AddTag from "./Component/AddTag";
 import Explore from "./Component/Explore";
 import Home from "./Component/Home";
 import Login from "./Component/Login";
