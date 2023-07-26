@@ -9,13 +9,13 @@ export const APIService =
           'Content-Type': 'application/json'
         }
       }).then(response => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           response.json().then(data => {
             sessionStorage.setItem("email", data.email);
             sessionStorage.setItem("userId", data.id);
             sessionStorage.setItem("name", data.name);
             sessionStorage.setItem("avatar_url", data.avatarUrl);
-          }).then(() => window.location.href = "https://larrywongkahei.github.io/DuoBuddy/")
+          }).then(() => window.location.href = `https://larrywongkahei.github.io/DuoBuddy?userId=${sessionStorage.getItem("userId")}`)
 
         }
         else {

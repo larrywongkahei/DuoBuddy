@@ -57,7 +57,7 @@ export default function Signup() {
     // Signup submit button handler
     function submitButtonHandler(e:React.SyntheticEvent) : void{
         e.preventDefault()
-        if(displayName.replace(/\s/g, "") === "" || email.replace(/\s/g, "") === "" || password.replace(/\s/g, "") === ""){
+        if(displayName.replace(/\s/g, "") !== "" && email.replace(/\s/g, "") !== "" && password.replace(/\s/g, "") !== ""){
             if(password !== confirmPassword){
                 alert("Password not match");
             }else{
