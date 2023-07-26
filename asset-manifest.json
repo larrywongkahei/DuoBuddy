@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/MentorShip/static/css/main.940127b8.css",
-    "main.js": "/MentorShip/static/js/main.2c73801e.js",
-    "static/js/787.f1813f58.chunk.js": "/MentorShip/static/js/787.f1813f58.chunk.js",
-    "index.html": "/MentorShip/index.html",
-    "main.940127b8.css.map": "/MentorShip/static/css/main.940127b8.css.map",
-    "main.2c73801e.js.map": "/MentorShip/static/js/main.2c73801e.js.map",
-    "787.f1813f58.chunk.js.map": "/MentorShip/static/js/787.f1813f58.chunk.js.map"
+    "main.css": "/DuoBuddy/static/css/main.614e7925.css",
+    "main.js": "/DuoBuddy/static/js/main.aef9594b.js",
+    "static/js/787.f1813f58.chunk.js": "/DuoBuddy/static/js/787.f1813f58.chunk.js",
+    "static/media/logo.png": "/DuoBuddy/static/media/logo.1c397ce39ca95894ad54.png",
+    "index.html": "/DuoBuddy/index.html",
+    "main.614e7925.css.map": "/DuoBuddy/static/css/main.614e7925.css.map",
+    "main.aef9594b.js.map": "/DuoBuddy/static/js/main.aef9594b.js.map",
+    "787.f1813f58.chunk.js.map": "/DuoBuddy/static/js/787.f1813f58.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.940127b8.css",
-    "static/js/main.2c73801e.js"
+    "static/css/main.614e7925.css",
+    "static/js/main.aef9594b.js"
   ]
 }
