@@ -28,10 +28,15 @@ export default function Signup() {
 
     // Password input data
     const [password, setPassword] = useState<string>("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
     // Pass input data hanlder
     function passwordHandler(e:React.ChangeEvent<HTMLInputElement>) : void {
         setPassword(e.target.value)
+    }
+
+    function confirmPasswordHandler(e:React.ChangeEvent<HTMLInputElement>) : void {
+        setConfirmPassword(e.target.value);
     }
 
     function loginWithGithub() : void{
