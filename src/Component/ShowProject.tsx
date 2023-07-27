@@ -37,12 +37,9 @@ const ShowProject: React.FC = () => {
 
     async function deleteProject(e: React.MouseEvent){
         e.preventDefault();
-        if (confirm("Delete this post?")){
+        if (window.confirm("Delete this post?")){
             await APIService.deleteProject(projectData?.id || "");
             nav("/explore");
-        }else{
-            
-        }
     }
 
 
