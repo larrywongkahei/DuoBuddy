@@ -76,6 +76,12 @@ export const APIService =
       })
       .then(data => data.json())
   },
+  // Delete project
+  deleteProject(projectId:string){
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}`, {
+      method:"DELETE"
+    })
+  },
 
   // Update user detail, input bio, location or projects in param field
   // for project, input project id into the body
