@@ -33,6 +33,13 @@ const ShowProject: React.FC = () => {
 
     }
 
+    async function deleteProject(e: React.MouseEvent){
+        e.preventDefault();
+        if (confirm("Delete this post?")){
+            await APIService.deleteProject(projectData?.id || "")
+        }
+    }
+
 
     // Get all param
     const param = useParams();
@@ -142,7 +149,7 @@ const ShowProject: React.FC = () => {
                     </h1>
                     {
                         projectData?.createdBy?.name === sessionStorage?.getItem("name") ? 
-                    <button>
+                    <button onClick={deleteProject}>
                         Close this post
                     </button>
                     :
