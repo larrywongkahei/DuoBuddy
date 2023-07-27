@@ -67,10 +67,10 @@ const Login:React.FC = () => {
                 OR
             </h2>
             <form className="form">
-                <input type="text" placeholder="Email" value={email} onChange={emailHandler} />
+                <input type="email" placeholder="Email" value={email} onChange={emailHandler} />
                 <input type="password" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <div className="buttonContainer">
-                    <button type="submit" onClick={submitLoginHandler}>Sign in</button>
+                    <input type="submit" onClick={submitLoginHandler} value="Sign in"/>
                 </div>
             </form>
             <p className="newHereText">New here? <span><Link to="/signup" className='signupLink'>Sign up</Link></span></p>
