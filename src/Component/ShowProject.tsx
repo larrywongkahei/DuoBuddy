@@ -1,5 +1,5 @@
 import './ShowProjectCss.css';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 import { Project } from "./Interface";
@@ -14,6 +14,8 @@ const ShowProject: React.FC = () => {
 
     // To store commentBox input data
     const [commentBox, setCommentBox] = useState<string>("")
+
+    const nav = useNavigate();
 
     // Commentbox input data handler
     function commentBoxTextHandler(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -36,7 +38,8 @@ const ShowProject: React.FC = () => {
     async function deleteProject(e: React.MouseEvent){
         e.preventDefault();
         if (confirm("Delete this post?")){
-            await APIService.deleteProject(projectData?.id || "")
+            await APIService.deleteProject(projectData?.id || "");
+            nav("/explore");
         }
     }
 
