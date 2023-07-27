@@ -40,6 +40,8 @@ const ShowProject: React.FC = () => {
         if (confirm("Delete this post?")){
             await APIService.deleteProject(projectData?.id || "");
             nav("/explore");
+        }else{
+            
         }
     }
 
