@@ -5,7 +5,8 @@ import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import { useGoogleLogin } from '@react-oauth/google';
 import { APIService } from '../APIService';
-import validator from "validator";
+var validator = require('validator');
+
 
 export default function Signup() {
 
@@ -61,6 +62,8 @@ export default function Signup() {
         if(displayName.replace(/\s/g, "") !== "" && email.replace(/\s/g, "") !== "" && password.replace(/\s/g, "") !== ""){
             if(password !== confirmPassword){
                 alert("Password not match");
+            }else if(!validator.isEmail(email)){
+                alert("Email format not correct")
             }else{
                 APIService.signup(displayName, email, password);
             }
