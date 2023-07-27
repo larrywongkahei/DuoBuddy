@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/validator": "^13.7.17",
     "jest": "^27.5.1",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.2",

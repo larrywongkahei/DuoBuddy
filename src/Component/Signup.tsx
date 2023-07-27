@@ -5,6 +5,7 @@ import { BsGithub } from 'react-icons/bs';
 import { SiGmail } from 'react-icons/si';
 import { useGoogleLogin } from '@react-oauth/google';
 import { APIService } from '../APIService';
+import validator from "validator";
 
 export default function Signup() {
 
