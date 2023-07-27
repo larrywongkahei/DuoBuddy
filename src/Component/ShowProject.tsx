@@ -41,6 +41,7 @@ const ShowProject: React.FC = () => {
             await APIService.deleteProject(projectData?.id || "");
             nav("/explore");
     }
+}
 
 
     // Get all param
