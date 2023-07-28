@@ -23,6 +23,7 @@ const App:React.FC = () => {
       sessionStorage.setItem("userId", data.id);
       sessionStorage.setItem("email", data.email);
       sessionStorage.setItem("avatar_url", data.avatarUrl);
+      console.log(sessionStorage.getItem("avatar_url"))
       window.location.href = "https://larrywongkahei.github.io/DuoBuddy/";
     })
   
