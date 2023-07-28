@@ -107,8 +107,10 @@ export const APIService =
   },
   getUserById(id: string) {
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user/dataFetching?id=${id}`)
-      .then(response => response.json())
-      .then(data => console.log(data))
+      .then(response => {
+        console.log(response.json())
+        return response.json()
+      })
   },
 
   // Add comment to project
