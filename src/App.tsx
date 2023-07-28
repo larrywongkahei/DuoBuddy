@@ -19,7 +19,7 @@ const App:React.FC = () => {
     // urlParam.get("id") = 1
     const urlParam = new URLSearchParams(queryString);
     APIService.getUserById(urlParam?.get('userId') || "").then((data:User) => {
-      console.log(data)
+      console.log(data.avatarUrl)
       sessionStorage.setItem("name", data.name);
       sessionStorage.setItem("userId", data.id);
       sessionStorage.setItem("email", data.email);
