@@ -100,7 +100,7 @@ export const APIService =
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${id}`)
       .then(response => response.json())
   },
-  getProjectByUserId(id: string) {
+  getProjectByUserId(id: string | null) {
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/getProjects?userId=${id}`)
       .then(response => response.json())
   },

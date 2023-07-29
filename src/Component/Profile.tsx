@@ -35,8 +35,8 @@ const Profile:React.FC = () => {
     const [contactURL, setContactURL] = useState<string>("");
 
     useEffect(() => {
-        APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data))
-        APIService.get
+        APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data));
+        APIService.getProjectByUserId(sessionStorage.getItem("userId")).then((data:Project[]) => setProjectData(data));
     }, [])
 
     // Button handler for input contact update button
