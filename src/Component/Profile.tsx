@@ -7,7 +7,7 @@ import { GiConfirmed } from 'react-icons/gi'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-import { User } from "./Interface";
+import { User, Project } from "./Interface";
 import { APIService } from '../APIService';
 
 const Profile:React.FC = () => {
@@ -15,6 +15,9 @@ const Profile:React.FC = () => {
 
     // Store userData fetched from backend
     const [userData, setUserData] = useState<User>();
+
+    // Store projects fetched from backend
+    const [projectData, setProjectData] = useState<Project[]>();
 
     // Store input value if user doesn't already have one
     const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -32,7 +35,8 @@ const Profile:React.FC = () => {
     const [contactURL, setContactURL] = useState<string>("");
 
     useEffect(() => {
-        APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data))
+        APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data));
+        APIService.getProjectByUserId(sessionStorage.getItem("userId")).then((data:Project[]) => setProjectData(data));
     }, [])
 
     // Button handler for input contact update button
@@ -88,6 +92,20 @@ const Profile:React.FC = () => {
         window.location.reload();
     }
 
+    const projects = projectData?.map(e => {
+        return(
+            <div>
+                <h1>
+                    {e.title}
+                </h1>
+                <p>
+                    Requests : {e.applications.length}
+                </p>
+            </div>
+        )
+    })
+
+
 
     return (
         <div className='profileContainer'>
@@ -133,7 +151,7 @@ const Profile:React.FC = () => {
                 </div>
             </div>
             <div className='profileDataContainer'>
-                <div>
+                <>
                     <p>
                         Bio
                     </p>
@@ -146,7 +164,15 @@ const Profile:React.FC = () => {
                                 </form> : <button onClick={showBioContainerHandler}>Add Bio</button>}
                         </div>
                     }
-                </div>
+                </>
+                <>
+                    <p>
+                        Projects
+                    </p>
+                    <div className='projectAreaContainer'>
+                        {projects}
+                    </div>
+                </>
             </div>
         </div>
     )
