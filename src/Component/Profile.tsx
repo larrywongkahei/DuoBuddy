@@ -38,8 +38,6 @@ const Profile:React.FC = () => {
         APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data));
         APIService.getProjectByUserId(sessionStorage.getItem("userId")).then((data:Project[]) => setProjectData(data));
     }, [])
-    console.log(sessionStorage.getItem("userId"));
-    console.log(projectData);
 
     // Button handler for input contact update button
     async function updateContactButton(e:React.SyntheticEvent) {
