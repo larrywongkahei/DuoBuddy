@@ -9,6 +9,7 @@ import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { User, Project } from "./Interface";
 import { APIService } from '../APIService';
+import { Link } from 'react-router-dom';
 
 const Profile:React.FC = () => {
 
@@ -94,9 +95,11 @@ const Profile:React.FC = () => {
 
     const projects = projectData?.map(e => {
         return(
-            <div>
+            <div className='eachProjectInProfile'>
                 <h1>
-                    {e.title}
+                    <Link to={`/post/${e.id}`} className='titleLink'>
+                        {e.title}
+                    </Link>
                 </h1>
                 <p>
                     Requests : {e.applications.length}

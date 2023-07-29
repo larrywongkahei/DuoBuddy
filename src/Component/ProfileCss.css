@@ -126,13 +126,19 @@ td {
     padding: 7px;
 }
 
+.eachProjectInProfile{
+    display: flex;
+    flex-direction: row;
+}
+
 .projectAreaContainer {
     height: 16rem;
     width: 40rem;
     border-radius: 10px;
     overflow: scroll;
-    border-width: 1px;
+    border-width: .8px;
     border-style: solid;
+    padding: 7px;
 }
 
 .contactIconsContainer {
