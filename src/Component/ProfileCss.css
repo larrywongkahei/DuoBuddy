@@ -128,8 +128,15 @@ td {
 
 .eachProjectInProfile{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
+
+.eachProjectDetailContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 
 .projectAreaContainer {
     height: 16rem;
