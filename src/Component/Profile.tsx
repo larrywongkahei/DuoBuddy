@@ -36,6 +36,7 @@ const Profile:React.FC = () => {
 
     useEffect(() => {
         APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data))
+        APIService.get
     }, [])
 
     // Button handler for input contact update button

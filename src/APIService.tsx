@@ -100,6 +100,10 @@ export const APIService =
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${id}`)
       .then(response => response.json())
   },
+  getProjectByUserId(id: string) {
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/getProjects?userId=${id}`)
+      .then(response => response.json())
+  },
   // searchData could be tags or title
   getProjectsBySearch(searchData: string) {
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/getSearchResult?searchData=${searchData}`)
