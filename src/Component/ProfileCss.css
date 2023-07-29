@@ -1,3 +1,8 @@
+.profileDataContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .profilePicture {
     height: 12rem;
     width: 12rem;
@@ -119,6 +124,14 @@ td {
     border-radius: 10px;
     resize: none;
     padding: 7px;
+}
+
+.projectAreaContainer {
+    height: 16rem;
+    width: 40rem;
+    border-radius: 10px;
+    overflow: scroll;
+    
 }
 
 .contactIconsContainer {

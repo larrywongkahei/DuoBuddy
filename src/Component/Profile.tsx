@@ -89,6 +89,7 @@ const Profile:React.FC = () => {
     }
 
 
+
     return (
         <div className='profileContainer'>
             <div className='profilePictureContainer'>
@@ -133,7 +134,7 @@ const Profile:React.FC = () => {
                 </div>
             </div>
             <div className='profileDataContainer'>
-                <div>
+                <>
                     <p>
                         Bio
                     </p>
@@ -146,7 +147,15 @@ const Profile:React.FC = () => {
                                 </form> : <button onClick={showBioContainerHandler}>Add Bio</button>}
                         </div>
                     }
-                </div>
+                </>
+                <>
+                    <p>
+                        Projects
+                    </p>
+                    <div className='projectAreaContainer'>
+
+                    </div>
+                </>
             </div>
         </div>
     )
