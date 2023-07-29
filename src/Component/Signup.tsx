@@ -92,7 +92,7 @@ export default function Signup() {
                 <input type="password" placeholder="Password" value={password} onChange={passwordHandler}/>
                 <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={confirmPasswordHandler}/>
                 <div className="buttonContainer">
-                    <button type="submit" onClick={submitButtonHandler} style={{marginBottom:"20px"}}>Sign up</button>
+                    <input type="submit" onClick={submitButtonHandler} style={{marginBottom:"20px"}} value="Sign up"/>
                 </div>
             </form>
         </div>
