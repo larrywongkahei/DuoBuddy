@@ -7,7 +7,7 @@ import { GiConfirmed } from 'react-icons/gi'
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-import { User } from "./Interface";
+import { User, Project } from "./Interface";
 import { APIService } from '../APIService';
 
 const Profile:React.FC = () => {
@@ -15,6 +15,9 @@ const Profile:React.FC = () => {
 
     // Store userData fetched from backend
     const [userData, setUserData] = useState<User>();
+
+    // Store projects fetched from backend
+    const [projectData, setProjectData] = useState<Project[]>();
 
     // Store input value if user doesn't already have one
     const [phoneNumber, setPhoneNumber] = useState<string>("");
