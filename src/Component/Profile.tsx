@@ -92,6 +92,19 @@ const Profile:React.FC = () => {
         window.location.reload();
     }
 
+    const projects = projectData?.map(e => {
+        return(
+            <div>
+                <h1>
+                    {e.title}
+                </h1>
+                <p>
+                    Requests : {e.applications.length}
+                </p>
+            </div>
+        )
+    })
+
 
 
     return (
@@ -157,7 +170,7 @@ const Profile:React.FC = () => {
                         Projects
                     </p>
                     <div className='projectAreaContainer'>
-
+                        {projects}
                     </div>
                 </>
             </div>
