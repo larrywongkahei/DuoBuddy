@@ -31,7 +31,7 @@ export interface Project {
     views : number;
     content : string;
     comments : Comment[];
-    applications: string[];
+    applications: Record<string, string>;
 }
 
 // export interface UserData {
