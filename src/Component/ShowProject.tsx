@@ -72,6 +72,18 @@ const ShowProject: React.FC = () => {
         }
     }, [])
 
+    // function to show application and modify css
+    function openApplicationAndModifyCss(){
+        document.body.style.backgroundColor = "#8a7f7f"
+        const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
+        const ProjectPage:HTMLElement = document.getElementById("ProjectPage") || new HTMLElement
+        Navbar.style.pointerEvents = "none";
+        Navbar.style.opacity = "0.4"
+        ProjectPage.style.pointerEvents = "none";
+        ProjectPage.style.opacity = "0.4"
+        setShowApplication(true)
+    }
+
     // function to deal with css background
     function redoCSS(){
         document.body.style.backgroundColor = "#F0EFEF"
@@ -98,7 +110,7 @@ const ShowProject: React.FC = () => {
         if (sessionStorage.length > 0) {
             const userId:string = sessionStorage.getItem("userId") || "";
             const applyBio:Record<string, string> = {}
-            applyBio[userId] = content;
+            applyBio[userId] = data;
             console.log(applyBio);
             await APIService.applyToBuildProject(id || "",applyBio).then(response => response.json()).then(data => console.log(data))
             setApply(true);
@@ -175,10 +187,11 @@ const ShowProject: React.FC = () => {
     })
 
     return (
-        <div className='ProjectPageContainer'>
+        <div className='ProjectPageContainer' id='ProjectPage'>
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
-                    <Application getData={getData} closeApplication={closeApplication}/>
+                    {showApplication &&
+                    <Application getData={getData} closeApplication={closeApplication}/> }
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
