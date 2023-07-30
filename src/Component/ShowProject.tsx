@@ -203,17 +203,17 @@ const ShowProject: React.FC = () => {
 
     return (
         <div className='ProjectPageContainer' id='ProjectPage'>
-            {showApplication &&
-            <div className='applicationMainContainer'>
-                <div id='application'>
-                    <Application getData={getData} closeApplication={closeApplication} />
-                </div>
-            </div>}
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
+                    {showApplication &&
+            <div className='applicationMainContainer'>
+                <div id='application'>
+                    <Application getData={getData} closeApplication={closeApplication} />
+                </div>
+            </div>}
                     {
                         projectData?.createdBy?.name === sessionStorage?.getItem("name") ?
                             <button onClick={deleteProject}>
