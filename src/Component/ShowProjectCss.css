@@ -152,3 +152,12 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.application {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
