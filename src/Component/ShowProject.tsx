@@ -13,6 +13,8 @@ const ShowProject: React.FC = () => {
 
     const [apply, setApply] = useState(false);
 
+    console.log(apply)
+
     // To store commentBox input data
     const [commentBox, setCommentBox] = useState<string>("")
 
