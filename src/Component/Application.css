@@ -1,0 +1,42 @@
+.label {
+    font-size: 30px;
+}
+
+.applicationForm {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    padding: 20px;
+    width: 26rem;
+    height: 16rem;
+    background-color: #F0EFEF;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.applicationContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    width: 100vw;
+    align-items: center;
+    margin: auto;
+}
+
+.ApplicationDataInput {
+    width: 80%;
+    resize: none;
+    height: 9rem;
+    padding: 5px;
+}
+
+.cancelButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 23px;
+    cursor: pointer;
+}
