@@ -199,6 +199,9 @@ const ShowProject: React.FC = () => {
         <div className='ProjectPageContainer' id='ProjectPage'>
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
+                {showApplication &&
+                    <Application getData={getData} closeApplication={closeApplication}/>}
+
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
@@ -271,10 +274,6 @@ const ShowProject: React.FC = () => {
                 </div>
             </div>
             
-            {showApplication &&
-            <div className='application'>
-                    <Application getData={getData} closeApplication={closeApplication}/>
-            </div> }
         </div>
     )
 };
