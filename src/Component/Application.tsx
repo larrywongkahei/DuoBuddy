@@ -1,32 +1,36 @@
 import { useState } from "react";
-
+import './Application.css';
+import { MdOutlineCancel } from "react-icons/md"
 
 interface functionToPass {
     getData(data:string) : void
+    closeApplication() :void
 }
-const Application : React.FC<functionToPass> = ({getData}) => {
+const Application : React.FC<functionToPass> = ({getData, closeApplication}) => {
 
     const [dataToPass, setDataToPass] = useState<string>("");
 
-    function dataToPassHandler(e:React.ChangeEvent<HTMLInputElement>){
+    function dataToPassHandler(e:React.ChangeEvent<HTMLTextAreaElement>){
         setDataToPass(e.target.value)
     }
 
     function handleSubmitHandler(e:React.MouseEvent){
         e.preventDefault();
         getData(dataToPass)
-        
-        console.log(dataToPass);
-    }
+
+            }
 
     return (
-        <form>
-            <label>
-                Input your experience
-            </label>
-            <input type="text" value={dataToPass} onChange={dataToPassHandler} />
-            <input type="submit" value="submit" onClick={handleSubmitHandler}/>
-        </form>
+        <div className="applicationContainer">
+            <form className="applicationForm">
+                <MdOutlineCancel className="cancelButton" onClick={closeApplication}/>
+                <label className="label">
+                    Input your experience
+                </label>
+                <textarea value={dataToPass} onChange={dataToPassHandler} className="ApplicationDataInput"/>
+                <input type="submit" value="submit" onClick={handleSubmitHandler}/>
+            </form>
+        </div>
     )
 }
 

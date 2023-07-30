@@ -13,7 +13,7 @@ export default function NavBar(){
         window.location.href="https://larrywongkahei.github.io/DuoBuddy/";
     }
     return (
-        <div className='NavBarContainer'>
+        <div className='NavBarContainer' id='NavBar'>
             <Link className='navLink' to="/">
             <div className="Title">
                 <img src={logo} alt='logo' style={{width:"5rem", height:"4rem"}}/>
