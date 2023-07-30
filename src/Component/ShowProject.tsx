@@ -89,6 +89,7 @@ const ShowProject: React.FC = () => {
     // function to show application and modify css
     function openApplicationAndModifyCss() {
         if (sessionStorage.length > 0) {
+            setShowApplication(true)
             document.body.style.backgroundColor = "#8a7f7f"
             document.body.style.opacity = "0.4"
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
@@ -96,7 +97,6 @@ const ShowProject: React.FC = () => {
             applicationContainer.style.opacity = "1"
             applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
-            setShowApplication(true)
         } else {
             alert("Login First");
         }
