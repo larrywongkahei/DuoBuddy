@@ -208,10 +208,10 @@ const ShowProject: React.FC = () => {
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
-                    {/* {showApplication && */}
+                    {showApplication &&
                 <div id='application'>
                     <Application getData={getData} closeApplication={closeApplication} />
-                </div>
+                </div>}
                     {
                         projectData?.createdBy?.name === sessionStorage?.getItem("name") ?
                             <button onClick={deleteProject}>
