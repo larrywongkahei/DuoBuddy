@@ -15,7 +15,7 @@ const ShowProject: React.FC = () => {
 
     console.log(apply)
 
-    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""]);
+    console.log(projectData?.applications);
 
     // To store commentBox input data
     const [commentBox, setCommentBox] = useState<string>("")
