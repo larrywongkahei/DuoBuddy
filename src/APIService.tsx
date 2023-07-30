@@ -116,7 +116,7 @@ export const APIService =
 
   // Add comment to project
   commentProject(projectId: string, userId: string, content: string) {
-    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}`, {
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}&param="comment"`, {
       method: "PUT",
       body: content,
       headers: { 'Content-Type': 'application/json' }
@@ -128,9 +128,10 @@ export const APIService =
       headers: { 'Content-Type': 'application/json' }
     })
   },
-  applyToBuildProject(projectId: string, userId: string) {
-    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}`, {
+  applyToBuildProject(projectId: string, userId: string, content:Record<string, string>) {
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}&param="apply"`, {
       method: "PUT",
+      body: JSON.stringify(content),
       headers: { 'Content-Type': 'application/json' }
     })
   },
