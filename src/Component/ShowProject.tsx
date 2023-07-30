@@ -79,10 +79,12 @@ const ShowProject: React.FC = () => {
 
     window.onclick = (e: MouseEvent) => {
         const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
-        if (e.target != applicationContainer) {
+        if (e.target !== applicationContainer) {
             setShowApplication(false)
         }
     }
+
+    console.log(showApplication)
 
     // function to show application and modify css
     function openApplicationAndModifyCss() {
@@ -201,10 +203,9 @@ const ShowProject: React.FC = () => {
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
                     {showApplication &&
-                    <div>
-
-                        <Application getData={getData} closeApplication={closeApplication} />
-                        </div> }
+                        <div id='application'>
+                            <Application getData={getData} closeApplication={closeApplication} />
+                        </div>}
 
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
