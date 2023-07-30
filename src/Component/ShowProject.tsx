@@ -194,7 +194,7 @@ const ShowProject: React.FC = () => {
                     {projectData?.applications?.includes(sessionStorage?.getItem("userId") || "dummyData") || apply?
                         <button>
                             Applied
-                        </button> : <button onClick={applyToBuildProjectTogether}>
+                        </button> : <button onClick={() => setShowApplication(true)}>
                             Apply to build project together
                         </button>
                     }
