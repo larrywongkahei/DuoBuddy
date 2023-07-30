@@ -56,6 +56,10 @@ const ShowProject: React.FC = () => {
     // Create a useState to keep track of user press the reload button
     const [reload, setReload] = useState<Boolean>(false)
 
+    // To track if show application form or not
+    const [showApplication, setShowApplication] = useState<Boolean>(false)
+
+
 
     // Keep track of the reload state, fetch data again if user press the reload button(Line 125)
     useEffect(() => {
@@ -69,6 +73,27 @@ const ShowProject: React.FC = () => {
             addViewOrSetData(id);
         }
     }, [])
+
+    // function to deal with css background
+    function modifyCSS(){
+        document.body.style.backgroundColor = "#F0EFEF"
+        const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
+        Navbar.style.pointerEvents = "auto";
+        Navbar.style.opacity = "1"
+    }
+
+    // function to get data from application page child element
+    function getData(data:string){
+        setShowApplication(false);
+        modifyCSS();
+    }
+
+    // function called when user press on the cancel button
+    function closeApplication(){
+        setShowApplication(false);
+        modifyCSS();
+    }
+    
 
     async function applyToBuildProjectTogether(e: React.MouseEvent) {
         if (sessionStorage.length > 0) {

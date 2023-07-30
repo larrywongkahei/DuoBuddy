@@ -15,10 +15,6 @@ const SearchResult: React.FC = () => {
     // To store all projects fetched from backend
     const [projectsToShow, setProjectToShow] = useState<Project[]>([])
 
-    // To track if show application form or not
-    const [showApplication, setShowApplication] = useState<Boolean>(false)
-
-
     // Initiate the useNavigate
     const nav = useNavigate();
 
@@ -30,23 +26,6 @@ const SearchResult: React.FC = () => {
     // Search field input
     const [searchField, setSearchField] = useState("")
 
-    // function to deal with css background
-    function modifyCSS(){
-        setShowApplication(false)
-        document.body.style.backgroundColor = "#F0EFEF"
-        const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
-        Navbar.style.pointerEvents = "auto";
-        Navbar.style.opacity = "1"
-    }
-
-    // function to get data from application page child element
-    function getData(data:string){
-        setShowApplication(false)
-        document.body.style.backgroundColor = "#F0EFEF"
-        const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
-        Navbar.style.pointerEvents = "auto";
-        Navbar.style.opacity = "1"
-    }
 
     // Search field input handler
     function searchFieldHandler(e: React.ChangeEvent<HTMLInputElement>) {
