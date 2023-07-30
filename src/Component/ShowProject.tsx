@@ -10,6 +10,9 @@ const ShowProject: React.FC = () => {
     // To store all projects fetched from backend
     const [projectData, setProjectData] = useState<Project>();
 
+    // Content for applying to build project together
+    const [content, setContent] = useState<string>("")
+
     const [apply, setApply] = useState(false);
 
     // To store commentBox input data
@@ -69,7 +72,11 @@ const ShowProject: React.FC = () => {
 
     async function applyToBuildProjectTogether(e: React.MouseEvent) {
         if (sessionStorage.length > 0) {
-            await APIService.applyToBuildProject(id || "", sessionStorage.getItem("userId") || "");
+            const userId:string = sessionStorage.getItem("userId") || "";
+            const applyBio:Record<string, string> = {}
+            applyBio[userId] = content;
+            console.log(applyBio);
+            await APIService.applyToBuildProject(id || "",applyBio);
             setApply(true);
         } else {
             alert("Login First");
