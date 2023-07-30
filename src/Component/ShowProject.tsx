@@ -94,7 +94,7 @@ const ShowProject: React.FC = () => {
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
             const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
             applicationContainer.style.opacity = "1"
-            applicationContainer.style.backgroundColor="#F0EFEF"
+            applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
             setShowApplication(true)
         } else {
@@ -203,13 +203,14 @@ const ShowProject: React.FC = () => {
 
     return (
         <div className='ProjectPageContainer' id='ProjectPage'>
+            {showApplication &&
+            <div className='applicationMainContainer'>
+                <div id='application'>
+                    <Application getData={getData} closeApplication={closeApplication} />
+                </div>
+            </div>}
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
-                    {showApplication &&
-                        <div id='application'>
-                            <Application getData={getData} closeApplication={closeApplication} />
-                        </div>}
-
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
