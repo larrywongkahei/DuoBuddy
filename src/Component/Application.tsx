@@ -20,7 +20,7 @@ const Application : React.FC<functionToPass> = ({getData, closeApplication}) => 
             }
 
     return (
-        <div className="applicationContainer">
+        <div className="applicationContainer" id="application">
             <form className="applicationForm">
                 <MdOutlineCancel className="cancelButton" onClick={closeApplication}/>
                 <label className="label">

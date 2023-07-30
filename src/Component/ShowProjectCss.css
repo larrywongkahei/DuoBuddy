@@ -152,3 +152,9 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.application {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}

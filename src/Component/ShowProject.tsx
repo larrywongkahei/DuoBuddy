@@ -77,24 +77,28 @@ const ShowProject: React.FC = () => {
         }
     }, [])
 
+    window.onclick = (e:MouseEvent) => {
+        const applicationContainer:HTMLElement = document.getElementById("application") || new HTMLElement
+        if (e.target != applicationContainer){
+            setShowApplication(false)
+        }
+    }
+
     // function to show application and modify css
     function openApplicationAndModifyCss(){
         document.body.style.backgroundColor = "#8a7f7f"
+        document.body.style.opacity = "0.4"
         const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
-        const ProjectPage:HTMLElement = document.getElementById("ProjectPage") || new HTMLElement
         Navbar.style.pointerEvents = "none";
-        Navbar.style.opacity = "0.4"
-        ProjectPage.style.pointerEvents = "none";
-        ProjectPage.style.opacity = "0.4"
         setShowApplication(true)
     }
 
     // function to deal with css background
     function redoCSS(){
         document.body.style.backgroundColor = "#F0EFEF"
+        document.body.style.opacity = "1"
         const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
         Navbar.style.pointerEvents = "auto";
-        Navbar.style.opacity = "1"
     }
 
     // function to get data from application page child element
@@ -195,8 +199,6 @@ const ShowProject: React.FC = () => {
         <div className='ProjectPageContainer' id='ProjectPage'>
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
-                    {showApplication &&
-                    <Application getData={getData} closeApplication={closeApplication}/> }
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
@@ -267,6 +269,10 @@ const ShowProject: React.FC = () => {
                     <textarea className='CommentBox' value={commentBox} onChange={commentBoxTextHandler} />
                     <input type='submit' onClick={handleAddComment} value="Submit" />
                 </div>
+            </div>
+            <div className='application'>
+            {showApplication &&
+                    <Application getData={getData} closeApplication={closeApplication}/> }
             </div>
         </div>
     )
