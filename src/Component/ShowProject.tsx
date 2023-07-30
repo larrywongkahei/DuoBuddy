@@ -201,7 +201,10 @@ const ShowProject: React.FC = () => {
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
                     {showApplication &&
-                        <Application getData={getData} closeApplication={closeApplication} />}
+                    <div>
+
+                        <Application getData={getData} closeApplication={closeApplication} />
+                        </div> }
 
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
