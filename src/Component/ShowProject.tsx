@@ -202,7 +202,7 @@ const ShowProject: React.FC = () => {
                     </button>
                     :
                     <>
-                    {projectData?.applications?.includes(sessionStorage?.getItem("userId") || "dummyData") || apply?
+                    {projectData?.applications[sessionStorage.getItem("userId") || ""] !== null || apply?
                         <button>
                             Applied
                         </button> : <button onClick={openApplicationAndModifyCss}>
