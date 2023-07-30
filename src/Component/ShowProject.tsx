@@ -15,10 +15,10 @@ const ShowProject: React.FC = () => {
 
     console.log(apply)
 
-    for(const i in projectData?.applications){
-        console.log(i)
-        console.log(projectData?.applications[i])
-    }
+    console.log(projectData)
+    console.log(projectData?.applications)
+    // console.log(Object.keys(projectData?.applications))
+    // console.log(sessionStorage.getItem("userId")? in projectData?.applications)
 
     // To store commentBox input data
     const [commentBox, setCommentBox] = useState<string>("")
