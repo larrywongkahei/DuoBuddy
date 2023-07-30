@@ -270,10 +270,11 @@ const ShowProject: React.FC = () => {
                     <input type='submit' onClick={handleAddComment} value="Submit" />
                 </div>
             </div>
-            <div className='application'>
+            
             {showApplication &&
-                    <Application getData={getData} closeApplication={closeApplication}/> }
-            </div>
+            <div className='application'>
+                    <Application getData={getData} closeApplication={closeApplication}/>
+            </div> }
         </div>
     )
 };
