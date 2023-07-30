@@ -15,9 +15,9 @@ const ShowProject: React.FC = () => {
 
     console.log(projectData)
     console.log(projectData?.applications)
-    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""] !== null)
-    console.log(apply)
-    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""] !== null || apply)
+    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""])
+    console.log(projectData?.applications.length)
+    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""] == null || apply)
     // console.log(Object.keys(projectData?.applications))
     // console.log(sessionStorage.getItem("userId")? in projectData?.applications)
 
