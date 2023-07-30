@@ -1,6 +1,10 @@
 import Application from "./Application";
 
+import { useState } from "react";
+
 const Applicationpage : React.FC = () => {
+
+    const [showApplication, setShowApplication] = useState<Boolean>(false)
 
     function getData(data:string){
         console.log(data);
@@ -8,10 +12,11 @@ const Applicationpage : React.FC = () => {
 
     return (
         <div>
-        <button>
+        <button onClick={() => setShowApplication(true)}>
             Press to open
         </button>
-        <Application getData={getData}/>
+        {showApplication &&
+        <Application getData={getData}/> }
         </div>
     )
 }
