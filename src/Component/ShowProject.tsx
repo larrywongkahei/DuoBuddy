@@ -13,10 +13,12 @@ const ShowProject: React.FC = () => {
 
     const [apply, setApply] = useState(false);
 
+    const userIdInApplications:Boolean = projectData?.applications[sessionStorage.getItem("userId") || ""] !== undefined
+
     console.log(projectData?.applications)
-    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""])
+    console.log(userIdInApplications)
     console.log(projectData?.applications.length)
-    console.log(projectData?.applications[sessionStorage.getItem("userId") || ""] == null || apply)
+    console.log(userIdInApplications || apply)
     // console.log(Object.keys(projectData?.applications))
     // console.log(sessionStorage.getItem("userId")? in projectData?.applications)
 
