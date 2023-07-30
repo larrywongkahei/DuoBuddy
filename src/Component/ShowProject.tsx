@@ -13,7 +13,6 @@ const ShowProject: React.FC = () => {
 
     const [apply, setApply] = useState(false);
 
-    console.log(projectData)
     console.log(projectData?.applications)
     console.log(projectData?.applications[sessionStorage.getItem("userId") || ""])
     console.log(projectData?.applications.length)
