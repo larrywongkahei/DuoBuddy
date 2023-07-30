@@ -13,7 +13,7 @@ const ShowProject: React.FC = () => {
 
     const [apply, setApply] = useState(false);
 
-    const userIdInApplications:Boolean = projectData?.applications[sessionStorage.getItem("userId") || ""] !== undefined
+    const userIdInApplications: Boolean = projectData?.applications[sessionStorage.getItem("userId") || ""] !== undefined
 
     // console.log(Object.keys(projectData?.applications))
     // console.log(sessionStorage.getItem("userId")? in projectData?.applications)
@@ -41,13 +41,13 @@ const ShowProject: React.FC = () => {
 
     }
 
-    async function deleteProject(e: React.MouseEvent){
+    async function deleteProject(e: React.MouseEvent) {
         e.preventDefault();
-        if (window.confirm("Delete this post?")){
+        if (window.confirm("Delete this post?")) {
             await APIService.deleteProject(projectData?.id || "");
             nav("/explore");
+        }
     }
-}
 
 
     // Get all param
@@ -77,55 +77,56 @@ const ShowProject: React.FC = () => {
         }
     }, [])
 
-    window.onclick = (e:MouseEvent) => {
-        const applicationContainer:HTMLElement = document.getElementById("application") || new HTMLElement
-        if (e.target != applicationContainer){
+    window.onclick = (e: MouseEvent) => {
+        const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
+        if (e.target != applicationContainer) {
             setShowApplication(false)
         }
     }
 
     // function to show application and modify css
-    function openApplicationAndModifyCss(){
-        document.body.style.backgroundColor = "#8a7f7f"
-        document.body.style.opacity = "0.4"
-        const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
-        Navbar.style.pointerEvents = "none";
-        setShowApplication(true)
+    function openApplicationAndModifyCss() {
+        if (sessionStorage.length > 0) {
+            document.body.style.backgroundColor = "#8a7f7f"
+            document.body.style.opacity = "0.4"
+            const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
+            Navbar.style.pointerEvents = "none";
+            setShowApplication(true)
+        } else {
+            alert("Login First");
+        }
     }
 
     // function to deal with css background
-    function redoCSS(){
+    function redoCSS() {
         document.body.style.backgroundColor = "#F0EFEF"
         document.body.style.opacity = "1"
-        const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
+        const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
         Navbar.style.pointerEvents = "auto";
     }
 
     // function to get data from application page child element
-    function getData(data:string){
+    function getData(data: string) {
         setShowApplication(false);
         redoCSS();
         applyToBuildProjectTogether(data)
     }
 
     // function called when user press on the cancel button
-    function closeApplication(){
+    function closeApplication() {
         setShowApplication(false);
         redoCSS();
     }
-    
 
-    async function applyToBuildProjectTogether(data:string) {
-        if (sessionStorage.length > 0) {
-            const userId:string = sessionStorage.getItem("userId") || "";
-            const applyBio:Record<string, string> = {}
-            applyBio[userId] = data;
-            console.log(applyBio);
-            await APIService.applyToBuildProject(id || "",applyBio).then(response => response.json()).then(data => console.log(data))
-            setApply(true);
-        } else {
-            alert("Login First");
-        }
+
+    async function applyToBuildProjectTogether(data: string) {
+        const userId: string = sessionStorage.getItem("userId") || "";
+        const applyBio: Record<string, string> = {}
+        applyBio[userId] = data;
+        console.log(applyBio);
+        await APIService.applyToBuildProject(id || "", applyBio).then(response => response.json()).then(data => console.log(data))
+        setApply(true);
+
     }
 
     // Function to check if the viewer are the creater, add view if not.
@@ -178,7 +179,7 @@ const ShowProject: React.FC = () => {
                 <div className='CommentRightDetail'>
                     <div>
                         <Link to={`/profile/${each?.createdBy?.id}`}>
-                            <img src={each.createdBy?.avatarUrl} alt='logo'/>
+                            <img src={each.createdBy?.avatarUrl} alt='logo' />
                         </Link>
                         <p>
                             <Link to={`/profile/${each?.createdBy?.id}`} style={{ textDecoration: "none", color: "black" }}>
@@ -199,28 +200,28 @@ const ShowProject: React.FC = () => {
         <div className='ProjectPageContainer' id='ProjectPage'>
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
-                {showApplication &&
-                    <Application getData={getData} closeApplication={closeApplication}/>}
+                    {showApplication &&
+                        <Application getData={getData} closeApplication={closeApplication} />}
 
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
                     {
-                        projectData?.createdBy?.name === sessionStorage?.getItem("name") ? 
-                    <button onClick={deleteProject}>
-                        Close this post
-                    </button>
-                    :
-                    <>
-                    {userIdInApplications || apply?
-                        <button>
-                            Applied
-                        </button> : <button onClick={openApplicationAndModifyCss}>
-                            Apply to build project together
-                        </button>
+                        projectData?.createdBy?.name === sessionStorage?.getItem("name") ?
+                            <button onClick={deleteProject}>
+                                Close this post
+                            </button>
+                            :
+                            <>
+                                {userIdInApplications || apply ?
+                                    <button>
+                                        Applied
+                                    </button> : <button onClick={openApplicationAndModifyCss}>
+                                        Apply to build project together
+                                    </button>
+                                }
+                            </>
                     }
-                    </>
-                }
                 </div>
 
 
@@ -245,7 +246,7 @@ const ShowProject: React.FC = () => {
                 </div>
                 <div className='ProjectUserDetail'>
                     <Link to={`/profile/${projectData?.createdBy?.id}`} >
-                        <img src={projectData?.createdBy?.avatarUrl} alt='logo'/>
+                        <img src={projectData?.createdBy?.avatarUrl} alt='logo' />
                     </Link>
                     <p>
                         <Link to={`/profile/${projectData?.createdBy?.id}`} style={{ textDecoration: "none", color: "black" }}>
@@ -273,7 +274,7 @@ const ShowProject: React.FC = () => {
                     <input type='submit' onClick={handleAddComment} value="Submit" />
                 </div>
             </div>
-            
+
         </div>
     )
 };
