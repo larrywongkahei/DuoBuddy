@@ -154,7 +154,9 @@
 }
 
 .application {
-    position: fixed;
-    top: 50%;
-    right: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
