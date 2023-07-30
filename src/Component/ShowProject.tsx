@@ -15,10 +15,6 @@ const ShowProject: React.FC = () => {
 
     const userIdInApplications:Boolean = projectData?.applications[sessionStorage.getItem("userId") || ""] !== undefined
 
-    console.log(projectData?.applications)
-    console.log(userIdInApplications)
-    console.log(projectData?.applications.length)
-    console.log(userIdInApplications || apply)
     // console.log(Object.keys(projectData?.applications))
     // console.log(sessionStorage.getItem("userId")? in projectData?.applications)
 
@@ -211,7 +207,7 @@ const ShowProject: React.FC = () => {
                     </button>
                     :
                     <>
-                    {projectData?.applications[sessionStorage.getItem("userId") || ""] !== null || apply?
+                    {userIdInApplications || apply?
                         <button>
                             Applied
                         </button> : <button onClick={openApplicationAndModifyCss}>
