@@ -1,8 +1,16 @@
+import { useState } from "react";
+
+
 const Application : React.FC = () => {
+
+    const [dataToPass, setDataToPass] = useState<string>("");
+
     return (
-        <h1>
-            This is application
-        </h1>
+        <form>
+            <label>
+                Input your experience
+            </label>
+        </form>
     )
 }
 
