@@ -92,6 +92,9 @@ const ShowProject: React.FC = () => {
             document.body.style.backgroundColor = "#8a7f7f"
             document.body.style.opacity = "0.4"
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
+            const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
+            applicationContainer.style.opacity = "1"
+            applicationContainer.style.backgroundColor="#F0EFEF"
             Navbar.style.pointerEvents = "none";
             setShowApplication(true)
         } else {
