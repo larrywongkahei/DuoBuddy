@@ -11,9 +11,6 @@ const ShowProject: React.FC = () => {
     // To store all projects fetched from backend
     const [projectData, setProjectData] = useState<Project>();
 
-    // Content for applying to build project together
-    const [content, setContent] = useState<string>("")
-
     const [apply, setApply] = useState(false);
 
     // To store commentBox input data
@@ -87,6 +84,7 @@ const ShowProject: React.FC = () => {
     function getData(data:string){
         setShowApplication(false);
         redoCSS();
+        applyToBuildProjectTogether(data)
     }
 
     // function called when user press on the cancel button
@@ -96,7 +94,7 @@ const ShowProject: React.FC = () => {
     }
     
 
-    async function applyToBuildProjectTogether(e: React.MouseEvent) {
+    async function applyToBuildProjectTogether(data:string) {
         if (sessionStorage.length > 0) {
             const userId:string = sessionStorage.getItem("userId") || "";
             const applyBio:Record<string, string> = {}
