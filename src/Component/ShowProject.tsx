@@ -76,7 +76,7 @@ const ShowProject: React.FC = () => {
             const applyBio:Record<string, string> = {}
             applyBio[userId] = content;
             console.log(applyBio);
-            await APIService.applyToBuildProject(id || "",applyBio);
+            await APIService.applyToBuildProject(id || "",applyBio).then(response => response.json()).then(data => console.log(data))
             setApply(true);
         } else {
             alert("Login First");
