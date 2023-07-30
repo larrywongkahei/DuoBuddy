@@ -155,6 +155,6 @@
 
 .application {
     position: fixed;
-    top: 50%;
-    right: 50%;
+    height: 100vh;
+    width: 100vw;
 }
