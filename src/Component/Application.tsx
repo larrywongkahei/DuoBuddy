@@ -1,7 +1,10 @@
 import { useState } from "react";
 
 
-const Application : React.FC = () => {
+interface functionToPass {
+    getData(data:string) : void
+}
+const Application : React.FC<functionToPass> = ({getData}) => {
 
     const [dataToPass, setDataToPass] = useState<string>("");
 
@@ -11,6 +14,8 @@ const Application : React.FC = () => {
 
     function handleSubmitHandler(e:React.MouseEvent){
         e.preventDefault();
+        getData(dataToPass)
+        
         console.log(dataToPass);
     }
 
