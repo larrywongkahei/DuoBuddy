@@ -128,9 +128,10 @@ export const APIService =
       headers: { 'Content-Type': 'application/json' }
     })
   },
-  applyToBuildProject(projectId: string, userId: string) {
-    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}`, {
+  applyToBuildProject(projectId: string, content:Record<string, string>) {
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}`, {
       method: "PUT",
+      body: JSON.stringify(content),
       headers: { 'Content-Type': 'application/json' }
     })
   },

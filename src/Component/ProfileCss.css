@@ -143,9 +143,9 @@ td {
     width: 40rem;
     border-radius: 10px;
     overflow: scroll;
-    border-width: .8px;
+    border-width: 1px;
     border-style: solid;
-    padding: 7px;
+    padding: 12px;
 }
 
 .contactIconsContainer {
