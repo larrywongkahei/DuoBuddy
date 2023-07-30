@@ -13,8 +13,6 @@ const ShowProject: React.FC = () => {
 
     const [apply, setApply] = useState(false);
 
-    console.log(apply)
-
     console.log(projectData)
     console.log(projectData?.applications)
     // console.log(Object.keys(projectData?.applications))
