@@ -209,11 +209,9 @@ const ShowProject: React.FC = () => {
                         {projectData?.title}
                     </h1>
                     {showApplication &&
-            <div className='applicationMainContainer'>
                 <div id='application'>
                     <Application getData={getData} closeApplication={closeApplication} />
-                </div>
-            </div>}
+                </div>}
                     {
                         projectData?.createdBy?.name === sessionStorage?.getItem("name") ?
                             <button onClick={deleteProject}>
