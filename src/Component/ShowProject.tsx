@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 import { Project } from "./Interface";
 import { APIService } from '../APIService';
+import Application from "./Application";
 
 const ShowProject: React.FC = () => {
 
@@ -75,7 +76,7 @@ const ShowProject: React.FC = () => {
     }, [])
 
     // function to deal with css background
-    function modifyCSS(){
+    function redoCSS(){
         document.body.style.backgroundColor = "#F0EFEF"
         const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
         Navbar.style.pointerEvents = "auto";
@@ -85,13 +86,13 @@ const ShowProject: React.FC = () => {
     // function to get data from application page child element
     function getData(data:string){
         setShowApplication(false);
-        modifyCSS();
+        redoCSS();
     }
 
     // function called when user press on the cancel button
     function closeApplication(){
         setShowApplication(false);
-        modifyCSS();
+        redoCSS();
     }
     
 
@@ -179,6 +180,7 @@ const ShowProject: React.FC = () => {
         <div className='ProjectPageContainer'>
             <div className='ProjectPageHeader'>
                 <div className='TitleAndApplyButton'>
+                    <Application getData={getData} closeApplication={closeApplication}/>
                     <h1 className='ProjectPageTitle'>
                         {projectData?.title}
                     </h1>
