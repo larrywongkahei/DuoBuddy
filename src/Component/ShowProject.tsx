@@ -77,12 +77,12 @@ const ShowProject: React.FC = () => {
         }
     }, [])
 
-    window.onclick = (e: MouseEvent) => {
-        const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
-        if (e.target !== applicationContainer) {
-            setShowApplication(false)
-        }
-    }
+    // window.onclick = (e: MouseEvent) => {
+    //     const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
+    //     if (e.target !== applicationContainer) {
+    //         setShowApplication(false)
+    //     }
+    // }
 
     console.log(showApplication)
 
