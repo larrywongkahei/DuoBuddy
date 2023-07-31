@@ -89,14 +89,18 @@ const ShowProject: React.FC = () => {
     function openApplicationAndModifyCss() {
         if (sessionStorage.length > 0) {
             setShowApplication(true)
-            document.body.style.backgroundColor = "rgba(0,0,0,0.75)"
-            document.body.style.overflow = "hidden"
-            const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
-            const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
-            applicationContainer.style.backgroundColor = "#F0EFEF"
+            document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
+            document.body.style.overflow = "hidden";
+            const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement;
+            const applyButton:HTMLElement = document.getElementById("applyButton") || new HTMLElement;
+            const contentTags:HTMLElement = document.getElementById("contentTags") || new HTMLElement;
+            contentTags.style.backgroundColor = "rgba(0,0,0,0.75)";
+            contentTags.style.pointerEvents = "none";
+            applyButton.style.backgroundColor = "rgba(0,0,0,0.75)";
+            applyButton.style.pointerEvents = "none";
+            // const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
+            // applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
-            // Navbar.style.backgroundColor = "rgba(0,0,0,0.75)"
-
         } else {
             alert("Login First");
         }
@@ -105,7 +109,7 @@ const ShowProject: React.FC = () => {
     // function to deal with css background
     function redoCSS() {
         document.body.style.backgroundColor = "#F0EFEF"
-        document.body.style.opacity = "1"
+        document.body.style.overflow = "auto"
         const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
         Navbar.style.pointerEvents = "auto";
     }
@@ -158,7 +162,7 @@ const ShowProject: React.FC = () => {
     // Tags node
     const tags = projectData?.tags?.map((each, index) => {
         return (
-            <div className='ContentTags' key={index}>
+            <div className='ContentTags' key={index} id='contentTags'>
                 <p className=''>
                     {each}
                 </p>
@@ -223,7 +227,7 @@ const ShowProject: React.FC = () => {
                                 {userIdInApplications || apply ?
                                     <button>
                                         Applied
-                                    </button> : <button onClick={openApplicationAndModifyCss}>
+                                    </button> : <button onClick={openApplicationAndModifyCss} id='applyButton'>
                                         Apply to build project together
                                     </button>
                                 }
