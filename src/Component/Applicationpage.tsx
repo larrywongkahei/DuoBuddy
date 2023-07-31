@@ -31,7 +31,6 @@ const Applicationpage : React.FC = () => {
             document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
             const Navbar:HTMLElement = document.getElementById("NavBar") || new HTMLElement
             Navbar.style.pointerEvents = "none";
-            Navbar.style.opacity = "0.4"
             setShowApplication(true)
             }}>
             Press to open

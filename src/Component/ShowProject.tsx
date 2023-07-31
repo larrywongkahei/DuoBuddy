@@ -93,7 +93,7 @@ const ShowProject: React.FC = () => {
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
             const TagsContainer: HTMLElement = document.getElementById("TagsContainer") || new HTMLElement();
-            TagsContainer.style.backgroundColor = "rgba(0,0,0,0.0)"
+            TagsContainer.style.backgroundColor = "rgba(0,0,0,0)"
             Navbar.style.pointerEvents = "none";
         } else {
             alert("Login First");
@@ -104,7 +104,11 @@ const ShowProject: React.FC = () => {
     function redoCSS() {
         document.body.style.backgroundColor = "#F0EFEF"
         document.body.style.overflow = "auto"
-        const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement()
+        const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
+        const Tags:HTMLElement = document.getElementById("contentTags") || new HTMLElement();
+        const Button:HTMLElement = document.getElementById("applyButton") || new HTMLElement();
+        Button.style.backgroundColor = "rgba(0,0,0,0)";
+        Tags.style.backgroundColor = "rgba(0,0,0,0)";
         Navbar.style.pointerEvents = "auto";
     }
 
@@ -246,7 +250,7 @@ const ShowProject: React.FC = () => {
                 <div className='mainContent'>
                     {contentToPrint}
                 </div>
-                <div className='TagsContainer'>
+                <div className='TagsContainer' id='TagsContainer'>
                     {tags}
                 </div>
                 <div className='ProjectUserDetail'>
