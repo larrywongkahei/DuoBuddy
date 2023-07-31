@@ -89,9 +89,12 @@ const ShowProject: React.FC = () => {
     function openApplicationAndModifyCss() {
         if (sessionStorage.length > 0) {
             setShowApplication(true)
-            document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
+            // document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement;
+            const ProjectPage: HTMLElement = document.getElementById("ProjectPage") || new HTMLElement;
+            ProjectPage.style.backgroundColor = "rgba(0,0,0,0.75)";
+            Navbar.style.backgroundColor = "rgba(0,0,0,0.75)";
             Navbar.style.pointerEvents = "none";
         } else {
             alert("Login First");
