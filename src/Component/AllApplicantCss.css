@@ -1,0 +1,49 @@
+.AllApplicantContainer {
+    display: flex;
+    flex-direction: row;
+    overflow-wrap: ;
+}
+
+.eachApplicantProfileData {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: .8px;
+    height: 22rem;
+    width: 18rem;
+    align-items: center;
+    position: relative;
+}
+
+.eachApplicantImage {
+    border-style: solid;
+    border-width: 1px;
+    height: 5rem;
+    width: 5rem;
+    margin: 20px;
+}
+
+.eachApplicationContact {
+    display: flex;
+    flex-direction: row;
+    gap:12px;
+    margin-bottom: 14px;
+}
+
+.eachApplicationBio {
+    height: 8.5rem;
+    width: 14rem;
+}
+
+.eachApplicationBioP {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eachApplicationButton {
+    position: absolute;
+    bottom: 15px;
+}
