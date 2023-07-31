@@ -60,7 +60,7 @@ export const APIService =
     if (fetchdata.status === 200) {
       const data = await fetchdata.json()
       sessionStorage.setItem("userId", data.id)
-      window.location.href = `https://larrywongkahei.github.io/DuoBuddy${data.id}`
+      window.location.href = `https://larrywongkahei.github.io/DuoBuddy/${data.id}`
     }
     else {
       this.createUser(name, bio, location, avatar_url, email, password)
