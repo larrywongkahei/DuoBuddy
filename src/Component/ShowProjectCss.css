@@ -154,7 +154,11 @@
 }
 
 #application {
-    margin: auto;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F0EFEF
 }
 
 #applicationConatiner {

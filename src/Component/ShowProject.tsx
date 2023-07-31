@@ -84,20 +84,18 @@ const ShowProject: React.FC = () => {
     //     }
     // }
 
-    console.log(showApplication)
 
     // function to show application and modify css
     function openApplicationAndModifyCss() {
         if (sessionStorage.length > 0) {
             setShowApplication(true)
-            document.body.style.backgroundColor = "#8a7f7f"
-            document.body.style.opacity = "0.4"
-            document.body.style.overflow = "hidden"
+            // document.body.style.backgroundColor = "rgba(0,0,0,0.75)"
+            // document.body.style.overflow = "hidden"
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
             const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
-            applicationContainer.style.opacity = "1"
             applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
+            Navbar.style.backgroundColor = "rgba(0,0,0,0.75)"
 
         } else {
             alert("Login First");
@@ -130,7 +128,6 @@ const ShowProject: React.FC = () => {
         const userId: string = sessionStorage.getItem("userId") || "";
         const applyBio: Record<string, string> = {}
         applyBio[userId] = data;
-        console.log(applyBio);
         await APIService.applyToBuildProject(id || "", applyBio).then(response => response.json()).then(data => console.log(data))
         setApply(true);
 
