@@ -93,6 +93,8 @@ const ShowProject: React.FC = () => {
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement;
             const ProjectPage: HTMLElement = document.getElementById("ProjectPage") || new HTMLElement;
+            const tags: HTMLElement = document.getElementById("contentTags") || new HTMLElement;
+            tags.style.backgroundColor = "rgba(0,0,0,0.75)";
             ProjectPage.style.backgroundColor = "rgba(0,0,0,0.75)";
             Navbar.style.backgroundColor = "rgba(0,0,0,0.75)";
             Navbar.style.pointerEvents = "none";
@@ -157,7 +159,7 @@ const ShowProject: React.FC = () => {
     // Tags node
     const tags = projectData?.tags?.map((each, index) => {
         return (
-            <div className='ContentTags' key={index} id='contentTags'>
+            <div className='ContentTags' key={index}>
                 <p className=''>
                     {each}
                 </p>
@@ -212,7 +214,8 @@ const ShowProject: React.FC = () => {
                                 <Application getData={getData} closeApplication={closeApplication} />
                             </div>
                         </div>}
-                    {
+                        <div>
+                        {
                         projectData?.createdBy?.name === sessionStorage?.getItem("name") ?
                             <button onClick={deleteProject}>
                                 Close this post
@@ -228,6 +231,7 @@ const ShowProject: React.FC = () => {
                                 }
                             </>
                     }
+                        </div>
                 </div>
 
 
@@ -247,7 +251,7 @@ const ShowProject: React.FC = () => {
                 <div className='mainContent'>
                     {contentToPrint}
                 </div>
-                <div className='TagsContainer'>
+                <div className='TagsContainer' id='contentTags'>
                     {tags}
                 </div>
                 <div className='ProjectUserDetail'>
