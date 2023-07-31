@@ -92,14 +92,6 @@ const ShowProject: React.FC = () => {
             document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement;
-            const applyButton:HTMLElement = document.getElementById("applyButton") || new HTMLElement;
-            const contentTags:HTMLElement = document.getElementById("contentTags") || new HTMLElement;
-            contentTags.style.backgroundColor = "rgba(0,0,0,0.75)";
-            contentTags.style.pointerEvents = "none";
-            applyButton.style.backgroundColor = "rgba(0,0,0,0.75)";
-            applyButton.style.pointerEvents = "none";
-            // const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
-            // applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
         } else {
             alert("Login First");
