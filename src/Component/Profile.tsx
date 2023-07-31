@@ -96,19 +96,25 @@ const Profile: React.FC = () => {
     const projects = projectData?.map(e => {
         return (
             <div className='eachProjectInProfile'>
-                <div className='eachProjectDetailContainer'>
+                <tr className='eachProjectDetailContainer'>
+                    <td>
                     <h3>
                         <Link to={`/post/${e.id}`} style={{ textDecoration: "none", color: "black" }}>
                             {e.title}
                         </Link>
                     </h3>
+                    </td>
+                    <td>
                     <p>
                         Requests : {Object.keys(e.applications).length || 0}
                     </p>
+                    </td>
+                    <td>
                     <button>
                         Detail
                     </button>
-                </div>
+                    </td>
+                </tr>
                 <hr />
 
             </div>
@@ -180,7 +186,9 @@ const Profile: React.FC = () => {
                         Projects
                     </p>
                     <div className='projectAreaContainer'>
-                        {projects}
+                        <table>
+                            {projects}
+                        </table>
                     </div>
                 </>
             </div>
