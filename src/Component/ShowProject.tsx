@@ -89,8 +89,6 @@ const ShowProject: React.FC = () => {
             document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
-            const Tags:HTMLElement = document.getElementById("contentTags") || new HTMLElement();
-            Tags.style.backgroundColor = "rgba(0,0,0,0)";
             Navbar.style.pointerEvents = "none";
         } else {
             alert("Login First");
@@ -102,13 +100,12 @@ const ShowProject: React.FC = () => {
         document.body.style.backgroundColor = "#F0EFEF"
         document.body.style.overflow = "auto"
         const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
-        const Tags:HTMLElement = document.getElementById("contentTags") || new HTMLElement();
-        Tags.style.backgroundColor = "aliceblue";
         Navbar.style.pointerEvents = "auto";
     }
 
     // function to get data from application page child element
     async function getData(data: string) {
+        console.log(data)
         setShowApplication(false);
         redoCSS();
         await applyToBuildProjectTogether(data)
