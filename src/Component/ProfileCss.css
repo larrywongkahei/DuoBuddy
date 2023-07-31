@@ -131,10 +131,16 @@ td {
     flex-direction: column;
 }
 
+.eachProjectInProfile hr{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 .eachProjectDetailContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 

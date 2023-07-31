@@ -11,7 +11,7 @@ import { User, Project } from "./Interface";
 import { APIService } from '../APIService';
 import { Link } from 'react-router-dom';
 
-const Profile:React.FC = () => {
+const Profile: React.FC = () => {
 
 
     // Store userData fetched from backend
@@ -36,14 +36,14 @@ const Profile:React.FC = () => {
     const [contactURL, setContactURL] = useState<string>("");
 
     useEffect(() => {
-        APIService.fetchUser(sessionStorage.getItem("email")).then((data:User) => setUserData(data));
-        APIService.getProjectByUserId(sessionStorage.getItem("userId")).then((data:Project[]) => setProjectData(data));
+        APIService.fetchUser(sessionStorage.getItem("email")).then((data: User) => setUserData(data));
+        APIService.getProjectByUserId(sessionStorage.getItem("userId")).then((data: Project[]) => setProjectData(data));
     }, [])
 
     // Button handler for input contact update button
-    async function updateContactButton(e:React.SyntheticEvent) {
+    async function updateContactButton(e: React.SyntheticEvent) {
         e.preventDefault();
-        const dataToUpdate:Record<string, string> = {};
+        const dataToUpdate: Record<string, string> = {};
         dataToUpdate[chosenContact] = contactURL;
         await APIService.updateUser(sessionStorage.getItem("userId"), 'contact', dataToUpdate);
         window.location.reload();
@@ -52,7 +52,7 @@ const Profile:React.FC = () => {
 
 
     // Set user's choice for contant
-    function chosenContactHandler(option:string) {
+    function chosenContactHandler(option: string) {
         setChosenContact(option);
     }
 
@@ -62,16 +62,16 @@ const Profile:React.FC = () => {
     }
 
     // set input data
-    function bioHandler(e:React.ChangeEvent<HTMLTextAreaElement>) {
+    function bioHandler(e: React.ChangeEvent<HTMLTextAreaElement>) {
         setBio(e.target.value)
     }
-    function phoneNumberHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function phoneNumberHandler(e: React.ChangeEvent<HTMLInputElement>) {
         setPhoneNumber(e.target.value);
     }
-    function locationHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function locationHandler(e: React.ChangeEvent<HTMLInputElement>) {
         setLocation(e.target.value);
     }
-    function contactURLHandler(e:React.ChangeEvent<HTMLInputElement>) {
+    function contactURLHandler(e: React.ChangeEvent<HTMLInputElement>) {
         setContactURL(e.target.value);
     }
 
@@ -81,34 +81,36 @@ const Profile:React.FC = () => {
     }
 
     // Update data function
-    async function updateData(param:string, data:string) {
+    async function updateData(param: string, data: string) {
         await APIService.updateUser(sessionStorage.getItem('userId'), param, data);
         window.location.reload();
     }
 
 
-    async function submitForm(e:React.SyntheticEvent) {
+    async function submitForm(e: React.SyntheticEvent) {
         e.preventDefault();
         await APIService.updateUser(sessionStorage.getItem('userId'), 'bio', bio);
         window.location.reload();
     }
 
     const projects = projectData?.map(e => {
-        return(
+        return (
             <div className='eachProjectInProfile'>
                 <div className='eachProjectDetailContainer'>
                     <h3>
-                        <Link to={`/post/${e.id}`} style={{textDecoration:"none", color:"black"}}>
+                        <Link to={`/post/${e.id}`} style={{ textDecoration: "none", color: "black" }}>
                             {e.title}
                         </Link>
                     </h3>
+                    <p>
+                        Requests : {Object.keys(e.applications).length || 0}
+                    </p>
                     <button>
                         Detail
                     </button>
                 </div>
-                <p style={{justifySelf:"flex-end"}}>
-                    Requests : {Object.keys(e.applications).length || 0}
-                </p>
+                <hr />
+
             </div>
         )
     })
@@ -118,7 +120,7 @@ const Profile:React.FC = () => {
     return (
         <div className='profileContainer'>
             <div className='profilePictureContainer'>
-                <img src={userData?.avatarUrl} className='profilePicture' alt='logo'/>
+                <img src={userData?.avatarUrl} className='profilePicture' alt='logo' />
                 <p className='name'>{sessionStorage.getItem("name")}</p>
                 <table>
                     <tr>
