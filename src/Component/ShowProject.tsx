@@ -93,6 +93,10 @@ const ShowProject: React.FC = () => {
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
             const TagsContainer: HTMLElement = document.getElementById("TagsContainer") || new HTMLElement();
+            const Tags:HTMLElement = document.getElementById("contentTags") || new HTMLElement();
+            const Button:HTMLElement = document.getElementById("applyButton") || new HTMLElement();
+            Button.style.backgroundColor = "rgba(0,0,0,0)";
+            Tags.style.backgroundColor = "rgba(0,0,0,0)";
             TagsContainer.style.backgroundColor = "rgba(0,0,0,0)"
             Navbar.style.pointerEvents = "none";
         } else {
