@@ -97,19 +97,19 @@ const Profile: React.FC = () => {
         return (
             <div className='eachProjectInProfile'>
                 <tr className='eachProjectDetailContainer'>
-                    <td>
+                    <td style={{width:"60%"}}>
                     <h3>
                         <Link to={`/post/${e.id}`} style={{ textDecoration: "none", color: "black" }}>
                             {e.title}
                         </Link>
                     </h3>
                     </td>
-                    <td>
+                    <td style={{width:"20%"}}>
                     <p>
                         Requests : {Object.keys(e.applications).length || 0}
                     </p>
                     </td>
-                    <td>
+                    <td style={{width:"10%"}}>
                     <button>
                         Detail
                     </button>
