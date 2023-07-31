@@ -107,7 +107,7 @@ const Profile:React.FC = () => {
                     </button>
                 </div>
                 <p style={{justifySelf:"flex-end"}}>
-                    Requests : {e.applications.length || 0}
+                    Requests : {Object.keys(e.applications).length || 0}
                 </p>
             </div>
         )
