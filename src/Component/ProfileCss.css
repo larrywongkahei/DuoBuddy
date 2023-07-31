@@ -127,8 +127,8 @@
 }
 
 .eachProjectInProfile{
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+
 }
 
 .eachProjectInProfile hr{
