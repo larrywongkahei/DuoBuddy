@@ -15,9 +15,6 @@ const ShowProject: React.FC = () => {
 
     const userIdInApplications: Boolean = projectData?.applications[sessionStorage.getItem("userId") || ""] !== undefined
 
-    // console.log(Object.keys(projectData?.applications))
-    // console.log(sessionStorage.getItem("userId")? in projectData?.applications)
-
     // To store commentBox input data
     const [commentBox, setCommentBox] = useState<string>("")
 
@@ -111,10 +108,10 @@ const ShowProject: React.FC = () => {
     }
 
     // function to get data from application page child element
-    function getData(data: string) {
+    async function getData(data: string) {
         setShowApplication(false);
         redoCSS();
-        applyToBuildProjectTogether(data)
+        await applyToBuildProjectTogether(data)
     }
 
     // function called when user press on the cancel button
@@ -125,12 +122,12 @@ const ShowProject: React.FC = () => {
 
 
     async function applyToBuildProjectTogether(data: string) {
+        console.log("called")
         const userId: string = sessionStorage.getItem("userId") || "";
         const applyBio: Record<string, string> = {}
         applyBio[userId] = data;
         await APIService.applyToBuildProject(id || "", applyBio).then(response => response.json()).then(data => console.log(data))
         setApply(true);
-
     }
 
     // Function to check if the viewer are the creater, add view if not.
