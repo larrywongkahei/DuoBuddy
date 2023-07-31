@@ -89,13 +89,13 @@ const ShowProject: React.FC = () => {
     function openApplicationAndModifyCss() {
         if (sessionStorage.length > 0) {
             setShowApplication(true)
-            // document.body.style.backgroundColor = "rgba(0,0,0,0.75)"
-            // document.body.style.overflow = "hidden"
+            document.body.style.backgroundColor = "rgba(0,0,0,0.75)"
+            document.body.style.overflow = "hidden"
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
             const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
             applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
-            Navbar.style.backgroundColor = "rgba(0,0,0,0.75)"
+            // Navbar.style.backgroundColor = "rgba(0,0,0,0.75)"
 
         } else {
             alert("Login First");
