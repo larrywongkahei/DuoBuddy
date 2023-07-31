@@ -154,12 +154,16 @@
 }
 
 .application {
-    margin:auto
-}
-
-.applicationMainContainer {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
 
 }
+
+/* .applicationMainContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+} */
