@@ -105,7 +105,6 @@ const ShowProject: React.FC = () => {
 
     // function to get data from application page child element
     async function getData(data: string) {
-        console.log(data)
         setShowApplication(false);
         redoCSS();
         await applyToBuildProjectTogether(data)
@@ -119,11 +118,10 @@ const ShowProject: React.FC = () => {
 
 
     async function applyToBuildProjectTogether(data: string) {
-        console.log("called")
         const userId: string = sessionStorage.getItem("userId") || "";
         const applyBio: Record<string, string> = {}
         applyBio[userId] = data;
-        await APIService.applyToBuildProject(id || "", applyBio).then(response => response.json()).then(data => console.log(data))
+        await APIService.applyToBuildProject(id || "", applyBio).then(response => response.json());
         setApply(true);
     }
 

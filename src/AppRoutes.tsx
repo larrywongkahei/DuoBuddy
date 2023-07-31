@@ -7,7 +7,6 @@ import SearchResult from "./Component/SearchResult";
 import ShowProject from "./Component/ShowProject";
 import Signup from "./Component/Signup";
 import ProfilePageView from "./Component/ProfilePageView";
-import Applicationpage from "./Component/Applicationpage"
 import { Navigate } from "react-router-dom";
 
 export const AppRoutes = [

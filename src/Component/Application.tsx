@@ -17,7 +17,6 @@ const Application : React.FC<functionToPass> = ({getData, closeApplication}) => 
     function handleSubmitHandler(e:React.MouseEvent){
         e.preventDefault();
         getData(dataToPass)
-        console.log(dataToPass)
             }
 
     return (
