@@ -153,7 +153,7 @@
     justify-content: space-between;
 }
 
-.application {
+#application {
     position: fixed;
     left: 50%;
     top: 50%;
