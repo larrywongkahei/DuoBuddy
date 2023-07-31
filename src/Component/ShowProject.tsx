@@ -92,11 +92,13 @@ const ShowProject: React.FC = () => {
             setShowApplication(true)
             document.body.style.backgroundColor = "#8a7f7f"
             document.body.style.opacity = "0.4"
+            document.body.style.overflow = "hidden"
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement
             const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
             applicationContainer.style.opacity = "1"
             applicationContainer.style.backgroundColor = "#F0EFEF"
             Navbar.style.pointerEvents = "none";
+
         } else {
             alert("Login First");
         }
@@ -209,9 +211,11 @@ const ShowProject: React.FC = () => {
                         {projectData?.title}
                     </h1>
                     {showApplication &&
-                <div id='application'>
-                    <Application getData={getData} closeApplication={closeApplication} />
-                </div>}
+                        <div id='applicationConatiner'>
+                            <div id='application'>
+                                <Application getData={getData} closeApplication={closeApplication} />
+                            </div>
+                        </div>}
                     {
                         projectData?.createdBy?.name === sessionStorage?.getItem("name") ?
                             <button onClick={deleteProject}>
