@@ -92,12 +92,8 @@ const ShowProject: React.FC = () => {
             document.body.style.backgroundColor = "rgba(0,0,0,0.75)";
             document.body.style.overflow = "hidden";
             const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
-            const TagsContainer: HTMLElement = document.getElementById("TagsContainer") || new HTMLElement();
             const Tags:HTMLElement = document.getElementById("contentTags") || new HTMLElement();
-            const Button:HTMLElement = document.getElementById("applyButton") || new HTMLElement();
-            Button.style.backgroundColor = "rgba(0,0,0,0)";
             Tags.style.backgroundColor = "rgba(0,0,0,0)";
-            TagsContainer.style.backgroundColor = "rgba(0,0,0,0)"
             Navbar.style.pointerEvents = "none";
         } else {
             alert("Login First");
@@ -110,9 +106,7 @@ const ShowProject: React.FC = () => {
         document.body.style.overflow = "auto"
         const Navbar: HTMLElement = document.getElementById("NavBar") || new HTMLElement();
         const Tags:HTMLElement = document.getElementById("contentTags") || new HTMLElement();
-        const Button:HTMLElement = document.getElementById("applyButton") || new HTMLElement();
-        Button.style.backgroundColor = "rgba(0,0,0,0)";
-        Tags.style.backgroundColor = "rgba(0,0,0,0)";
+        Tags.style.backgroundColor = "aliceblue";
         Navbar.style.pointerEvents = "auto";
     }
 
@@ -229,7 +223,7 @@ const ShowProject: React.FC = () => {
                                 {userIdInApplications || apply ?
                                     <button>
                                         Applied
-                                    </button> : <button onClick={openApplicationAndModifyCss} id='applyButton'>
+                                    </button> : <button onClick={openApplicationAndModifyCss} id='applyButton' style={{backgroundColor:"rgba(0,0,0,0)"}}>
                                         Apply to build project together
                                     </button>
                                 }
