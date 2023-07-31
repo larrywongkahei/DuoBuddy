@@ -97,7 +97,7 @@ const Profile: React.FC = () => {
         return (
             <div className='eachProjectInProfile'>
                 <tr className='eachProjectDetailContainer'>
-                    <td style={{width:"60%"}}>
+                    <td style={{width:"70%"}}>
                     <h3>
                         <Link to={`/post/${e.id}`} style={{ textDecoration: "none", color: "black" }}>
                             {e.title}
