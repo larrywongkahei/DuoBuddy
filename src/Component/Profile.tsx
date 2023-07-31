@@ -95,7 +95,7 @@ const Profile: React.FC = () => {
 
     const projects = projectData?.map(e => {
         return (
-            <div className='eachProjectInProfile'>
+            <>
                 <tr className='eachProjectDetailContainer'>
                     <td style={{width:"70%"}}>
                     <h3>
@@ -116,7 +116,7 @@ const Profile: React.FC = () => {
                     </td>
                 </tr>
                 <hr />
-            </div>
+            </>
         )
     })
 
@@ -185,7 +185,7 @@ const Profile: React.FC = () => {
                         Projects
                     </p>
                     <div className='projectAreaContainer'>
-                        <table>
+                        <table style={{width:"100%"}}>
                             {projects}
                         </table>
                     </div>
