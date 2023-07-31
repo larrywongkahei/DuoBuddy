@@ -158,7 +158,7 @@ const ShowProject: React.FC = () => {
     // Tags node
     const tags = projectData?.tags?.map((each, index) => {
         return (
-            <div className='ContentTags' key={index} id='contentTags'>
+            <div className='ContentTags' key={index} style={showApplication ? {backgroundColor:"rgba(0,0,0,0)"} : {backgroundColor: "aliceblue"}}>
                 <p className=''>
                     {each}
                 </p>
