@@ -1,3 +1,5 @@
+import { User } from "./Component/Interface";
+
 export const APIService =
 {
   // Add user to database
@@ -111,6 +113,10 @@ export const APIService =
   },
   getUserById(id: string) {
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/user/dataFetching?id=${id}`)
+      .then(response => response.json())
+  },
+  getUsersByIds(projectId:string){
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/usersData/${projectId}`)
       .then(response => response.json())
   },
 
