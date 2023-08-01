@@ -13,29 +13,24 @@ const AllApplicant: React.FC= () => {
     const params = useParams();
     const id = params.id;
 
-    const Contacts = userDatas?.map((each, index) => {
-            return (
-                <div key={index}>
-                    <>
-                    {Object.keys(each?.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['github'] || ""} /> : null}
-                    </>
-                    <>
-                    {Object.keys(each?.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['linkedin'] || ""} /> : null}
-                    </>
-                    <>
-                    {Object.keys(each?.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['twitter'] || ""} /> : null}
-                    </>
-                </div>
-            )
-        })
+
     const usersNode = userDatas?.map((each, index) => {
+
         return (
             <div className="eachApplicantProfileData" key={index}>
                 <div className="eachApplicantImage">
-                    <img src={each.avatarUrl} alt="logo"/>
+                    <img src={each?.avatarUrl} alt="logo"/>
                 </div>
                 <div className="eachApplicationContact">
-                    {Contacts}
+                    <>
+                    {Object.keys(each?.contact).includes('github') && <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['github'] || ""} />}
+                    </>
+                    <>
+                    {Object.keys(each?.contact).includes('linkedin') && <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['linkedin'] || ""} />}
+                    </>
+                    <>
+                    {Object.keys(each?.contact).includes('twitter') && <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['twitter'] || ""} /> }
+                    </>
                 </div> 
                 <div className="eachApplicationBio">
                 <p className="eachApplicationBioP">

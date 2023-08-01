@@ -145,9 +145,9 @@ const Profile: React.FC = () => {
                     </tr>
                 </table>
                 <div className='contactIconsContainer'>
-                    {Object.keys(userData?.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github'] || ""} /> : null}
-                    {Object.keys(userData?.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin'] || ""} /> : null}
-                    {Object.keys(userData?.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter'] || ""} /> : null}
+                    {Object.keys(userData?.contact || {}).includes('github') && <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github'] || ""} /> }
+                    {Object.keys(userData?.contact || {}).includes('linkedin') && <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin'] || ""} /> }
+                    {Object.keys(userData?.contact || {}).includes('twitter') && <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter'] || ""} /> }
                 </div>
                 <div>
                     {Object.keys(userData?.contact || {}).length < 3 && !showAddContact ? <button onClick={showAddContactHandler}>Add Contact</button> : null}
