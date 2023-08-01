@@ -12,6 +12,8 @@ const AllApplicant: React.FC= () => {
     const [userDatas, setUserDatas] = useState<User[]>();
     const params = useParams();
     const id = params.id;
+    console.log(id)
+    console.log(userDatas)
 
 
     const usersNode = userDatas?.map((each, index) => {
