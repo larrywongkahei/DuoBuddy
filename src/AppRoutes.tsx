@@ -53,7 +53,7 @@ export const AppRoutes = [
         element:<ProfilePageView />
     },
     {
-        path:"/test",
+        path:"/applicants/:id",
         element:<AllApplicant />
     }
 

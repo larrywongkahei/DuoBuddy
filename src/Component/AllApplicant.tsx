@@ -1,5 +1,7 @@
 import "./AllApplicantCss.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { User } from "./Interface";
+import { useParams } from "react-router-dom";
 /*  Bio, project count, name, email, location, phonenumber, contacts */
 let bio = "fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk";
 let projectCount = 3;
@@ -8,9 +10,14 @@ let email = "makemak123@sww.com";
 let location = "Glasgow";
 let phoneNumber = "32311232";
 let contact = ["fasefasef", "fasefaesfa"]
-const AllApplicant: React.FC = () => {
+const AllApplicant: React.FC<string[]>= ( userIds ) => {
 
-    const [userDatas]
+    const [userDatas, setUserDatas] = useState<User[]>();
+
+    useEffect(() => {
+        
+    })
+
     return (
         <div className="AllApplicantContainer">
             <div className="eachApplicantProfileData">
