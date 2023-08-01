@@ -6,14 +6,7 @@ import { APIService } from "../APIService";
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
-/*  Bio, project count, name, email, location, phonenumber, contacts */
-let bio = "fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk";
-let projectCount = 3;
-let name = "wong ka hei";
-let email = "makemak123@sww.com";
-let location = "Glasgow";
-let phoneNumber = "32311232";
-let contact = ["fasefasef", "fasefaesfa"]
+
 const AllApplicant: React.FC= () => {
 
     const [userDatas, setUserDatas] = useState<User[]>();
