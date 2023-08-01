@@ -20,9 +20,7 @@ const AllApplicant: React.FC= () => {
 
         return (
             <div className="eachApplicantProfileData" key={index}>
-                <div className="eachApplicantImage">
-                    <img src={each?.avatarUrl} alt="logo"/>
-                </div>
+                    <img src={each?.avatarUrl} alt="logo" className="eachApplicantImage"/>
                 <div className="eachApplicationContact">
                     <>
                     {Object.keys(each?.contact).includes('github') && <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = each?.contact['github'] || ""} />}
