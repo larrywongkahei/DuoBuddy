@@ -10,6 +10,8 @@ export interface User {
     email : string;
     password : string;
     phoneNumber : string;
+    partner : string;
+    applied : User[];
 }
 export interface Comment{
     id? : string;

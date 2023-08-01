@@ -1,4 +1,5 @@
 import "./AllApplicantCss.css"
+import { useState } from "react";
 /*  Bio, project count, name, email, location, phonenumber, contacts */
 let bio = "fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk fasfh asjehfaljksefjkah lsejkfh asljkehf askjlehf akjlshef lakshefajklshefjaks ehfljak shefjk";
 let projectCount = 3;
@@ -8,6 +9,8 @@ let location = "Glasgow";
 let phoneNumber = "32311232";
 let contact = ["fasefasef", "fasefaesfa"]
 const AllApplicant: React.FC = () => {
+
+    const [userDatas]
     return (
         <div className="AllApplicantContainer">
             <div className="eachApplicantProfileData">
