@@ -9,13 +9,15 @@ import { AiOutlineTwitter } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { User, Project } from "./Interface";
 import { APIService } from '../APIService';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Profile: React.FC = () => {
 
 
     // Store userData fetched from backend
     const [userData, setUserData] = useState<User>();
+
+    const navigate = useNavigate();
 
     // Store projects fetched from backend
     const [projectData, setProjectData] = useState<Project[]>();
@@ -110,7 +112,7 @@ const Profile: React.FC = () => {
                     </p>
                     </td>
                     <td style={{width:"10%"}}>
-                    <button>
+                    <button onClick={() => navigate(`/applicants/${e.id}`)}>
                         Detail
                     </button>
                     </td>
