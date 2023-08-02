@@ -30,7 +30,7 @@ describe('Test about posts that does not require loggin', () => {
             expect(text).equal("Log in first")
         })
         cy.contains('Explore').click().wait(1000)
-        cy.contains('test input 1').click()
+        cy.get(':nth-child(1) > .titleLink > h1').click()
         cy.get(".CommentBox").type("Test Comment")
         cy.get(`[type = 'submit']`).click()
     })
