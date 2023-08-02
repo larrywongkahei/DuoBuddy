@@ -59,7 +59,7 @@ describe('Test about posts that require loggin', () => {
         cy.get('.eachComment').its('length').then((previousData) => {
             cy.get(".CommentBox").type("Test Comment")
             cy.get(`[type = 'submit']`).click()
-            cy.reload().wait(1000)
+            cy.reload().wait(2000)
             cy.get('.eachComment').its('length').then((nextValue) => {
                 expect(previousData).equal(nextValue - 1)
             })
