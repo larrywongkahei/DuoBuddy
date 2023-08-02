@@ -29,9 +29,13 @@ const Login:React.FC = () => {
     // Submit button handler
     function submitLoginHandler(e:React.SyntheticEvent):void {
         e.preventDefault();
-        setEmail('');
-        setPassword('');
-        APIService.signin(email, password);
+        if(email === "" || password === ""){
+            alert("Please fill in all fields")
+        }else{
+            APIService.signin(email, password);
+            setEmail('');
+            setPassword('');
+        }
     };
 
 
