@@ -24,7 +24,7 @@ describe('Test links in home page', () => {
   })
   it('Should be able to redirect page to my contacts', () => {
     cy.get(".githubHome").click()
-    cy.wait(3000)
-    // cy.url().should('equal', 'https://github.com/larrywongkahei')
+    cy.url().then(url => url = 'https://github.com/larrywongkahei')
+    cy.go('back')
   })
 })
