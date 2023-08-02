@@ -41,7 +41,7 @@ describe('Test about posts', () => {
         cy.get(`[type = 'submit']`).click({ force: true })
         cy.intercept('https://larrywongkahei.github.io/DuoBuddy/').as('login')
         cy.wait('@login')
-        cy.contains('Explore').click().wait(1000)
+        cy.contains('Explore').click()
         cy.get(".titleLink").click()
         let comments;
         cy.get(".eachComment").then(data => comments = data.length)
@@ -49,5 +49,24 @@ describe('Test about posts', () => {
         cy.get(`[type = 'submit']`).click()
         cy.get('#loadPageButton').click()
         cy.get("eachComment").should('have.length', comments + 1)
+    })
+    it('should be able to post a post if not logged in', () => {
+        cy.on('window:alert', (text) => {
+            expect(text).equal("Sign in first")
+        })
+        cy.contains('Explore').click()
+        cy.get('.postButton').click()
+        cy.url().should('equal', "https://larrywongkahei.github.io/DuoBuddy/#/explore")
+    })
+    it('should be able to post a post if logged in', () => {
+        cy.get('.loginIcon').click()
+        cy.get(`[type = 'email']`).type('test1@gmail.com', {force:true})
+        cy.get(`[type = 'password']`).type('test1', {force:true})
+        cy.get(`[type = 'submit']`).click({ force: true })
+        cy.intercept('https://larrywongkahei.github.io/DuoBuddy/').as('login')
+        cy.wait('@login')
+        cy.contains('Explore').click()
+        cy.get('.postButton').click()
+        cy.url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/idea/post')
     })
 })
