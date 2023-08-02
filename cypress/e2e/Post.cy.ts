@@ -1,0 +1,53 @@
+describe('Test about posts', () => {
+    beforeEach(() => {
+        cy.visit('https://larrywongkahei.github.io/DuoBuddy/')
+    })
+    it('should be able to search for post by name or tags in home page', () => {
+        cy.get(".searchInput").type("a").type('{enter}').url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/searchResult/a')
+        cy.go('back').get(".searchInput").type("d").type('{enter}').url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/searchResult/d')
+    })
+    it('project should be able to be searched by name or tag', () => {
+        cy.get(".searchInput").type("python").type('{enter}').url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/searchResult/python')
+        cy.get(".searchResultProjects").should('have.length', 0)
+        cy.get(".searchPageInput").type("java").type('{enter}').url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/searchResult/java')
+        cy.get(".searchResultProjects").should('have.length', 1)
+        cy.get(".searchPageInput").type("duo").type('{enter}').url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/searchResult/duo')
+        cy.get(".searchResultProjects").should('have.length', 1)
+    })
+    it('should be able to navigate to project by searching or explore', () => {
+        cy.contains('Explore').click().wait(1000)
+        cy.get(".titleLink").should('exist')
+        cy.go('back')
+        cy.get(".searchInput").type("java").type('{enter}')
+        cy.get(".titleLink").should('exist').click()
+        cy.url().should('contain', "https://larrywongkahei.github.io/DuoBuddy/#/post")
+        cy.get(".ProjectPageTitle").should('exist')
+        cy.get(".ProjectPageHeaderDetail").should('exist')
+        cy.get(".mainContent").should('exist')
+    })
+    it('should not be able to comment when not logged in', () => {
+        cy.on('window:alert', (text) => {
+            expect(text).equal("Log in first")
+        })
+        cy.contains('Explore').click().wait(1000)
+        cy.get(".titleLink").click()
+        cy.get(".CommentBox").type("Test Comment")
+        cy.get(`[type = 'submit']`).click()
+    })
+    it('should be able to comment if logged in', () => {
+        cy.get('.loginIcon').click()
+        cy.get(`[type = 'email']`).type('test1@gmail.com', {force:true})
+        cy.get(`[type = 'password']`).type('test1', {force:true})
+        cy.get(`[type = 'submit']`).click({ force: true })
+        cy.intercept('https://larrywongkahei.github.io/DuoBuddy/').as('login')
+        cy.wait('@login')
+        cy.contains('Explore').click().wait(1000)
+        cy.get(".titleLink").click()
+        let comments;
+        cy.get(".eachComment").then(data => comments = data.length)
+        cy.get(".CommentBox").type("Test Comment")
+        cy.get(`[type = 'submit']`).click()
+        cy.get('#loadPageButton').click()
+        cy.get("eachComment").should('have.length', comments + 1)
+    })
+})

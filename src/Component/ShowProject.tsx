@@ -259,7 +259,7 @@ const ShowProject: React.FC = () => {
                     {projectData?.comments?.length} Comments
                 </h1>
                 <p>
-                    <TbReload onClick={() => setReload(!reload)} />
+                    <TbReload onClick={() => setReload(!reload)} id="loadPageButton"/>
                 </p>
             </div>
 
