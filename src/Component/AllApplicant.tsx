@@ -1,7 +1,7 @@
 import "./AllApplicantCss.css"
 import { useState, useEffect } from "react";
 import { User } from "./Interface";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { APIService } from "../APIService";
 import { ImLinkedin } from 'react-icons/im';
 import { AiOutlineTwitter } from 'react-icons/ai';
@@ -12,8 +12,7 @@ const AllApplicant: React.FC= () => {
     const [userDatas, setUserDatas] = useState<User[]>();
     const params = useParams();
     const id = params.id;
-    console.log(id)
-    console.log(userDatas)
+    const navigate = useNavigate();
 
 
     const usersNode = userDatas?.map((each, index) => {
@@ -37,7 +36,7 @@ const AllApplicant: React.FC= () => {
                     {each?.bio}
                     </p>
                 </div>
-                <button className="eachApplicationButton">
+                <button className="eachApplicationButton" onClick={() => navigate(`/profile/${each.id}`)}>
                     to profile
                 </button>
             </div>
