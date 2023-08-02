@@ -136,12 +136,13 @@
     justify-content: space-between;
 }
 
-.CommentSessionContainer p {
+.CommentSessionContainer button {
     font-size: 2rem;
     cursor: pointer;
+    border-style: none;
 }
 
-.CommentSessionContainer p :active{
+.CommentSessionContainer button :active{
     cursor:progress;
     transform: translateY(3px);
 }
