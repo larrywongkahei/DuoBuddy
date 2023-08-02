@@ -18,13 +18,15 @@ const App:React.FC = () => {
     // get params value from the queryString
     // urlParam.get("id") = 1
     const urlParam = new URLSearchParams(queryString);
-    APIService.getUserById(urlParam?.get('userId') || "").then((data:User) => {
-      sessionStorage.setItem("name", data.name);
-      sessionStorage.setItem("userId", data.id);
-      sessionStorage.setItem("email", data.email);
-      sessionStorage.setItem("avatar_url", data.avatarUrl);
-      window.location.href = "https://larrywongkahei.github.io/DuoBuddy/";
-    })
+    if(urlParam.has("userId")){
+      APIService.getUserById(urlParam?.get('userId') || "").then((data:User) => {
+        sessionStorage.setItem("name", data.name);
+        sessionStorage.setItem("userId", data.id);
+        sessionStorage.setItem("email", data.email);
+        sessionStorage.setItem("avatar_url", data.avatarUrl);
+        window.location.href = "https://larrywongkahei.github.io/DuoBuddy/";
+      })
+    }
   
 }, [])
 
