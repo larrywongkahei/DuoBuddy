@@ -29,7 +29,7 @@ const ProfilePageView:React.FC = () => {
                 </tr>
                 <tr>
                     <td><MdLocationOn className='profileIcons' /></td>
-                    <td>{userData?.location ? <a href={`https://www.google.com/maps/search/?api=1&query=${userData?.location}`} className='clickableContact'><p>{userData?.location.replace(/["]/g, "")}</p></a> : <div></div>}</td>
+                    <td>{userData?.location ? <a href={`https://www.google.com/maps/search/?api=1&query=${userData?.location}`} className='clickableContact'><p>{userData?.location.replace(/["]/g, "")}</p></a> : <p>No location</p>}</td>
                 </tr>
                 <tr>
                     <td><BsFillTelephoneFill className='profileIcons' /></td>
@@ -38,9 +38,9 @@ const ProfilePageView:React.FC = () => {
                 </tr>
             </table>
             <div className='contactIconsContainer'>
-                {Object.keys(userData?.contact || {}).includes('github') ? <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github'] || ""}/> : null}
-                {Object.keys(userData?.contact || {}).includes('linkedin') ? <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin'] || ""}/> : null}
-                {Object.keys(userData?.contact || {}).includes('twitter') ? <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter'] || ""}/> : null}
+                {Object.keys(userData?.contact || {}).includes('github') && <BsGithub className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['github'] || ""}/> }
+                {Object.keys(userData?.contact || {}).includes('linkedin') && <ImLinkedin className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['linkedin'] || ""}/> }
+                {Object.keys(userData?.contact || {}).includes('twitter') && <AiOutlineTwitter className='chosenAddContactIcons' onClick={() => window.location.href = userData?.contact['twitter'] || ""}/> }
             </div>
         </div>
         <div className='profileDataContainer'>
