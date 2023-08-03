@@ -1,4 +1,4 @@
-import { User } from "./Component/Interface";
+import { Comment, User } from "./Component/Interface";
 
 export const APIService =
 {
@@ -82,6 +82,13 @@ export const APIService =
   deleteProject(projectId:string){
     return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}`, {
       method:"DELETE"
+    })
+  },
+  deleteComment(projectId:string, comment:Comment){
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/deleteComment/${projectId}`, {
+      method:"DELETE",
+      body:JSON.stringify(comment),
+      headers: { 'Content-Type': 'application/json' }
     })
   },
 
