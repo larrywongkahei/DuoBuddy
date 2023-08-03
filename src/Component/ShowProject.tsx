@@ -75,14 +75,6 @@ const ShowProject: React.FC = () => {
         }
     }, [])
 
-    // window.onclick = (e: MouseEvent) => {
-    //     const applicationContainer: HTMLElement = document.getElementById("application") || new HTMLElement
-    //     if (e.target !== applicationContainer) {
-    //         setShowApplication(false)
-    //     }
-    // }
-
-
     // function to show application and modify css
     function openApplicationAndModifyCss() {
         if (sessionStorage.length > 0) {
@@ -119,7 +111,9 @@ const ShowProject: React.FC = () => {
 
     async function deleteComment(commentId:string){
         if(projectData){
-            APIService.deleteComment(projectData?.id, commentId)
+            if(window.confirm("Confirm delete comment?")){
+                await APIService.deleteComment(projectData?.id, commentId)
+            }
         }
     }
 
