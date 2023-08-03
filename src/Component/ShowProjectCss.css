@@ -91,6 +91,9 @@
     border-width: 1px;
     border-style: solid;
 }
+.deleteCommentButton {
+    
+}
 
 .eachComment img {
     height: 2rem;

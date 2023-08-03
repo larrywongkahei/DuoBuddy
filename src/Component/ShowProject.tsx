@@ -163,6 +163,10 @@ const ShowProject: React.FC = () => {
     const comments = projectData?.comments?.map((each, index) => {
         return (
             <div className='eachComment' key={index}>
+                {each.id === sessionStorage.getItem("userId") && 
+                    <button className='deleteCommentButton'>
+                        Delete comment
+                    </button>}
                 <p className="commentText">
                     {each.content?.split("\n").map((e, index2) => {
                         return (
