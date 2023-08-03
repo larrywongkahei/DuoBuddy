@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { TbReload } from 'react-icons/tb'
 import { Project } from "./Interface";
 import { APIService } from '../APIService';
+import { Comment } from './Interface';
 import Application from "./Application";
 
 const ShowProject: React.FC = () => {
@@ -116,8 +117,10 @@ const ShowProject: React.FC = () => {
         redoCSS();
     }
 
-    async function deleteComment(){
-        
+    async function deleteComment(commentData:Comment){
+        if(projectData){
+            APIService.deleteComment(projectData?.id, commentData)
+        }
     }
 
 
@@ -168,7 +171,7 @@ const ShowProject: React.FC = () => {
         return (
             <div className='eachComment' key={index}>
                 {each.id === sessionStorage.getItem("userId") && 
-                    <button className='deleteCommentButton' onClick={deleteComment}>
+                    <button className='deleteCommentButton' onClick={() => deleteComment(each)}>
                         Delete comment
                     </button>}
                 <p className="commentText">
