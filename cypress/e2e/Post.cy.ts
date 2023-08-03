@@ -56,6 +56,7 @@ describe('Test about posts that require loggin', () => {
         it('should be able to comment if logged in', () => {
         cy.contains('Explore').click()
         cy.get(':nth-child(1) > .titleLink > h1').click()
+        cy.reload();
         cy.get('.eachComment').its('length').then((previousData) => {
             cy.get(".CommentBox").type("Test Comment")
             cy.get(`[type = 'submit']`).click()
@@ -102,6 +103,21 @@ describe('Test about posts that require loggin', () => {
         cy.get('.TitleAndApplyButton > button').should('contain', "Close this post").click()
         cy.url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/explore')
         cy.contains('test input 1').should('not.be.exist')
-
+    // })
+    it('should be able to delete a comment', () => {
+        cy.on("window:confirm", (text) => {
+            expect(text).equal("Confirm delete comment?")
+            return true
+        });
+        cy.contains("Explore").click()
+        cy.get(':nth-child(1) > .titleLink > h1').click()
+        cy.get('.eachComment').its('length').then((previousData) => {
+            cy.get(".deleteCommentButton").should('be.visible')
+            cy.get(':nth-child(2) > .deleteCommentButton').click()
+            cy.reload().wait(2000)
+            cy.get('.eachComment').its('length').then((nextValue) => {
+                expect(previousData).equal(nextValue + 1)
+            })
+        })
     })
 })
