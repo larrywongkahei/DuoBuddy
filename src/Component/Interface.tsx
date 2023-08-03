@@ -14,6 +14,7 @@ export interface User {
     applied : User[];
 }
 export interface Comment{
+    id : string;
     userId : string;
     createdDate : string;
     createdBy : User;
