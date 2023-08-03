@@ -103,7 +103,7 @@ describe('Test about posts that require loggin', () => {
         cy.get('.TitleAndApplyButton > button').should('contain', "Close this post").click()
         cy.url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/explore')
         cy.contains('test input 1').should('not.be.exist')
-    // })
+    })
     it('should be able to delete a comment', () => {
         cy.on("window:confirm", (text) => {
             expect(text).equal("Confirm delete comment?")
@@ -114,58 +114,6 @@ describe('Test about posts that require loggin', () => {
         cy.get('.eachComment').its('length').then((previousData) => {
             cy.get(".deleteCommentButton").should('be.visible')
             cy.get(':nth-child(2) > .deleteCommentButton').click()
-            cy.reload().wait(2000)
-            cy.get('.eachComment').its('length').then((nextValue) => {
-                expect(previousData).equal(nextValue + 1)
-            })
-        })
-    })
-    it('should be able to post a post if logged in', () => {
-        cy.contains('Explore').click()
-        cy.get('.postButton').click()
-        cy.url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/idea/post')
-        cy.get('.inputAndButton > input').type("test input 1")
-        cy.get('.inputAndButton > button').click()
-        cy.get('.introduceYourselfContainer > .inputAndButton > textarea').type("test input 2")
-        cy.get('.introduceYourselfContainer >.inputAndButton > button').click()
-        cy.get('.ideaDetailContainer > .inputAndButton > textarea').type("test input 3")
-        cy.get('.ideaDetailContainer > .inputAndButton> button').click()
-        cy.get('.explainInspiration > .inputAndButton > textarea').type("test input 4")
-        cy.get('.explainInspiration > .inputAndButton> button').click()
-        cy.get('.others > .inputAndButton > textarea').type("test input 5")
-        cy.get('.others > .inputAndButton> button').click()
-        cy.get('.tagsInput').type("tag1")
-        cy.get('.addTagsContainer > button').click()
-        cy.get('.tagsInput').type("tag2")
-        cy.get('.addTagsContainer > button').click()
-        cy.get('.nextPage').click()
-        cy.url().should('not.equal', 'https://larrywongkahei.github.io/DuoBuddy/#/idea/post')
-        cy.get(".ProjectPageTitle").should('exist')
-        cy.get(".ProjectPageHeaderDetail").should('exist')
-        cy.get(".mainContent").should('exist')
-    })
-    it('should be able to delete a post as a creater', () => {
-        cy.on('window:confirm', (text) => 
-        {
-            expect(text).equal("Delete this post?")
-            return true
-        }
-            );
-        cy.contains('Explore').click()
-        cy.contains('test input 1').should('exist').click()
-        cy.get('.TitleAndApplyButton > button').should('contain', "Close this post").click()
-        cy.url().should('equal', 'https://larrywongkahei.github.io/DuoBuddy/#/explore')
-        cy.contains('test input 1').should('not.be.exist')
-    })
-    it('should be able to delete a comment', () => {
-        cy.on("window:confirm", (text) => {
-            expect(text).equal("Confirm delete comment?")
-            return true
-        });
-        cy.contains("Explore").click()
-        cy.get(':nth-child(1) > .titleLink > h1').click()
-        cy.get('.eachComment').its('length').then((previousData) => {
-            cy.get(".deleteCommentButton").should('visible').click()
             cy.reload().wait(2000)
             cy.get('.eachComment').its('length').then((nextValue) => {
                 expect(previousData).equal(nextValue + 1)
