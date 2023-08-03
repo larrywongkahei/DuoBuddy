@@ -87,7 +87,7 @@
 .eachComment {
     display: flex;
     flex-direction: column;
-
+    position: relative;
     border-width: 1px;
     border-style: solid;
 }
