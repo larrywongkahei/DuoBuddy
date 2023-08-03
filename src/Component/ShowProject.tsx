@@ -117,9 +117,9 @@ const ShowProject: React.FC = () => {
         redoCSS();
     }
 
-    async function deleteComment(commentData:Comment){
+    async function deleteComment(commentId:string){
         if(projectData){
-            APIService.deleteComment(projectData?.id, commentData)
+            APIService.deleteComment(projectData?.id, commentId)
         }
     }
 
@@ -171,7 +171,7 @@ const ShowProject: React.FC = () => {
         return (
             <div className='eachComment' key={index}>
                 {each.userId === sessionStorage.getItem("userId") && 
-                    <button className='deleteCommentButton' onClick={() => deleteComment(each)}>
+                    <button className='deleteCommentButton' onClick={() => deleteComment(each?.id)}>
                         Delete comment
                     </button>}
                 <p className="commentText">

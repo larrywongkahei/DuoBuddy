@@ -84,11 +84,9 @@ export const APIService =
       method:"DELETE"
     })
   },
-  deleteComment(projectId:string, comment:Comment){
-    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/deleteComment/${projectId}`, {
+  deleteComment(projectId:string, commentId:string){
+    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/deleteComment/${projectId}?commentId=${commentId}`, {
       method:"DELETE",
-      body:JSON.stringify(comment),
-      headers: { 'Content-Type': 'application/json' }
     })
   },
 
