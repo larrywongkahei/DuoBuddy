@@ -116,6 +116,10 @@ const ShowProject: React.FC = () => {
         redoCSS();
     }
 
+    async function deleteComment(){
+        
+    }
+
 
     async function applyToBuildProjectTogether(data: string) {
         const userId: string = sessionStorage.getItem("userId") || "";
@@ -164,7 +168,7 @@ const ShowProject: React.FC = () => {
         return (
             <div className='eachComment' key={index}>
                 {each.id === sessionStorage.getItem("userId") && 
-                    <button className='deleteCommentButton'>
+                    <button className='deleteCommentButton' onClick={deleteComment}>
                         Delete comment
                     </button>}
                 <p className="commentText">
