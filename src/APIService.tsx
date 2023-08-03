@@ -127,7 +127,7 @@ export const APIService =
 
   // Add comment to project
   commentProject(projectId: string, userId: string, content: string) {
-    return fetch(`https://mentorshipbackend-ceeb21a607e1.herokuapp.com/project/${projectId}?userId=${userId}`, {
+    return fetch(`http://localhost:8080/project/${projectId}?userId=${userId}`, {
       method: "PUT",
       body: content,
       headers: { 'Content-Type': 'application/json' }
